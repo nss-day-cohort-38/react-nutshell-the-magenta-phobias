@@ -37,5 +37,14 @@ export default {
       },
       body: JSON.stringify(editedObject)
     }).then(data => data.json());
+  },
+  updatePut(component, editedObject) {
+    return fetch(`${remoteURL}/${component}/${editedObject.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedObject)
+    }).then(data => data.json());
   }
 }
