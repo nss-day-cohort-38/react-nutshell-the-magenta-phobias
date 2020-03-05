@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const Login = props => {
-  const [returningUserCredentials, setReturningUserCredentials] = useState({
+  const [credentials, setCredentials] = useState({
     email: "",
     password: ""
   });
@@ -12,9 +12,9 @@ const Login = props => {
   const [isChecked, setIsChecked] = useState(false);
 
   const handleFieldChange = e => {
-    const stateToChange = { ...returningUserCredentials };
+    const stateToChange = { ...credentials };
     stateToChange[e.target.id] = e.targe.value;
-    setReturningUserCredentials(stateToChange);
+    setCredentials(stateToChange);
   };
 
   const handleCheckBoxChange = e => {
@@ -24,21 +24,11 @@ const Login = props => {
     e.preventDefault();
     props.setUser();
     props.history.push("/");
-    if (isChecked === true) {
-      localStorage.setItem(
-        "returningUserCredentials",
-        JSON.stringify(returningUserCredentials)
-      );
-      sessionStorage.setItem(
-        "returningUserCredentials",
-        JSON.stringify(returningUserCredentials)
-      );
+    if (isChecked === true) {localStorage.setItem("credentials", JSON.stringify(credentials));
+      sessionStorage.setItem("credentials", JSON.stringify(credentials));
       props.history.push("/");
     } else {
-      sessionStorage.setItem(
-        "returningUserCredentials",
-        JSON.stringify(returningUserCredentials)
-      );
+      sessionStorage.setItem("credentials", JSON.stringify(credentials));
     }
   };
 
@@ -74,4 +64,4 @@ const Login = props => {
   );
 };
 
-export default Login
+export default Login;
