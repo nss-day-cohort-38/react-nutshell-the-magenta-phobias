@@ -105,53 +105,67 @@
     },
     {
       "id": 4,
-      "name": "Travel to Oregon",
+      "name": "Taste the Spaghetti",
       "userId": 2,
+      "expectedCompletion": "2020-02-21",
+      "isComplete": false
+    },
+    {
+      "id": 5,
+      "name": "Make the Noodles",
+      "userId": 3,
+      "expectedCompletion": "2020-02-21",
+      "isComplete": false
+    },
+    {
+      "id": 6,
+      "name": "Learn React",
+      "userId": 3,
+      "expectedCompletion": "2020-02-21",
+      "isComplete": false
+    },
+    {
+      "id": 7,
+      "name": "Research Black Holes",
+      "userId": 4,
+      "expectedCompletion": "2020-02-21",
+      "isComplete": false
+    },
+    {
+      "id": 8,
+      "name": "Stare into the Void",
+      "userId": 4,
       "expectedCompletion": "2020-02-21",
       "isComplete": false
     }
   ],
   "messages": [
     {
-      "userId": 3,
+      "id": 1,
+      "userId": 1,
       "message": "Yo! Yo!",
-      "date": "2/20/2020, 11:49:08 AM",
-      "id": 1
+      "timestamp": "2/20/2020, 11:49:08 AM"
     },
     {
-      "userId": 4,
+      "id": 2,
+      "userId": 2,
       "message": "Hey, y'all!",
-      "date": "2/20/2020, 11:49:31 AM",
-      "id": 2
+      "timestamp": "2/20/2020, 11:49:31 AM"
     },
     {
-      "userId": 1,
+      "id": 3,
+      "userId": 3,
       "message": "Whaddup!",
-      "date": "2/20/2020, 11:49:55 AM",
-      "id": 3
+      "timestamp": "2/20/2020, 11:49:55 AM"
     },
     {
-      "userId": 1,
+      "id": 4,
+      "userId": 4,
       "message": "Hihihih!",
-      "date": "2/20/2020, 2:06:18 PM",
-      "id": 4
-    },
-    {
-      "userId": 5,
-      "message": "Hi, I'm kinda new here!",
-      "date": "2/20/2020, 2:40:27 PM",
-      "id": 5
+      "timestamp": "2/20/2020, 2:06:18 PM"
     }
   ],
   "events": [
-    {
-      "name": "TODAY EVENT",
-      "hiddenId": "",
-      "userId": 2,
-      "date": "2020-02-19",
-      "location": "EVENT2",
-      "id": 3
-    },
     {
       "name": "Clogging Tournament",
       "hiddenId": "",
