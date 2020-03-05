@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import ApplicationViews from "./ApplicationViews";
+import ApplicationViews from "./ApplicationViews";
 import NavBar from "./nav/NavBar";
 import Header from "./nav/Header";
 import "./nav/NavBar.css";
@@ -11,7 +11,7 @@ const Nutshell = () => {
     <>
       <NavBar />
       <Header />
-      {/* <ApplicationViews  /> */}
+      <ApplicationViews  />
     </>
   );
 };
