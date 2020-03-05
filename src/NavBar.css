@@ -1,3 +1,7 @@
+html, body {
+    margin: 0;
+}
+
 .bm-item {
     display: inline-block;
     text-decoration: none;
@@ -55,6 +59,8 @@
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
+
+  
   
   @media (prefers-reduced-motion: no-preference) {
     .App-logo {
