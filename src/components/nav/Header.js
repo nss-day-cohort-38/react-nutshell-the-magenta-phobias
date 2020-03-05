@@ -4,7 +4,7 @@ const Header = props => {
     return (
         <>
         <header>
-        <h1 className="title">fôl<i class="circle icon"></i></h1>
+        <h1 className="title">fôl<i class="small sync alternate icon"></i></h1>
         </header>
         </>
     )
