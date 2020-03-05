@@ -52,6 +52,16 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
+/* HEADER */
+header {
+  display: flex;
+  justify-content: center;
+}
+.title{
+  font-size: 50px;
+  margin: 3%;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
