@@ -18,7 +18,7 @@ const MessageCard = props => {
           <strong>{username}</strong>: {text} 
         </p>
         {/*FIXME: Only show this if it is the active user*/}
-        {()=> {
+        {/* {()=> {
           const credentials = sessionStorage.getItem("credentials");
           if (credentials.id === userId) {
             return <button
@@ -29,7 +29,14 @@ const MessageCard = props => {
               Edit
             </button>
           }
-        }}
+        }} */}
+        <button
+              type="button"
+              className="chat-edit-button"
+              onClick={() => props.setMessageToEdit(props.message)}
+            >
+              Edit
+        </button>
         <span className="time-right">{timestamp}</span>
       </div>
     </div>
