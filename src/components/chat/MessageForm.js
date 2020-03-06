@@ -3,7 +3,7 @@ import ApiManager from '../../modules/ApiManager';
 
 const MessageForm = props => {
   const [isLoading, setIsLoading] = useState(false)
-  const [message, setMessage] = useState({text: ""})
+  const [message, setMessage] = useState({message: ""})
 
   const handleFieldChange = evt => {
     const stateToChange = {...message};
@@ -19,12 +19,14 @@ const MessageForm = props => {
       const messageToSave = {
         //TODO: use active userId
         userId: 4,
-        message: message.text,
+        message: message.message,
         timestamp: new Date().toLocaleString()
       }
-      // If this is an edit, we also need the id
-      if (props.match.params.messageId) {
-        messageToSave.id = props.match.params.messageId;
+      // If this is an edit, we need the id
+      // and the timestamp should be what it was.
+      if (props.messageToEdit.id) {
+        messageToSave.id = props.messageToEdit.id;
+        messageToSave.timestamp = props.messageToEdit.timestamp;
       }
       return messageToSave;
     }
@@ -34,31 +36,36 @@ const MessageForm = props => {
     // If the object has an id, it is an edit
     // so we put/update
     if (message.hasOwnProperty('id')) {
-      ApiManager.updatePut("messages", message)
-      .then(() => props.history.push("/messages")
-      );
+      return ApiManager.updatePut("messages", message);
     } else {
       // Otherwise, it is new, so we post
-      ApiManager.post("messages", message)
-      .then(setIsLoading(false))
-      // Gets the messages again and re-renders
-      .then(props.getMessages)
+      return ApiManager.post("messages", message);
     }
   }
 
   const handleSubmit = (evt) => {
+    setIsLoading(true);
     evt.preventDefault();
     evt.stopPropagation();
     const constructedMessage = constructMessage(evt);
-    saveMessage(constructedMessage);
     // Clears the form upon submission
     evt.target.reset()
+    saveMessage(constructedMessage)
+      // Gets the messages again and re-renders
+      .then(props.getMessages)
+      .then(setIsLoading(false));
   }
   
   useEffect(() => {
-    // TODO: If this is an edit, we need to get the entry-to-edit's details
+    if (props.messageToEdit.message) {
+      setMessage(props.messageToEdit)
+      // A "one-time" setting of the message field's value
+      // when there's a new props.messageToEdit containing a message string
+      // (which happens when the edit button is clicked)
+      document.getElementById("message").value = props.messageToEdit.message 
+    }
     setIsLoading(false);
-  }, [])
+  }, [props.messageToEdit])
 
   return (
     <>
@@ -70,13 +77,12 @@ const MessageForm = props => {
       <form onSubmit={handleSubmit}>
         <fieldset>
           <input
-            name="text"
-            type="text"
+            name="message"
+            type="message"
             required
             onChange={handleFieldChange}
-            id="text"
+            id="message"
             placeholder="Chat message"
-            // value={message}
           />
           <button
             type="submit"
