@@ -9,6 +9,7 @@ const ApplicationViews = (props) => {
     return(
         <>
             <Route
+            exact
             path="/"
             render={props=> (
                 <Home />
