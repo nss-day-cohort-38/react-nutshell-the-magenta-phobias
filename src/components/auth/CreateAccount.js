@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const SignUp = props => {
+const CreateAccount = props => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [isChecked, setIsChecked] = useState(false);
 
@@ -9,24 +9,24 @@ const SignUp = props => {
     stateToChange[event.target.id] = event.target.value;
     setCredentials(stateToChange);
   };
-  const handleCheckBox = event => {
+  const handleSignInCheckBox = event => {
     setIsChecked(event.target.checked);
   };
-  const handleLogin = event => {
+  const handleCreateAccountLogin = event => {
     event.preventDefault();
     props.setUser();
     props.history.push("/");
+    if (isChecked === true) {
+      localStorage.setItem("credentials", JSON.stringify(credentials));
+      props.history.push("/");
+    } else {
+      sessionStorage.setItem("credentials", JSON.stringify(credentials));
+      props.history.push("/");
+    }
   };
-  if (isChecked === true) {
-    localStorage.setItem("credentials", JSON.stringify(credentials));
-    props.history.push("/");
-  } else {
-    sessionStorage.setItem("credentials", JSON.stringify(credentials));
-    props.history.push("/");
-  }
 
   return (
-    <form onSubmit={handleLogin}>
+    <form onSubmit={handleCreateAccountLogin}>
       <fieldset>
         <h3>Create Your Account</h3>
         <div className="sign-in-form-grid">
@@ -52,10 +52,10 @@ const SignUp = props => {
         </div>
         <button type="submit">Sign In</button>
         <label>Remember Me</label>
-        <input type="checkbox" onChange={handleCheckBox}></input>
+        <input type="checkbox" onChange={handleSignInCheckBox}></input>
       </fieldset>
     </form>
   );
 };
 
-export default SignUp;
+export default CreateAccount;

@@ -2,9 +2,10 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import Home from "./home/Home";
 import Login from "./auth/Login";
-import SignUp from "./auth/SignUp";
+import CreateAccount from "./auth/CreateAccount";
 
 const ApplicationViews = props => {
+    console.log(props);
   const hasUser = props.hasUser;
   const setUser = props.setUser;
 
@@ -22,14 +23,14 @@ const ApplicationViews = props => {
         exact
         path="/login"
         render={props => {
-          return <Login setUser={setUser} {...props}/>;
+          return <Login setUser={setUser} {...props} />;
         }}
       />
       <Route
         exact
-        path="/signup"
+        path="/createaccount"
         render={props => {
-          return <SignUp setUser={setUser} {...props}/>;
+          return <CreateAccount setUser={setUser} {...props} />;
         }}
       />
     </React.Fragment>

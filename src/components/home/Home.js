@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 
 const Home = props => {
-  //   const user = sessionStorage.getItem("credentials");
-
   return (
     <>
       <div className="home-container">
@@ -17,8 +16,10 @@ const Home = props => {
           </picture>
         </div>
         <div className="button-container">
+          {/* <Link */}
+          {/* to="/login" */}
           <button
-            id="homeBtn"
+            id="homeBtn-login"
             className="ui blue basic button"
             onClick={() => {
               props.history.push("/login");
@@ -26,15 +27,23 @@ const Home = props => {
           >
             Sign In
           </button>
+          {/* </Link> */}
+
+          {/* <Link */}
+          {/* to="/signup"
+            id="homeBtn-signup"
+            className="ui blue basic button" */}
+          {/* onClick={() => { */}
+          {/* props.history.push("/");
+            }} */}
+          {/* > */}
           <button
-            id="homeBtn"
+            id="homeBtn-createaccount"
             className="ui blue basic button"
-            onClick={() => {
-              props.history.push("/signup");
-            }}
+            onClick={() => props.history.push("/createaccount")}
           >
-            Create an account
-          </button>
+            Create an account</button>
+          {/* </Link> */}
         </div>
       </div>
     </>

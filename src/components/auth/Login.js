@@ -20,7 +20,8 @@ const Login = props => {
     e.preventDefault();
     props.setUser();
     props.history.push("/");
-    if (isChecked === true) {localStorage.setItem("credentials", JSON.stringify(credentials));
+    if (isChecked === true)
+    {localStorage.setItem("credentials", JSON.stringify(credentials));
       sessionStorage.setItem("credentials", JSON.stringify(credentials));
       props.history.push("/");
     } else {
