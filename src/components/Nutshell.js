@@ -27,9 +27,9 @@ const Nutshell = () => {
   };
   return (
     <>
+      <Header />
       <NavBar hasUser={userFromState} clearUser={clearUser} setUser={setUser} />
       <ApplicationViews hasUser={userFromState} setUser={setUser} />
-      <Header />
     </>
   );
 };

@@ -5,15 +5,11 @@ const Login = props => {
     email: "",
     password: ""
   });
-  const [newUserCredentials, setNewUserCredentials] = useState({
-    email: "",
-    password: ""
-  });
   const [isChecked, setIsChecked] = useState(false);
 
   const handleFieldChange = e => {
     const stateToChange = { ...credentials };
-    stateToChange[e.target.id] = e.targe.value;
+    stateToChange[e.target.id] = e.target.value;
     setCredentials(stateToChange);
   };
 

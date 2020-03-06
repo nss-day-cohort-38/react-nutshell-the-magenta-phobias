@@ -8,13 +8,14 @@ import "./NavBar.css";
 const NavBar = props => {
   const handleLogout = () => {
     props.clearUser();
-    props.history.push("/login");
+    props.history.push("/");
   };
   return (
     <Menu>
       <a className="menu-item" href="/">
-        Home
-      </a>
+        {" "}
+        Home{""}
+        </a>
       <a className="menu-item" href="/news">
         News
       </a>
@@ -31,12 +32,10 @@ const NavBar = props => {
         Friends
       </a>
       {props.hasUser ? (
-        <li>
-          <NavLink className="menu-item" to={"/login"}>
+          <span className="menu-item" onClick={handleLogout}>
             {" "}
             Logout{" "}
-          </NavLink>
-        </li>
+          </span>
       ) : null}
     </Menu>
   );
