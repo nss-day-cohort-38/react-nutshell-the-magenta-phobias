@@ -1,0 +1,21 @@
+.form-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bigger-form{
+    margin-top: 10%;
+    width:70%;
+    display: flex;
+    justify-content: center;
+}
+.event-form input {
+    margin: 5%;
+}
+.event-form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    margin: 2%;
+}
