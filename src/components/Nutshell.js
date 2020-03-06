@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ApplicationViews from "./ApplicationViews";
 import NavBar from "./nav/NavBar";
 import Header from "./nav/Header";
 import "./nav/NavBar.css";
 import "./nav/Header";
-import "./Nutshell.css"
+import "./Nutshell.css";
 
 const Nutshell = () => {
   const isAuthenticated = () =>
@@ -25,6 +25,7 @@ const Nutshell = () => {
     localStorage.clear();
     setHasUser(isAuthenticated());
   };
+
   return (
     <>
       <Header />

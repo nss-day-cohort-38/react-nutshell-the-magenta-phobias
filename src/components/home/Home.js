@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import "./Home.css";
 
 const Home = props => {
@@ -16,22 +15,26 @@ const Home = props => {
           </picture>
         </div>
         <div className="button-container">
-          <button
-            id="homeBtn-login"
-            className="ui blue basic button"
-            onClick={() => {
-              props.history.push("/login");
-            }}
-          >
-            Sign In
-          </button>
-          <button
-            id="homeBtn-createaccount"
-            className="ui blue basic button"
-            onClick={() => props.history.push("/createaccount")}
-          >
-            Create an account
-          </button>
+          {!props.hasUser ? (
+            <button
+              id="homeBtn-login"
+              className="ui blue basic button"
+              onClick={() => {
+                props.history.push("/login");
+              }}
+            >
+              Sign In
+            </button>
+          ) : null}
+          {!props.hasUser ? (
+            <button
+              id="homeBtn-createaccount"
+              className="ui blue basic button"
+              onClick={() => props.history.push("/createaccount")}
+            >
+              Create an account
+            </button>
+          ) : null}
         </div>
       </div>
     </>

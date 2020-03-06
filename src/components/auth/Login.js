@@ -21,17 +21,24 @@ const Login = props => {
     e.preventDefault();
     props.setUser();
     props.history.push("/");
-    if (isChecked === true)
-    {localStorage.setItem("credentials", JSON.stringify(credentials));
+    if (isChecked === true) {
+      localStorage.setItem("credentials", JSON.stringify(credentials));
       sessionStorage.setItem("credentials", JSON.stringify(credentials));
       props.history.push("/");
     } else {
       sessionStorage.setItem("credentials", JSON.stringify(credentials));
     }
   };
+  const handleAuth = (e) => {
+    if (props.hasUser) {
+      handleLogin(e);
+    } else {
+      window.alert("Please enter the correct email/ password");
+    }
+  };
 
   return (
-    <form className="login-form" onSubmit={handleLogin}>
+    <form className="login-form" onSubmit={handleAuth}>
       <fieldset className="form">
         <h3 className="header">Please Sign In</h3>
         <div className="form-grid">
@@ -54,9 +61,15 @@ const Login = props => {
           />
           <label htmlFor="inputPassword">Password</label>
         </div>
-        <button className="login" type="submit">Sign In To Your Folo</button>
+        <button className="login" type="submit">
+          Sign In To Your Folo
+        </button>
         <label className="option">Remember Me</label>
-        <input className="option" type="checkbox" onChange={handleCheckBoxChange}></input>
+        <input
+          className="option"
+          type="checkbox"
+          onChange={handleCheckBoxChange}
+        ></input>
       </fieldset>
     </form>
   );

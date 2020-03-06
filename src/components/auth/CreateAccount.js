@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CreateAccount.css";
-
+import ApiManager from "../../modules/ApiManager";
 const CreateAccount = props => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [isChecked, setIsChecked] = useState(false);
@@ -25,9 +25,27 @@ const CreateAccount = props => {
       props.history.push("/");
     }
   };
+  // registration list... Gaurds:
+  // should check to see if user account already exists
+  // button disabled (user cannot submit incomplete info)
+  // fetch call to post new user object
+  // add photo in object
+  const handleAuth = async e => {
+    try {
+      if (!props.hasUser) {
+        const postUserToApi = ApiManager.post();
+        setCredentials(postUserToApi);
+        handleCreateAccountLogin(e);
+      } else {
+        window.alert("Please enter the correct email/ password");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
-    <form className="create-account-form" onSubmit={handleCreateAccountLogin}>
+    <form className="create-account-form" onSubmit={handleAuth}>
       <fieldset className="form">
         <h3 className="header">Create Your Account</h3>
         <div className="sign-in-form-grid">
@@ -51,9 +69,15 @@ const CreateAccount = props => {
           />
           <label htmlFor="inputPassword">Password</label>
         </div>
-        <button className="login" type="submit">Sign In</button>
+        <button className="login" type="submit">
+          Sign In
+        </button>
         <label className="option">Remember Me</label>
-        <input className="option" type="checkbox" onChange={handleSignInCheckBox}></input>
+        <input
+          className="option"
+          type="checkbox"
+          onChange={handleSignInCheckBox}
+        ></input>
       </fieldset>
     </form>
   );

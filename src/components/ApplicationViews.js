@@ -21,9 +21,9 @@ const ApplicationViews = props => {
       <Route
         exact
         path="/login"
-        render={props => {
-          return <Login setUser={setUser} {...props} />;
-        }}
+        render={props =>
+            <Login setUser={setUser} {...props} />
+        }
       />
       <Route
         exact
