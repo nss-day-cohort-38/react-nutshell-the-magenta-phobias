@@ -1,0 +1,15 @@
+.wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.FixedHeightContainer {
+  height: 100px;
+  width:350px; 
+  padding:3px; 
+}
+
+.Content {
+  height:224px;
+  overflow:auto;
+}
