@@ -3,9 +3,12 @@ import "./Messages.css"
 
 const MessageCard = props => {
   const username = props.message.user.username;
+  const userId = props.message.userId;
   const text = props.message.message;
   const timestamp = props.message.timestamp;
   const picUrl = props.message.user.picUrl;
+
+  
 
   return (
     <div className="card">
@@ -14,14 +17,19 @@ const MessageCard = props => {
         <p>
           <strong>{username}</strong>: {text} 
         </p>
-        {/*TODO: Only show this if it is the active user*/}
-        <button
-          type="button"
-          className="chat-edit-button"
-          onClick={() => props.setMessageToEdit(props.message)}
-        >
-          Edit
-        </button>
+        {/*FIXME: Only show this if it is the active user*/}
+        {()=> {
+          const credentials = sessionStorage.getItem("credentials");
+          if (credentials.id === userId) {
+            return <button
+              type="button"
+              className="chat-edit-button"
+              onClick={() => props.setMessageToEdit(props.message)}
+            >
+              Edit
+            </button>
+          }
+        }}
         <span className="time-right">{timestamp}</span>
       </div>
     </div>
