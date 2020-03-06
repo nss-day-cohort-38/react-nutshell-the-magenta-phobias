@@ -13,7 +13,7 @@ const EventDetails = props => {
             setOneEvent(eventFromAPi)
         })
     }
-    const handleDelete= props=> {
+    const handleDelete= ()=> {
         ApiManager.delete('events', props.eventId).then(()=> props.history.push('/events'))
     }
 
