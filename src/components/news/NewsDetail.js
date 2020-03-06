@@ -16,7 +16,7 @@ const NewsDetail = props => {
 
     const handleDelete = () => {
         setIsLoading(true);
-        APIManager.delete(props.newsId).then(() =>
+        APIManager.delete("articles", props.newsId).then(() =>
             props.history.push("/news")
         );
     };
@@ -35,7 +35,7 @@ const NewsDetail = props => {
         });
     }, [props.newsId]);
 
-    if (news.title !== undefined && news.synopsis !== undefined) {
+    if (news.title !== undefined && news.synopsis !== undefined && news.url !== undefined) {
         return (
             <div className="card">
                 <div className="card-content">

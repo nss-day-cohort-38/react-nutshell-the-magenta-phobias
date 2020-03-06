@@ -17,10 +17,8 @@ const NewsForm = (props) => {
         evt.preventDefault()
         setIsLoading(true);
 
-        let today = new Date();
-        let date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-        let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
-        let dateTime = date + ' ' + time;
+        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        let dateTime = new Date().toLocaleDateString('en-US', options);
 
         const newNews = {
             title: news.title,
@@ -42,42 +40,59 @@ const NewsForm = (props) => {
     return (
         <>
             <form>
-                <fieldset>
+            <fieldset className="newsEditForm">
                     <div className="formgrid">
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            onChange={handleFieldChange}
-                            id="title"
-                            value={news.title}
-                        />
-                        <label htmlFor="title">News Article</label>
-
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            onChange={handleFieldChange}
-                            id="synopsis"
-                            value={news.synopsis}
-                        />
-                        <label htmlFor="synopsis">Synopsis</label>
-                        <input
-                            type="text"
-                            required
-                            className="form-control"
-                            onChange={handleFieldChange}
-                            id="url"
-                            value={news.url}
-                        />
-                        <label htmlFor="url">URL</label>
+                        <div>
+                            <label htmlFor="title">News Article Title: </label>
+                            <p>
+                            <textarea
+                                type="text"
+                                rows="2"
+                                cols="40"
+                                required
+                                className="form-control"
+                                onChange={handleFieldChange}
+                                id="title"
+                                value={news.title}
+                            />
+                            </p>
+                        </div>
+                        <div>
+                            <label htmlFor="synopsis">Synopsis: </label>
+                            <p>
+                            <textarea
+                                type="text"
+                                rows="6"
+                                cols="50"
+                                required
+                                className="form-control"
+                                onChange={handleFieldChange}
+                                id="synopsis"
+                                value={news.synopsis}
+                            />
+                            </p>
+                        </div>
+                        <div>
+                            <label htmlFor="url">URL: </label>
+                            <p>
+                            <textarea
+                                type="text"
+                                rows="1"
+                                cols="60"
+                                required
+                                className="form-control"
+                                onChange={handleFieldChange}
+                                id="url"
+                                value={news.url}
+                            />
+                            </p>
+                        </div>
                     </div>
                     <div className="alignRight">
                         <button
                             type="button" disabled={isLoading}
                             onClick={createNewNews}
-                            className="btn btn-primary"
+                            className="btn btn-primary newsEditFormBtn"
                         >Submit</button>
                     </div>
                 </fieldset>
