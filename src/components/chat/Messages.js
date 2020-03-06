@@ -3,17 +3,6 @@ import ApiManager from '../../modules/ApiManager';
 import MessageCard from './MessageCard';
 import MessageForm from './MessageForm'
 import './Messages.css'
-/*
-TODO: Given a user enters in a chat message
-When the message appears in the chat history
-Then there should be an affordance to edit the message
-
-TODO: Given a user wants to edit a previous message of theirs
-When the user performs a gesture on the edit affordance
-Then the user should be able to change the text of their message
-And have an affordance for saving the edited message
-*/
-
 
 const MessageList = props => {
   const [messages, setMessages] = useState([]);
@@ -38,7 +27,9 @@ const MessageList = props => {
     <>
       <div className="wrapper">
         <div className="FixedHeightContainer">
-          <h1>Chat</h1>
+          <div id="headerContainer">
+            <h1>Chat</h1>
+          </div>
           <div className="ScrollToBottom">
             <div className="container-cards">
               {/* Sorting by date via: 

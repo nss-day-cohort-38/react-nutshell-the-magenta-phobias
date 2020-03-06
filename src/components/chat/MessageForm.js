@@ -74,24 +74,26 @@ const MessageForm = props => {
       Form Submit allows the Enter key to work 
       instead of just clicking the send button
       */}
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <input
-            name="message"
-            type="message"
-            required
-            onChange={handleFieldChange}
-            id="message"
-            placeholder="Chat message"
-          />
-          <button
-            type="submit"
-            disabled={isLoading}
-          >
-            Send
-          </button>
-        </fieldset>
-      </form>
+      <div className="message-container, darker, chat-input-container">
+        <form onSubmit={handleSubmit}>
+          <fieldset>
+            <input
+              name="message"
+              type="message"
+              required
+              onChange={handleFieldChange}
+              id="message"
+              placeholder="Chat message"
+            />
+            <button
+              type="submit"
+              disabled={isLoading}
+            >
+              Send
+            </button>
+          </fieldset>
+        </form>
+      </div>
     </>
   )
 
