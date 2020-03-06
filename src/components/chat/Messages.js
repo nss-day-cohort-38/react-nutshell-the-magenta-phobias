@@ -42,26 +42,28 @@ const MessageList = props => {
       <div className="wrapper">
         <div className="FixedHeightContainer">
           <h1>Chat</h1>
-          <div className="container-cards, Content">
-            {/* Sorting by date via: 
-            https://stackoverflow.com/questions/10123953/how-to-sort-an-array-by-a-date-property*/}
-            {messages.sort(function(a,b){
-              return new Date(a.timestamp) - new Date(b.timestamp)
-            }).map(message => 
-              <MessageCard 
-                key={message.id}
-                username={message.user.username}  
-                message={message.message}
-                timestamp={message.timestamp}
-              />
-            )}
+          <div className="ScrollToBottom">
+            <div className="container-cards">
+              {/* Sorting by date via: 
+              https://stackoverflow.com/questions/10123953/how-to-sort-an-array-by-a-date-property*/}
+              {messages.sort(function(a,b){
+                return new Date(a.timestamp) - new Date(b.timestamp)
+              }).map(message => 
+                <MessageCard 
+                  key={message.id}
+                  username={message.user.username}  
+                  message={message.message}
+                  timestamp={message.timestamp}
+                />
+              )}
+            </div>
           </div>
-          <div className="container-form">
-              <MessageForm
-                getMessages={getMessages}
-                {...props}
-              />
-          </div>
+            <div className="container-form">
+                <MessageForm
+                  getMessages={getMessages}
+                  {...props}
+                />
+            </div>
         </div>
       </div>
     </>

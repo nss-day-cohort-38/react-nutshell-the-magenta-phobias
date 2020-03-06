@@ -9,7 +9,11 @@
   padding:3px; 
 }
 
-.Content {
+/* Scrollbar always at the bottom trick: 
+https://stackoverflow.com/a/44051405 */ 
+.ScrollToBottom {
   height:224px;
-  overflow:auto;
+  overflow: auto;
+  display: flex;
+  flex-direction:column-reverse;
 }
