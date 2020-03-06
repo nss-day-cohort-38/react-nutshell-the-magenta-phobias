@@ -17,7 +17,9 @@ const ApplicationViews = (props) => {
             <Route
                 path="/chat"
                 render={props=> (
-                    <MessageList />
+                    <MessageList 
+                        {...props}
+                    />
             )}
             />
         </>

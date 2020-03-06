@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ApiManager from '../../modules/ApiManager';
-import MessageCard from '../../components/chat/MessageCard';
-
+import MessageCard from './MessageCard';
+import MessageForm from './MessageForm'
 /*
 TODO: Given a user wants to enter in a chat message
 When the user activates their account
@@ -45,6 +45,8 @@ const MessageList = props => {
     <>
       <h1>CHAT</h1>
       <div className="container-cards">
+        {/* Sorting by date via: 
+        https://stackoverflow.com/questions/10123953/how-to-sort-an-array-by-a-date-property*/}
         {messages.sort(function(a,b){
           return new Date(a.timestamp) - new Date(b.timestamp)
         }).map(message => 
@@ -55,6 +57,12 @@ const MessageList = props => {
             timestamp={message.timestamp}
           />
         )}
+      </div>
+      <div className="container-form">
+          <MessageForm
+            getMessages={getMessages}
+            {...props}
+          />
       </div>
     </>
   )
