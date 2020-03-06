@@ -3,6 +3,8 @@ import React from "react";
 import Home from "./home/Home"
 import EventsList from "./events/EventsList";
 import EventDetails from "./events/EventDetails";
+import NewEventForm from "./events/NewEventForm";
+import EditEventForm from "./events/EditEventForm";
 
 const ApplicationViews = (props) => {
 
@@ -22,9 +24,23 @@ const ApplicationViews = (props) => {
         }}
         />
         <Route 
-        path="/events/:eventId(\d+)"
+        exact path="/events/:eventId(\d+)"
         render={props=> {return( <EventDetails   eventId={parseInt(props.match.params.eventId)} {...props}/>)    
 }}
+        />
+        <Route
+        path="/events/:eventId(\d+)/edit"
+        render={props=> {
+            return(
+                <EditEventForm eventId={parseInt(props.match.params.eventId)} {...props} />
+            )
+        }}
+        />
+        <Route 
+        path="/events/new"
+        render={props => {return (
+            <NewEventForm {...props} />
+        )}}
         />
         </>
         

@@ -27,9 +27,9 @@ const EventDetails = props => {
         <div className="event-details">
             <div className="details-icon-container">
             <i className="big arrow circle left icon" id="detailIcon" onClick={()=> props.history.push('/events')}></i>
-            <i className="big edit icon"  id="detailIcon"></i>
+            <i className="big edit icon"  id="detailIcon" onClick={()=> props.history.push(`/events/${props.eventId}/edit`)}></i>
             </div>
-            <h1>{oneEvent.name}</h1>
+            <h1>{oneEvent.name}</h1>    
             <picture>
                 <img src={oneEvent.eventImage} alt="event-photo" id="detail-photo" />
             </picture>
