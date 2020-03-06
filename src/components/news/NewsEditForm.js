@@ -16,10 +16,9 @@ const NewsEditForm = (props) => {
     const updateExistingNews = evt => {
         evt.preventDefault()
         setIsLoading(true);
-        
-        let options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-        let dateTime = new Date().toLocaleDateString('en-US', options);
 
+        let dateTime = new Date().toLocaleString('en-GB', { timeZone: 'UTC' });
+        
         const editedNews = {
             id: props.match.params.newsId,
             title: news.title,

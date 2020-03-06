@@ -20,10 +20,12 @@ const NewsList = (props) => {
         <div>
             <section className="section-content">
                 <div className="container-cards">
-                    {news.map(news =>
+                    {news.sort(function(a,b){
+                        return new Date(b.timestamp) - new Date(a.timestamp)
+                     }).map(newsItem =>
                         <NewsCard
-                            key={news.id}
-                            news={news}
+                            key={newsItem.id}
+                            news={newsItem}
                             getNews={getNews}
                             {...props}
                         />)}
