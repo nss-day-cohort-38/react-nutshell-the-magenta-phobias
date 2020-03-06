@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 
 const Header = props => {
     return (
         <>
         <header>
-        <h1 className="title">fôl<i className="small sync alternate icon"></i></h1>
+        <h1 className="title">{'{'}fōlô{'}'}</h1>
         </header>
         </>
     )
