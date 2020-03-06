@@ -5,12 +5,13 @@ const MessageCard = props => {
   const username = props.message.user.username;
   const text = props.message.message;
   const timestamp = props.message.timestamp;
+  const picUrl = props.message.user.picUrl;
 
   return (
     <div className="card">
       <div className="card-content, message-container">
         {/* TODO: Make this the user's profile pic */}
-        <img src="https://www.w3schools.com/w3images/bandmember.jpg" alt="Avatar" />
+        <img src={picUrl} alt="Avatar" />
         <p>
           <strong>{username}</strong>: {text} 
         </p>

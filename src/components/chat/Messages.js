@@ -6,7 +6,7 @@ import './Messages.css'
 
 const MessageList = props => {
   const [messages, setMessages] = useState([]);
-  const [messageToEdit, setMessageToEdit] = useState({text: "", userId: 0, timestamp: ""})
+  const [messageToEdit, setMessageToEdit] = useState({text: "", userId: 0, timestamp: ""});
 
   const getMessages = () => {
     return ApiManager.getAllWithExpand("messages", "user")
@@ -14,7 +14,7 @@ const MessageList = props => {
   }
 
   useEffect(() => {
-    getMessages()
+    getMessages();
   }, [])
 
 
