@@ -10,11 +10,11 @@ const MessageCard = props => {
   return (
     <div className="card">
       <div className="card-content, message-container">
-        {/* TODO: Make this the user's profile pic */}
         <img src={picUrl} alt="Avatar" />
         <p>
           <strong>{username}</strong>: {text} 
         </p>
+        {/*TODO: Only show this if it is the active user*/}
         <button
           type="button"
           className="chat-edit-button"
