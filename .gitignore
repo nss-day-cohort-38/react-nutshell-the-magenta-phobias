@@ -24,3 +24,6 @@ yarn-error.log*
 
 # api file
 /api
+
+#apikeys
+/keys
