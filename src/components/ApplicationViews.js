@@ -5,7 +5,6 @@ import Login from "./auth/Login";
 import CreateAccount from "./auth/CreateAccount";
 
 const ApplicationViews = props => {
-    console.log(props);
   const hasUser = props.hasUser;
   const setUser = props.setUser;
 

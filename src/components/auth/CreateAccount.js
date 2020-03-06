@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./CreateAccount.css";
 
 const CreateAccount = props => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -26,14 +27,14 @@ const CreateAccount = props => {
   };
 
   return (
-    <form onSubmit={handleCreateAccountLogin}>
-      <fieldset>
-        <h3>Create Your Account</h3>
+    <form className="create-account-form" onSubmit={handleCreateAccountLogin}>
+      <fieldset className="form">
+        <h3 className="header">Create Your Account</h3>
         <div className="sign-in-form-grid">
           <input
             onChange={handleInputFieldChange}
             type="email"
-            id="email"
+            id="create-email"
             placeholder="Enter Email Address"
             required=""
             autoFocus=""
@@ -43,16 +44,16 @@ const CreateAccount = props => {
           <input
             onChange={handleInputFieldChange}
             type="password"
-            id="password"
+            id="create-password"
             placeholder="Create Your Password"
             required=""
             autoFocus=""
           />
           <label htmlFor="inputPassword">Password</label>
         </div>
-        <button type="submit">Sign In</button>
-        <label>Remember Me</label>
-        <input type="checkbox" onChange={handleSignInCheckBox}></input>
+        <button className="login" type="submit">Sign In</button>
+        <label className="option">Remember Me</label>
+        <input className="option" type="checkbox" onChange={handleSignInCheckBox}></input>
       </fieldset>
     </form>
   );

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./Login.css";
 
 const Login = props => {
   const [credentials, setCredentials] = useState({
@@ -30,9 +31,9 @@ const Login = props => {
   };
 
   return (
-    <form onSubmit={handleLogin}>
-      <fieldset>
-        <h3>Please Sign In</h3>
+    <form className="login-form" onSubmit={handleLogin}>
+      <fieldset className="form">
+        <h3 className="header">Please Sign In</h3>
         <div className="form-grid">
           <input
             onChange={handleFieldChange}
@@ -53,9 +54,9 @@ const Login = props => {
           />
           <label htmlFor="inputPassword">Password</label>
         </div>
-        <button type="submit">Sign In To Your Folo</button>
-        <label>Remember Me</label>
-        <input type="checkbox" onChange={handleCheckBoxChange}></input>
+        <button className="login" type="submit">Sign In To Your Folo</button>
+        <label className="option">Remember Me</label>
+        <input className="option" type="checkbox" onChange={handleCheckBoxChange}></input>
       </fieldset>
     </form>
   );

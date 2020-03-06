@@ -16,8 +16,6 @@ const Home = props => {
           </picture>
         </div>
         <div className="button-container">
-          {/* <Link */}
-          {/* to="/login" */}
           <button
             id="homeBtn-login"
             className="ui blue basic button"
@@ -27,23 +25,13 @@ const Home = props => {
           >
             Sign In
           </button>
-          {/* </Link> */}
-
-          {/* <Link */}
-          {/* to="/signup"
-            id="homeBtn-signup"
-            className="ui blue basic button" */}
-          {/* onClick={() => { */}
-          {/* props.history.push("/");
-            }} */}
-          {/* > */}
           <button
             id="homeBtn-createaccount"
             className="ui blue basic button"
             onClick={() => props.history.push("/createaccount")}
           >
-            Create an account</button>
-          {/* </Link> */}
+            Create an account
+          </button>
         </div>
       </div>
     </>
