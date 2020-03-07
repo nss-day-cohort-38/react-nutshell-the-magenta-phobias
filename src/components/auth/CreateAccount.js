@@ -30,22 +30,22 @@ const CreateAccount = props => {
   // button disabled (user cannot submit incomplete info)
   // fetch call to post new user object
   // add photo in object
-  const handleAuth = async e => {
-    try {
-      if (!props.hasUser) {
-        const postUserToApi = ApiManager.post();
-        setCredentials(postUserToApi);
-        handleCreateAccountLogin(e);
-      } else {
-        window.alert("Please enter the correct email/ password");
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const handleAuth = async e => {
+  //   try {
+  //     if (!props.hasUser) {
+  //       const postUserToApi = ApiManager.post();
+  //       setCredentials(postUserToApi);
+  //       handleCreateAccountLogin(e);
+  //     } else {
+  //       window.alert("Please enter the correct email/ password");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
   return (
-    <form className="create-account-form" onSubmit={handleAuth}>
+    <form className="create-account-form" onSubmit={handleCreateAccountLogin}>
       <fieldset className="form">
         <h3 className="header">Create Your Account</h3>
         <div className="sign-in-form-grid">

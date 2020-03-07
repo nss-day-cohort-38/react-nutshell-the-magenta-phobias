@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Login.css";
-
+import ApiManager from "../../modules/ApiManager";
 const Login = props => {
   const [credentials, setCredentials] = useState({
     email: "",
@@ -20,25 +20,53 @@ const Login = props => {
   const handleLogin = e => {
     e.preventDefault();
     props.setUser();
-    props.history.push("/");
-    if (isChecked === true) {
-      localStorage.setItem("credentials", JSON.stringify(credentials));
-      sessionStorage.setItem("credentials", JSON.stringify(credentials));
-      props.history.push("/");
-    } else {
-      sessionStorage.setItem("credentials", JSON.stringify(credentials));
-    }
-  };
-  const handleAuth = (e) => {
-    if (props.hasUser) {
-      handleLogin(e);
-    } else {
-      window.alert("Please enter the correct email/ password");
-    }
+    // props.history.push("/");
+    const getUsers = new Request(ApiManager.getAll("users"));
+    fetch(getUsers).then(response => {
+      if (response.status === 200) {
+        // console.log("response successful");
+        if (isChecked === true) {
+          localStorage.setItem("credentials", JSON.stringify(credentials));
+          sessionStorage.setItem("credentials", JSON.stringify(credentials));
+          props.history.push("/");
+        } else {
+          sessionStorage.setItem("credentials", JSON.stringify(credentials));
+          props.history.push("/");
+        }
+      } else {
+        window.alert("Please enter the correct email/ password");
+      }
+    });
   };
 
+  const handleAuth = e => {
+    ApiManager.getAll("users").then(response => {
+      console.log({ response });
+      if (response.data.code === 200) {
+        console.log("response successful");
+        handleLogin(e);
+      } else {
+        window.alert("Please enter the correct email/ password");
+      }
+    });
+  };
+  //   users.map(user => {
+  //     user
+  //       ? handleLogin(e)
+  //       : window.alert("Please enter the correct email/ password");
+  //   });
+
+  function validateForm() {
+    let length = credentials.length > 0;
+    return length;
+  }
+
   return (
-    <form className="login-form" onSubmit={handleAuth}>
+    <form
+      className="login-form"
+      onSubmit={handleLogin}
+      disabled={!validateForm()}
+    >
       <fieldset className="form">
         <h3 className="header">Please Sign In</h3>
         <div className="form-grid">
