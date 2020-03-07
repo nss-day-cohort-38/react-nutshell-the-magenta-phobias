@@ -7,6 +7,9 @@ export default {
   getAll(component) {
     return fetch(`${remoteURL}/${component}`).then(result => result.json())
   },
+  getAllWithUserId(component, userId) {
+    return fetch(`${remoteURL}/${component}?userId=${userId}`).then(result => result.json())
+  },
   getWithEmbed(component, id, embedItem) {
     return fetch(`${remoteURL}/${component}/${id}?_embed=${embedItem}`)
       .then(result => result.json())
