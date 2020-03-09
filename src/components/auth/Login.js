@@ -37,12 +37,16 @@ const Login = props => {
                 JSON.stringify(credentials)
               );
               props.history.push("/");
+              props.setUser(response[0])
+
             } else {
               sessionStorage.setItem(
                 "credentials",
                 JSON.stringify(credentials)
               );
               props.history.push("/");
+              props.setUser(response[0])
+
             }
           });
         } else {
