@@ -17,55 +17,51 @@ const Login = props => {
   const handleCheckBoxChange = e => {
     setIsChecked(e.target.checked);
   };
-  const handleLogin = e => {
+
+  // Check for "remember me" button is clicked. If it is, logs user in setting both local and session storage. If not, only session storage.
+  // Sets guard by checking if response came back as 200. ** For a later stretch goal of more practical Authentication. 
+  // NOTE****This is NOT safe NOR best practice to do a GET call to database when authenticating. NOT SECURE.
+  // ONLY for purposes of this project and using JSON server. Without Server Side. 
+  const handleLogin = (e) => {
+    console.log({credentials});
     e.preventDefault();
-    props.setUser();
-    // props.history.push("/");
-    const getUsers = new Request(ApiManager.getAll("users"));
-    fetch(getUsers).then(response => {
-      if (response.status === 200) {
-        // console.log("response successful");
-        if (isChecked === true) {
-          localStorage.setItem("credentials", JSON.stringify(credentials));
-          sessionStorage.setItem("credentials", JSON.stringify(credentials));
-          props.history.push("/");
-        } else {
-          sessionStorage.setItem("credentials", JSON.stringify(credentials));
-          props.history.push("/");
-        }
+    ApiManager.getLogin("users", credentials.email, credentials.password).then((response) => {
+      props.setUser();
+      if (response.length > 0) {
+        console.log({response});
+        ApiManager.getAll("users").then(response => {
+          console.log(response);
+            if (isChecked === true) {
+              localStorage.setItem("credentials", JSON.stringify(credentials));
+              sessionStorage.setItem("credentials", JSON.stringify(credentials));
+              props.history.push("/");
+            } else {
+              sessionStorage.setItem("credentials", JSON.stringify(credentials));
+              props.history.push("/");
+            }
+        });
       } else {
-        window.alert("Please enter the correct email/ password");
+        console.log("Error logging in");
+        alert("Please type in the correct email/password")
       }
     });
   };
 
-  const handleAuth = e => {
-    ApiManager.getAll("users").then(response => {
-      console.log({ response });
-      if (response.data.code === 200) {
-        console.log("response successful");
-        handleLogin(e);
-      } else {
-        window.alert("Please enter the correct email/ password");
-      }
-    });
-  };
-  //   users.map(user => {
-  //     user
-  //       ? handleLogin(e)
-  //       : window.alert("Please enter the correct email/ password");
-  //   });
+  // function validateForm() {
+  //   let length = credentials.length > 0;
+  //   return length;
+  //   if (credentials.length <= 0) {
+  //     alert("Please fill out all entry fields")
+  //   } else if ( ){
 
-  function validateForm() {
-    let length = credentials.length > 0;
-    return length;
-  }
+  //   }
+  // }
 
   return (
     <form
       className="login-form"
       onSubmit={handleLogin}
-      disabled={!validateForm()}
+      // disabled={!validateForm}
     >
       <fieldset className="form">
         <h3 className="header">Please Sign In</h3>

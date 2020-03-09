@@ -1,27 +1,38 @@
-const remoteURL = "http://localhost:8200"
+const remoteURL = "http://localhost:8200";
 
 export default {
   get(component, id) {
-    return fetch(`${remoteURL}/${component}/${id}`).then(result => result.json())
+    return fetch(`${remoteURL}/${component}/${id}`).then(result =>
+      result.json()
+    );
   },
   getAll(component) {
-    return fetch(`${remoteURL}/${component}`).then(result => result.json())
+    return fetch(`${remoteURL}/${component}`).then(result =>
+      result.json()
+    );
+  },
+  getLogin(component, email, password) {
+    return fetch(`${remoteURL}/${component}?email=${email}&password=${password}`).then(result => result.json());
   },
   getAllWithUserId(component, userId) {
-    return fetch(`${remoteURL}/${component}?userId=${userId}`).then(result => result.json())
+    return fetch(`${remoteURL}/${component}?userId=${userId}`).then(result =>
+      result.json()
+    );
   },
   getWithEmbed(component, id, embedItem) {
-    return fetch(`${remoteURL}/${component}/${id}?_embed=${embedItem}`)
-      .then(result => result.json())
+    return fetch(
+      `${remoteURL}/${component}/${id}?_embed=${embedItem}`
+    ).then(result => result.json());
   },
   getWithExpand(component, id, expandItem) {
-    return fetch(`${remoteURL}/${component}/${id}?_expand=${expandItem}`)
-      .then(result => result.json())
+    return fetch(
+      `${remoteURL}/${component}/${id}?_expand=${expandItem}`
+    ).then(result => result.json());
   },
   delete(component, id) {
     return fetch(`${remoteURL}/${component}/${id}`, {
       method: "DELETE"
-    }).then(result => result.json())
+    }).then(result => result.json());
   },
   post(component, newObject) {
     return fetch(`${remoteURL}/${component}`, {
@@ -30,7 +41,7 @@ export default {
         "Content-Type": "application/json"
       },
       body: JSON.stringify(newObject)
-    }).then(data => data.json())
+    }).then(data => data.json());
   },
   update(component, editedObject) {
     return fetch(`${remoteURL}/${component}/${editedObject.id}`, {
@@ -50,4 +61,4 @@ export default {
       body: JSON.stringify(editedObject)
     }).then(data => data.json());
   }
-}
+};
