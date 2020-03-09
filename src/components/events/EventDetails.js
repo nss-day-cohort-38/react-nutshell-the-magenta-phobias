@@ -31,7 +31,7 @@ const EventDetails = props => {
             </div>
             <h1>{oneEvent.name}</h1>    
             <picture>
-                <img src={oneEvent.eventImage} alt="event-photo" id="detail-photo" />
+                <img src={oneEvent.eventImage} alt="event" id="detail-photo" />
             </picture>
             <h4>{oneEvent.description}</h4>
             <div className="detail-event-info">

@@ -1,11 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import ApiManager from "../../modules/ApiManager";
-import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext
-} from "cloudinary-react";
 import keys from "../../keys/keys";
 import "./NewEventForm.css"
 
@@ -29,7 +23,6 @@ const NewEventForm = props => {
   const handleFieldChange = e => {
     const stateToChange = { ...newEvent };
     stateToChange[e.target.id] = e.target.value;
-    console.log(stateToChange)
     setNewEvent(stateToChange);
   };
   const postNewEvent = e => {
@@ -121,6 +114,7 @@ const NewEventForm = props => {
   return (
     <>
       <div className="form-container">
+      <h1>New Event</h1>   
         <form className="bigger-form">
           <fieldset className="event-form">
             <label htmlFor="name">Title (req): </label>
@@ -213,7 +207,7 @@ const NewEventForm = props => {
             <fieldset className="event-form">
             <label htmlFor="eventImage">Please upload or find an image</label>
             <input name="file" id="eventImage" type="file"
-   class="file-upload" placeholder="Upload an Image"data-cloudinary-field="image_id" onChange={uploadImage}
+   className="file-upload" placeholder="Upload an Image"data-cloudinary-field="image_id" onChange={uploadImage}
    data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"/>
    <h4>Or</h4>
    <input id="eventImage" type="text" placeholder="url..." onChange={handleFieldChange}/>
@@ -226,8 +220,8 @@ const NewEventForm = props => {
                 <h3> Loading...</h3>
             ): (
                 <>
-                <img src={newEvent.eventImage} style={{width: '300px'}} />
-                <img src={image.eventImage} style={{width: '300px'}} />
+                <img src={newEvent.eventImage} style={{width: '300px'}} alt="upload-photos" />
+                <img src={image.eventImage} style={{width: '300px'}} alt="upload-photos"/>
                 </>
             )}
             </div>

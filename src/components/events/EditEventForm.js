@@ -126,6 +126,7 @@ const EditEventForm = props => {
   return (
     <>
       <div className="form-container">
+
         <div className="details-icon-container">
           <i
             className="big arrow circle left icon"
@@ -146,7 +147,8 @@ const EditEventForm = props => {
             onClick={handleDelete}
           ></i>
         </div>
-        <form className="bigger-form">
+        <form className="bigger-form">         
+        <h1>Edit Event</h1> 
           <fieldset className="event-form">
             <label htmlFor="name">Title (req): </label>
             <input
@@ -292,13 +294,13 @@ const EditEventForm = props => {
             <h3> Loading...</h3>
           ) : (
               editedEvent.eventImage!== ogPost.eventImage ? (
-                <img src={editedEvent.eventImage} style={{width: '300px'}} />
+                <img src={editedEvent.eventImage} style={{width: '300px'}} alt="upload-photos"/>
               ) :
               image.eventImage ?(
-                <img src={image.eventImage} style={{width: '300px'}} />
+                <img src={image.eventImage} style={{width: '300px'}}alt="upload-photos" />
               ) : (
             <>
-              <img src={editedEvent.eventImage} style={{width: '300px'}} />
+              <img src={editedEvent.eventImage} style={{width: '300px'}} alt="upload-photos"/>
                 
             </>)
           )}

@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import "./kk-CreateAccount.css";
 import ApiManager from "../../modules/ApiManager";
-import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext
-} from "cloudinary-react";
 import keys from "../../keys/keys";
 const CreateAccount = props => {
   const [credentials, setCredentials] = useState({
@@ -176,7 +170,7 @@ const CreateAccount = props => {
                 <h3> Loading...</h3>
             ): (
                 <>
-                <img src={image.picUrl} style={{width: '300px'}} />
+                <img src={image.picUrl} style={{width: '300px'}} alt="upload-photos"/>
                 </>
             )}
             </div>

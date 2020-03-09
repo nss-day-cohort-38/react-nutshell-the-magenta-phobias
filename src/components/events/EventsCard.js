@@ -7,7 +7,7 @@ const EventsCards = props => {
             <div className="event-card special">
                 <h3>Upcoming...</h3>
                 <picture>
-                    <img src={props.userEvent.eventImage} alt="event-photo" className="event-photo"  onClick={()=> props.history.push(`/events/${props.userEvent.id}`)}/>
+                    <img src={props.userEvent.eventImage} alt="your-event" className="event-photo"  onClick={()=> props.history.push(`/events/${props.userEvent.id}`)}/>
                 </picture>
                
                 <div className="event-info">
@@ -28,7 +28,7 @@ const EventsCards = props => {
         <>
         <div className="event-card">
             <picture>
-                <img src={props.userEvent.eventImage} alt="event-photo" className="event-photo"  onClick={()=> props.history.push(`/events/${props.userEvent.id}`)}/>
+                <img src={props.userEvent.eventImage} alt="event" className="event-photo"  onClick={()=> props.history.push(`/events/${props.userEvent.id}`)}/>
             </picture>
            
             <div className="event-info">
