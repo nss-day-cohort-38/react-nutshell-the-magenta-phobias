@@ -11,8 +11,8 @@ const FollowCard = props => {
     <div className="card">
       <div className="card-content, follow-container">
         <img src={picUrl} alt="Avatar" />
-        <p><strong>Username:</strong> {username}</p>
-        <p><strong>Email:</strong> {email}</p>
+        <p><i class="user outline icon"/> {username}</p>
+        <p><i class="envelope outline icon"/> {email}</p>
         <i 
           className="trash" 
           class="trash alternate icon"

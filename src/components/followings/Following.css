@@ -23,10 +23,11 @@
 .container-cards {
   display: flex; 
   flex-direction:row;
+  flex-wrap: wrap;
 }
 
 .card {
-  width: 100rem;
+  width: 20rem;
 }
 
 .FixedHeightContainer {
