@@ -138,16 +138,22 @@
       "timestamp": "2/20/2020, 11:49:31 AM"
     },
     {
-      "id": 3,
       "userId": 3,
-      "message": "Whaddup!",
-      "timestamp": "2/20/2020, 11:49:55 AM"
+      "message": "Whaddup fool!",
+      "timestamp": "2/20/2020, 11:49:55 AM",
+      "id": 3
     },
     {
       "id": 4,
       "userId": 4,
       "message": "Hihihih!",
       "timestamp": "2/20/2020, 2:06:18 PM"
+    },
+    {
+      "userId": 3,
+      "message": "ingtest",
+      "timestamp": "3/9/2020, 11:37:13 AM",
+      "id": 5
     }
   ],
   "events": [

@@ -1,8 +1,23 @@
 import React, { useState } from "react";
 import "./kk-CreateAccount.css";
-// import ApiManager from "../../modules/ApiManager";
+import ApiManager from "../../modules/ApiManager";
+import {
+  Image,
+  Video,
+  Transformation,
+  CloudinaryContext
+} from "cloudinary-react";
+import keys from "../../keys/keys";
 const CreateAccount = props => {
-  const [credentials, setCredentials] = useState({ email: "", password: "" });
+  const [credentials, setCredentials] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmedPassword: "",
+    picUrl: ""
+  });
+  const [isLoading, setIsLoading] = useState(false);
+  const [image, setImage] = useState({ picUrl: "" });
   const [isChecked, setIsChecked] = useState(false);
 
   const handleInputFieldChange = event => {
@@ -15,6 +30,32 @@ const CreateAccount = props => {
   };
   const handleCreateAccountLogin = event => {
     event.preventDefault();
+    ApiManager.checkEmail("user", credentials.email).then(r => {
+      if (r.length > 0) {
+        window.alert("This email is already taken");
+      } else if (isChecked === true && image.picUrl === "") {
+        const newUser = {
+          email: credentials.email,
+          username: credentials.username,
+          password: credentials.password,
+          picUrl: "https://pecb.com/conferences/wp-content/uploads/2017/10/no-profile-picture.jpg"
+        };
+        ApiManager.post('users',newUser).then(user=> {
+            props.setUser(user, true)
+        })
+      } else if(isChecked===false && image.picUrl!==""){
+        const newUser = {
+            email: credentials.email,
+            username: credentials.username,
+            password: credentials.password,
+            picUrl: image.picUrl
+          };
+          ApiManager.post('users',newUser).then(user=> {
+              props.setUser(user, true)
+          })
+      }
+    });
+
     props.setUser();
     props.history.push("/");
     if (isChecked === true) {
@@ -24,6 +65,23 @@ const CreateAccount = props => {
       sessionStorage.setItem("credentials", JSON.stringify(credentials));
       props.history.push("/");
     }
+  };
+  const uploadImage = async e => {
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "photoLab");
+    setIsLoading(true);
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${keys.cloudinary}/image/upload`,
+      {
+        method: "POST",
+        body: data
+      }
+    );
+    const file = await res.json();
+    setImage({ eventImage: file.secure_url });
+    setIsLoading(false);
   };
   // registration list... Gaurds:
   // should check to see if user account already exists
@@ -49,7 +107,7 @@ const CreateAccount = props => {
       <fieldset className="fs-form">
         <h3 className="title">Create Your Account</h3>
         <div className="create-form">
-        <label htmlFor="inputEmail">Email Address</label>
+          <label htmlFor="inputEmail">Email Address</label>
           <input
             className="input"
             onChange={handleInputFieldChange}
@@ -59,7 +117,7 @@ const CreateAccount = props => {
             required=""
             autoFocus=""
           />
-              <label htmlFor="inputUsername">Username</label>
+          <label htmlFor="inputUsername">Username</label>
           <input
             className="input"
             onChange={handleInputFieldChange}
@@ -69,38 +127,52 @@ const CreateAccount = props => {
             required=""
             autoFocus=""
           />
-    
-    <label htmlFor="inputPassword">Password</label>
+
+          <label htmlFor="inputPassword">Password</label>
           <input
             className="input"
             onChange={handleInputFieldChange}
             type="password"
-            id="create-password"
+            id="password"
             placeholder="Create Your Password"
             required=""
             autoFocus=""
           />
-                  <label htmlFor="confirm-password">Confirm Password</label>
-          <input    
+          <label htmlFor="confirm-password">Confirm Password</label>
+          <input
             className="input"
             onChange={handleInputFieldChange}
             type="password"
-            id="confirm-password"
-            placeholder="Create Your Password"
+            id="confirmedPassword"
+            placeholder="Re-enter Password"
             required=""
             autoFocus=""
           />
-    
+          <label htmlFor="eventImage">Please upload a profile picture</label>
+          <input
+            name="file"
+            id="picUrl"
+            type="file"
+            class="file-upload"
+            placeholder="Upload an Image"
+            data-cloudinary-field="image_id"
+            onChange={uploadImage}
+            data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"
+          />
         </div>
-        <button className="create-btn" type="submit">
-          Join
-        </button>
-        <label className="check-box-name">Remember Me</label>
-        <input
-          className="check-box"
-          type="checkbox"
-          onChange={handleSignInCheckBox}
-        ></input>
+        <div className="create-buttons">
+          <div>
+            <label className="check-box-name">Remember Me</label>
+            <input
+              className="check-box"
+              type="checkbox"
+              onChange={handleSignInCheckBox}
+            ></input>
+          </div>
+          <button className="create-btn" type="submit">
+            Join
+          </button>
+        </div>
       </fieldset>
     </form>
   );
