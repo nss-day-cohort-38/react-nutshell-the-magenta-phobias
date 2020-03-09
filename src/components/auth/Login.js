@@ -29,12 +29,12 @@ const Login = props => {
         if (response.length > 0 && isChecked === true) {
           localStorage.setItem("credentials", JSON.stringify(credentials));
           sessionStorage.setItem("credentials", JSON.stringify(credentials));
-          props.setUser(response[0]);
+          props.setUser(response[0], true);
           setCredentials(response[0]);
           props.history.push("/");
         } else if (response.length > 0 && isChecked === false) {
           sessionStorage.setItem("credentials", JSON.stringify(credentials));
-          props.setUser(response[0]);
+          props.setUser(response[0], false);
           setCredentials(response[0]);
           props.history.push("/");
         } else {

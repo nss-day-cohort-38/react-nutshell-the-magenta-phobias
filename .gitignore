@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # api file
-/src/api
+/api
 
 #apikeys
 /keys
