@@ -90,7 +90,7 @@ const Login = props => {
         </button>
         <label className="option">Remember Me</label>
         <input
-          className="option"
+          className="option-checkbox"
           type="checkbox"
           onChange={handleCheckBoxChange}
         ></input>
