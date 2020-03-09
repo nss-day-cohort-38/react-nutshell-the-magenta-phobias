@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CreateAccount.css";
-import ApiManager from "../../modules/ApiManager";
+// import ApiManager from "../../modules/ApiManager";
 const CreateAccount = props => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
   const [isChecked, setIsChecked] = useState(false);

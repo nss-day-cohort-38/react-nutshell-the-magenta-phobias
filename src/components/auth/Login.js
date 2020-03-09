@@ -19,32 +19,38 @@ const Login = props => {
   };
 
   // Check for "remember me" button is clicked. If it is, logs user in setting both local and session storage. If not, only session storage.
-  // Sets guard by checking if response came back as 200. ** For a later stretch goal of more practical Authentication. 
+  // Sets guard by checking if response came back as 200. ** For a later stretch goal of more practical Authentication.
   // NOTE****This is NOT safe NOR best practice to do a GET call to database when authenticating. NOT SECURE.
-  // ONLY for purposes of this project and using JSON server. Without Server Side. 
-  const handleLogin = (e) => {
-    console.log({credentials});
+  // ONLY for purposes of this project and using JSON server. Without Server Side.
+  const handleLogin = e => {
     e.preventDefault();
-    ApiManager.getLogin("users", credentials.email, credentials.password).then((response) => {
-      props.setUser();
-      if (response.length > 0) {
-        console.log({response});
-        ApiManager.getAll("users").then(response => {
-          console.log(response);
+    ApiManager.getLogin("users", credentials.email, credentials.password).then(
+      response => {
+        props.setUser();
+        if (response.length > 0) {
+          ApiManager.getAll("users").then(response => {
+            console.log(response);
             if (isChecked === true) {
               localStorage.setItem("credentials", JSON.stringify(credentials));
-              sessionStorage.setItem("credentials", JSON.stringify(credentials));
+              sessionStorage.setItem(
+                "credentials",
+                JSON.stringify(credentials)
+              );
               props.history.push("/");
             } else {
-              sessionStorage.setItem("credentials", JSON.stringify(credentials));
+              sessionStorage.setItem(
+                "credentials",
+                JSON.stringify(credentials)
+              );
               props.history.push("/");
             }
-        });
-      } else {
-        console.log("Error logging in");
-        alert("Please type in the correct email/password")
+          });
+        } else {
+          console.log("Error logging in");
+          alert("Please type in the correct email/password");
+        }
       }
-    });
+    );
   };
 
   // function validateForm() {
@@ -67,6 +73,7 @@ const Login = props => {
         <h3 className="header">Please Sign In</h3>
         <div className="form-grid">
           <input
+          className="login-input"
             onChange={handleFieldChange}
             type="email"
             id="email"
@@ -77,6 +84,7 @@ const Login = props => {
           <label htmlFor="inputEmail">Email Address</label>
 
           <input
+            className="login-input"
             onChange={handleFieldChange}
             type="password"
             id="password"

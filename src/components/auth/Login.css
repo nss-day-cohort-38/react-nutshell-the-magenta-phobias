@@ -29,7 +29,7 @@
   background: rgba(3, 3, 3, 0.1);
 }
 
-h3 {
+h3.header {
   margin: 0;
   padding: 10px 0;
   text-align: center;
@@ -38,12 +38,11 @@ h3 {
   color: rgba(255, 255, 255, 0.5);
 }
 
-label {
+label.option {
   color: #fff;
 }
 
-input,
-.login {
+.login-input {
   font-family: "Open Sans", sans-serif;
   position: relative;
   display: block;
@@ -59,7 +58,7 @@ input,
   color: #fff;
 }
 
-input {
+input.login-input {
   border: none;
   border-left: 5px solid;
   background: none;
@@ -73,14 +72,14 @@ input {
   transition: all 0.2s ease-in-out;
 }
 
-input:focus {
+.login-input:focus {
   outline: 0;
   background: rgba(225, 40, 54, 0.2);
   border-radius: 20px;
   border-color: transparent;
 }
 
-button {
+button.login {
   text-decoration: none;
 }
 
@@ -132,4 +131,8 @@ label .option {
 
 input .option {
   margin-right: 3.3%;
+}
+
+fieldset.form {
+  height: 398px;
 }
