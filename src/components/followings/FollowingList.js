@@ -37,13 +37,18 @@ const FollowingList = props => {
   return (
     <>
       <div className="wrapper">
-        {followingList.map(follow => 
-          <FollowCard 
-            key={follow.id}
-            user={matchUser(activeUser.id)}
-            {...props}
-          />
-        )}
+        <div id="headerContainer">
+          <h1>Following List</h1>
+        </div>
+        <div className="container-cards">
+          {followingList.map(follow => 
+            <FollowCard 
+              key={follow.id}
+              user={matchUser(activeUser.id)}
+              {...props}
+            />
+          )}
+        </div>
       </div>
     </>
   )
