@@ -50,6 +50,7 @@ const CreateAccount = props => {
         <h3 className="header">Create Your Account</h3>
         <div className="sign-in-form-grid">
           <input
+            className="create-account-input"
             onChange={handleInputFieldChange}
             type="email"
             id="create-email"
@@ -60,6 +61,7 @@ const CreateAccount = props => {
           <label htmlFor="inputEmail">Email Address</label>
 
           <input
+            className="create-account-input"
             onChange={handleInputFieldChange}
             type="password"
             id="create-password"

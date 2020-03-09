@@ -29,7 +29,7 @@ const Login = props => {
         props.setUser();
         if (response.length > 0) {
           ApiManager.getAll("users").then(response => {
-            console.log(response);
+            setCredentials(response);
             if (isChecked === true) {
               localStorage.setItem("credentials", JSON.stringify(credentials));
               sessionStorage.setItem(
@@ -73,7 +73,7 @@ const Login = props => {
         <h3 className="header">Please Sign In</h3>
         <div className="form-grid">
           <input
-          className="login-input"
+            className="login-input"
             onChange={handleFieldChange}
             type="email"
             id="email"
