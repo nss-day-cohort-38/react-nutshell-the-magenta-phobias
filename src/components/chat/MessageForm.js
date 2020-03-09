@@ -82,21 +82,23 @@ const MessageForm = props => {
       <div className="message-container, darker, chat-input-container">
         <form onSubmit={handleSubmit}>
           <fieldset>
-            <input
-              name="message"
-              type="message"
-              required
-              onChange={handleFieldChange}
-              id="message"
-              placeholder="Chat message"
-            />
-            <button className="send-button">
-              <i class="paper plane outline icon"
-                type="submit"
-                disabled={isLoading}
-              >
-              </i>
-            </button>
+            <div className="input-inner-container">
+              <input
+                name="message"
+                type="message"
+                required
+                onChange={handleFieldChange}
+                id="message"
+                placeholder="Chat message"
+              />
+              <button className="send-button">
+                <i class="paper plane outline icon"
+                  type="submit"
+                  disabled={isLoading}
+                >
+                </i>
+              </button>
+            </div>
           </fieldset>
         </form>
       </div>
