@@ -7,8 +7,8 @@ const EventsList = (props) => {
     const [events, setEvents] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [date, setDate] = useState({date: ""})
-    // const user = JSON.parse(sessionStorage.getItem('credentials'))
-    const user = {id:2}
+    const user = JSON.parse(sessionStorage.getItem('credentials'))
+    // const user = {id:2}
 
     const getEvents=()=>{
         setIsLoading(true)

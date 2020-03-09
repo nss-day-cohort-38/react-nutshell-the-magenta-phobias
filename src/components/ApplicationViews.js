@@ -26,7 +26,7 @@ const ApplicationViews = props => {
         exact
         path="/"
         render={props => {
-          return <Home {...props} />;
+          return <Home {...props} hasUser={hasUser}/>;
         }}
       />
 
@@ -96,36 +96,50 @@ const ApplicationViews = props => {
         exact
         path="/events"
         render={props => {
-          return <EventsList {...props} />;
+            if(hasUser){
+          return <EventsList {...props} />;}
+          else{
+              return <Redirect to="/login" />
+          }
         }}
       />
       <Route
         exact
         path="/events/:eventId(\d+)"
         render={props => {
+            if(hasUser) {
           return (
             <EventDetails
               eventId={parseInt(props.match.params.eventId)}
               {...props}
             />
-          );
+          );} else {
+            return <Redirect to="/login" />
+          }
         }}
       />
       <Route
         path="/events/:eventId(\d+)/edit"
         render={props => {
+            if(hasUser){
           return (
             <EditEventForm
               eventId={parseInt(props.match.params.eventId)}
               {...props}
             />
-          );
+          );}
+          else {
+            return <Redirect to ="/login" />
+          }
         }}
       />
       <Route
         path="/events/new"
         render={props => {
-          return <NewEventForm {...props} />;
+            if(hasUser){
+          return <NewEventForm {...props} />; } else{
+            return <Redirect to="/login" />
+          }
         }}
       />
       <Route

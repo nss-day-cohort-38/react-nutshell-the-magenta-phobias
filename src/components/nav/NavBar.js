@@ -32,10 +32,10 @@ const NavBar = props => {
         Friends
       </a>
       {props.hasUser ? (
-          <span className="menu-item" onClick={handleLogout}>
+          <a className="menu-item" onClick={handleLogout}>
             {" "}
             Logout{" "}
-          </span>
+          </a>
       ) : null}
     </Menu>
   );

@@ -23,8 +23,8 @@ const NewEventForm = props => {
   });
   const [image, setImage] = useState({ eventImage: "https://www.muralswallpaper.com/app/uploads/geometric-mountains-blue-nursery-plain-820x532.jpg" });
   const [isLoading, setIsLoading] = useState(false);
-  // const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
-  const activeUser = { id: 2 };
+  const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
+//   const activeUser = { id: 2 };
 
   const handleFieldChange = e => {
     const stateToChange = { ...newEvent };

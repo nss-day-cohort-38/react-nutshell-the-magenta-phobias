@@ -17,7 +17,7 @@ const CreateAccount = props => {
     picUrl: ""
   });
   const [isLoading, setIsLoading] = useState(false);
-  const [image, setImage] = useState({ picUrl: "" });
+  const [image, setImage] = useState({ });
   const [isChecked, setIsChecked] = useState(false);
 
   const handleInputFieldChange = event => {
@@ -30,9 +30,11 @@ const CreateAccount = props => {
   };
   const handleCreateAccountLogin = event => {
     event.preventDefault();
-    ApiManager.checkEmail("user", credentials.email).then(r => {
+    ApiManager.checkEmail("users", credentials.email).then(r => {
       if (r.length > 0) {
         window.alert("This email is already taken");
+      } else if(credentials.password !== credentials.confirmedPassword){
+          window.alert('The passwords dont match up')
       } else if (isChecked === true && image.picUrl === "") {
         const newUser = {
           email: credentials.email,
@@ -50,7 +52,7 @@ const CreateAccount = props => {
             password: credentials.password,
             picUrl: image.picUrl
           };
-          ApiManager.post('users',newUser).then(user=> {
+          ApiManager.post('users', newUser).then(user=> {
               props.setUser(user, true)
           })
       }
@@ -80,7 +82,7 @@ const CreateAccount = props => {
       }
     );
     const file = await res.json();
-    setImage({ eventImage: file.secure_url });
+    setImage({ picUrl: file.secure_url });
     setIsLoading(false);
   };
   // registration list... Gaurds:
@@ -112,7 +114,7 @@ const CreateAccount = props => {
             className="input"
             onChange={handleInputFieldChange}
             type="email"
-            id="create-email"
+            id="email"
             placeholder="Enter Email Address"
             required=""
             autoFocus=""
@@ -153,7 +155,7 @@ const CreateAccount = props => {
             name="file"
             id="picUrl"
             type="file"
-            class="file-upload"
+            className="file-upload"
             placeholder="Upload an Image"
             data-cloudinary-field="image_id"
             onChange={uploadImage}
@@ -169,9 +171,19 @@ const CreateAccount = props => {
               onChange={handleSignInCheckBox}
             ></input>
           </div>
+          <div className="newPhoto">
+            {isLoading ?(
+                <h3> Loading...</h3>
+            ): (
+                <>
+                <img src={image.picUrl} style={{width: '300px'}} />
+                </>
+            )}
+            </div>
           <button className="create-btn" type="submit">
             Join
           </button>
+       
         </div>
       </fieldset>
     </form>
