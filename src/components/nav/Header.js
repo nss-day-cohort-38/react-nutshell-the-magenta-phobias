@@ -12,7 +12,7 @@ const Header = props => {
                 <div className="deets">
                 <h4 className="userName">{user.username}</h4>
                 <picture className="image-cropper">
-                    <img src={user.picUrl} className="profile-pic" alt="prof-pic"/>
+                    <img src={user.picUrl} className="profile-pic" alt="prof-pic" onClick={()=> window.location="/confirmAccount"}/>
                 </picture>
    
         </div>

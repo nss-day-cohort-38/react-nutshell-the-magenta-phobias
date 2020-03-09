@@ -42,3 +42,7 @@ header {
 .userName{
     align-self: flex-end;
 }
+.form-field{
+    display: flex;
+    justify-content: center;
+}

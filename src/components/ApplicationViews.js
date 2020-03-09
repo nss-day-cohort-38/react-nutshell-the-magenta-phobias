@@ -12,6 +12,7 @@ import EventDetails from "./events/EventDetails";
 import NewEventForm from "./events/NewEventForm";
 import EditEventForm from "./events/EditEventForm";
 import MessageList from "./chat/Messages"
+import PasswordCheck from "../editProfile/PasswordCheck";
 
 const isAuthenticated = true;
 // () => sessionStorage.getItem("credentials") !== null;
@@ -149,6 +150,16 @@ const ApplicationViews = props => {
                 {...props}
             />
         )}
+      />
+      <Route 
+      path="/confirmAccount"
+      render={props=> {
+          if(hasUser){
+              return <PasswordCheck {...props} />
+          }else {
+              return <Redirect to="/login" />
+          }
+      }}
       />
     </React.Fragment>
   );
