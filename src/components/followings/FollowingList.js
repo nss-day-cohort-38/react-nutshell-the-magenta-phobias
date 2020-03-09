@@ -47,6 +47,10 @@ const FollowingList = props => {
               <FollowCard 
                 key={follow.id}
                 user={matchUser(follow.followedId)}
+                handleDelete={() => {
+                  ApiManager.delete("followings", follow.id)
+                    .then(getFollowings);
+                }}
                 {...props}
               />
             )}

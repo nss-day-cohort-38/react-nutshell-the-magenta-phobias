@@ -13,6 +13,11 @@ const FollowCard = props => {
         <img src={picUrl} alt="Avatar" />
         <p><strong>Username:</strong> {username}</p>
         <p><strong>Email:</strong> {email}</p>
+        <i 
+          className="trash" 
+          class="trash alternate icon"
+          onClick={props.handleDelete} 
+        />
       </div>
     </div>
   )

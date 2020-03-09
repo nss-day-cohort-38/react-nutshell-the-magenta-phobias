@@ -64,26 +64,17 @@ fieldset {
   display: table;
 }
 
-/* .time-right {
-  float: right;
-  color: #aaa;
-} */
-
-/* Scrollbar always at the bottom trick: 
-https://stackoverflow.com/a/44051405 */ 
-.ScrollToBottom {
-  height:224px;
-  overflow: auto;
-  display: flex;
-  flex-direction:column-reverse;
-}
-
 .darker {
   border-color: #ccc;
   background-color: #ddd;
 }
 
-/*           Chat Buttons           */
+/*           Buttons           */
+
+.trash {
+  float: right;
+  cursor: pointer;
+}
 
 button {
   display: inline-block;
@@ -104,11 +95,6 @@ button {
   justify-content: flex-end;
   align-items: center;
   justify-content: space-between;
-}
-
-.edit-outline-icon {
-  cursor: pointer;
-  display: inline-block;
 }
 
 
