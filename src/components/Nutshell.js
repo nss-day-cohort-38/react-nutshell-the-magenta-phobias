@@ -13,11 +13,15 @@ const Nutshell = () => {
 
   const [userFromState, setHasUser] = useState(isAuthenticated());
 
-  const setUser = user => {
+  const setUser = (user, status) => {
+    if (status === true) {
     localStorage.setItem("credentials", JSON.stringify(user));
     sessionStorage.setItem("credentials", JSON.stringify(user));
-
     setHasUser(isAuthenticated());
+    } else if (status === false) {
+      sessionStorage.setItem("credentials", JSON.stringify(user));
+      setHasUser(isAuthenticated());
+    }
   };
 
   const clearUser = () => {
