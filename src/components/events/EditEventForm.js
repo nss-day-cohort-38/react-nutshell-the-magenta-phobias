@@ -26,22 +26,19 @@ const EditEventForm = props => {
     setEditedEvent(stateToChange);
   };
 
-  const getOneEvent = () => {
-    ApiManager.get("events", props.eventId).then(userEvent => {
-      setEditedEvent(userEvent);
-      setOgPost(userEvent);
-      setImage({eventImage: userEvent.eventImage})
-      
-    });
-  };
   const handleDelete = () => {
     ApiManager.delete("events", props.eventId).then(() =>
       props.history.push("/events")
     );
   };
   useEffect(() => {
-    getOneEvent();
-  }, []);
+    ApiManager.get("events", props.eventId).then(userEvent => {
+        setEditedEvent(userEvent);
+        setOgPost(userEvent);
+        setImage({eventImage: userEvent.eventImage})
+        
+      });
+  }, [props.eventId]);
   const postNewEvent = e => {
     e.preventDefault();
     if (

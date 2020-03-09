@@ -3,22 +3,17 @@ import ApiManager from "../../modules/ApiManager";
 import "./EventDetails.css";
 
 const EventDetails = props => {
-    console.log(props)
+
     const [oneEvent, setOneEvent] = useState({})
     
-    const getOneEvent = () => {
-        
-        ApiManager.get('events', props.eventId).then(eventFromAPi=> {
-            console.log(eventFromAPi)
-            setOneEvent(eventFromAPi)
-        })
-    }
     const handleDelete= ()=> {
         ApiManager.delete('events', props.eventId).then(()=> props.history.push('/events'))
     }
 
     useEffect(()=> {
-        getOneEvent()
+        ApiManager.get('events', props.eventId).then(eventFromAPi=> {
+            setOneEvent(eventFromAPi)
+        })
     }, [props.eventId])
 
     return(

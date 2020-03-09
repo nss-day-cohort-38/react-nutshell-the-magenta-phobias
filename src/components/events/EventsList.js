@@ -7,16 +7,6 @@ const EventsList = (props) => {
     const [events, setEvents] = useState([])
     const user = JSON.parse(sessionStorage.getItem('credentials'))
     // const user = {id:2}
-
-    const getEvents=()=>{
-        ApiManager.getAllWithUserId('events', user.id).then(eventsFromApi=> {
-            setEvents(eventsFromApi)
-        })
-    }
-    // const getDate = () => {
-    //     const filteredDates = events.filter(d => new Date(d.date) - new Date() > 0);
-    //     setDate(filteredDates[filteredDates.length-1])
-    // }
     const handleDelete=(component, id)=> {
         ApiManager.delete(component, id).then(()=> {
             ApiManager.getAllWithUserId('events', user.id).then(setEvents)
@@ -24,9 +14,11 @@ const EventsList = (props) => {
     }
 
     useEffect(()=> {
-        getEvents()
+        ApiManager.getAllWithUserId('events', user.id).then(eventsFromApi=> {
+            setEvents(eventsFromApi)
+        })
 
-    },[])
+    },[user.id])
 
     let counter=0;
     return(
