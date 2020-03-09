@@ -26,10 +26,10 @@ const Login = props => {
     e.preventDefault();
     ApiManager.getLogin("users", credentials.email, credentials.password).then(
       response => {
-        props.setUser();
+        props.setUser(response);
+        setCredentials(response[0]);
         if (response.length > 0) {
           ApiManager.getAll("users").then(response => {
-            setCredentials(response);
             if (isChecked === true) {
               localStorage.setItem("credentials", JSON.stringify(credentials));
               sessionStorage.setItem(
