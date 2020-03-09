@@ -6,10 +6,9 @@ export default {
       result.json()
     );
   },
-  getAll(component) {
-    return fetch(`${remoteURL}/${component}`).then(result =>
-      result.json()
-    );
+  async getAll(component) {
+    const result = await fetch(`${remoteURL}/${component}`);
+    return await result.json();
   },
   getLogin(component, email, password) {
     return fetch(`${remoteURL}/${component}?email=${email}&password=${password}`).then(result => result.json());
@@ -36,10 +35,11 @@ export default {
     return fetch(`${remoteURL}/${component}?_expand=${expandItem}`)
       .then(result => result.json())
   },
-  delete(component, id) {
-    return fetch(`${remoteURL}/${component}/${id}`, {
+  async delete(component, id) {
+    const result = await fetch(`${remoteURL}/${component}/${id}`, {
       method: "DELETE"
-    }).then(result => result.json());
+    });
+    return await result.json();
   },
   post(component, newObject) {
     return fetch(`${remoteURL}/${component}`, {

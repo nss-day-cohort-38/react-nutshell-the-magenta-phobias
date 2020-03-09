@@ -22,6 +22,11 @@ const NavBar = props => {
       <a className="menu-item" href="/events">
         Events
       </a>
+      {props.hasUser ? (
+        <a className="menu-item" href="/tasks">
+          {" "}Tasks{" "}
+        </a>
+      ) : null}
       <a className="menu-item" href="/tasks">
         Tasks
       </a>

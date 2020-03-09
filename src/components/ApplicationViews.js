@@ -11,10 +11,11 @@ import EventsList from "./events/EventsList";
 import EventDetails from "./events/EventDetails";
 import NewEventForm from "./events/NewEventForm";
 import EditEventForm from "./events/EditEventForm";
-import MessageList from "./chat/Messages"
-
-const isAuthenticated = true;
-// () => sessionStorage.getItem("credentials") !== null;
+import MessageList from "./chat/Messages";
+import TaskList from "./tasks/TaskList";
+import TaskDetail from "./tasks/TaskDetail";
+import TaskEditForm from "./tasks/TaskEditFrom";
+import AddNewTaskForm from "./tasks/AddNewTaskForm";
 
 const ApplicationViews = props => {
   const hasUser = props.hasUser;
@@ -49,7 +50,7 @@ const ApplicationViews = props => {
         exact
         path="/news"
         render={props => {
-          if (isAuthenticated) {
+          if (hasUser) {
             return <NewsList {...props} />;
           } else {
             return <Redirect to="/login" />;
@@ -60,7 +61,7 @@ const ApplicationViews = props => {
         exact
         path="/news/:newsId(\d+)"
         render={props => {
-          if (isAuthenticated) {
+          if (hasUser) {
             return (
               <NewsDetail
                 newsId={parseInt(props.match.params.newsId)}
@@ -75,7 +76,7 @@ const ApplicationViews = props => {
       <Route
         path="/news/:newsId(\d+)/edit"
         render={props => {
-          if (isAuthenticated) {
+          if (hasUser) {
             return <NewsEditForm {...props} />;
           } else {
             return <Redirect to="/login" />;
@@ -85,7 +86,7 @@ const ApplicationViews = props => {
       <Route
         path="/news/new"
         render={props => {
-          if (isAuthenticated) {
+          if (hasUser) {
             return <NewsForm {...props} />;
           } else {
             return <Redirect to="/login" />;
@@ -128,13 +129,55 @@ const ApplicationViews = props => {
           return <NewEventForm {...props} />;
         }}
       />
+      <Route path="/chat" render={props => <MessageList {...props} />} />
       <Route
-        path="/chat"
-        render={props=> (
-            <MessageList 
+        exact
+        path="/tasks"
+        render={props =>
+          hasUser ? (
+            <TaskList {...props} />
+          ) : (
+            <Redirect to="/login" component={Login} />
+          )
+        }
+      />
+      {/* <Route
+        exact
+        path="/tasks/:userId(\d+)" 
+        render={props => {
+          if (hasUser) {
+            return (
+              <TaskDetail
+                taskId={parseInt(props.match.params.userId)}
                 {...props}
-            />
-        )}
+              />
+            );
+          } else {
+            return <Redirect to="/login" component={Login} />;
+          }
+        }}
+      /> */}
+      <Route
+        exact
+        path="/tasks/:taskId(\d+)/edit"
+        render={props => {
+          if (hasUser) {
+            return (
+              <TaskEditForm
+                taskId={parseInt(props.match.params.taskId)}
+                {...props}
+              />
+            );
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        path="/tasks/new"
+        render={props =>
+          hasUser ? <AddNewTaskForm {...props} /> : <Redirect to="/login" />
+        }
       />
     </React.Fragment>
   );
