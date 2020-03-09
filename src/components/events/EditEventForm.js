@@ -17,8 +17,8 @@ const EditEventForm = props => {
   const [ogPost, setOgPost] = useState({})
   const [image, setImage] = useState({})
   const [isLoading, setIsLoading] = useState(false);
-    // const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
-    const activeUser = { id: 2 };
+    const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
+    // const activeUser = { id: 2 };
 
   const handleFieldChange = e => {
     const stateToChange = { ...editedEvent };

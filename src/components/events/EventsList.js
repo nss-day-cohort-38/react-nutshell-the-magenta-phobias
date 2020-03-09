@@ -7,8 +7,8 @@ const EventsList = (props) => {
     const [events, setEvents] = useState([])
     const [isLoading, setIsLoading] = useState(false)
     const [date, setDate] = useState({date: ""})
-    // const user = JSON.parse(sessionStorage.getItem('credentials'))
-    const user = {id:2}
+    const user = JSON.parse(sessionStorage.getItem('credentials'))
+    // const user = {id:2}
 
     const getEvents=()=>{
         setIsLoading(true)
@@ -38,6 +38,7 @@ const EventsList = (props) => {
         
         <div className="events-container">
             <div className="icon-container">
+            <i className="big arrow circle left icon" id="back-arrow-detail" onClick={()=> props.history.push('/')}></i>
             <i className="big plus square outline icon" id="plusIcon" onClick={()=> props.history.push('/events/new')}></i>
             </div>
             <div className="card-container">
