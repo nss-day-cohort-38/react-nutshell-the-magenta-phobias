@@ -11,6 +11,7 @@ import EventsList from "./events/EventsList";
 import EventDetails from "./events/EventDetails";
 import NewEventForm from "./events/NewEventForm";
 import EditEventForm from "./events/EditEventForm";
+import MessageList from "./chat/Messages"
 
 const isAuthenticated = true;
 // () => sessionStorage.getItem("credentials") !== null;
@@ -126,6 +127,14 @@ const ApplicationViews = props => {
         render={props => {
           return <NewEventForm {...props} />;
         }}
+      />
+      <Route
+        path="/chat"
+        render={props=> (
+            <MessageList 
+                {...props}
+            />
+        )}
       />
     </React.Fragment>
   );

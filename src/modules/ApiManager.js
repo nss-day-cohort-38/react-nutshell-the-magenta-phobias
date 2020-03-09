@@ -27,10 +27,17 @@ export default {
       `${remoteURL}/${component}/${id}?_embed=${embedItem}`
     ).then(result => result.json());
   },
+  getAllWithEmbed(component, embedItem) {
+    return fetch(`${remoteURL}/${component}?_embed=${embedItem}`)
+      .then(result => result.json())
+  },
   getWithExpand(component, id, expandItem) {
-    return fetch(
-      `${remoteURL}/${component}/${id}?_expand=${expandItem}`
-    ).then(result => result.json());
+    return fetch(`${remoteURL}/${component}/${id}?_expand=${expandItem}`)
+      .then(result => result.json())
+  },  
+  getAllWithExpand(component, expandItem) {
+    return fetch(`${remoteURL}/${component}?_expand=${expandItem}`)
+      .then(result => result.json())
   },
   delete(component, id) {
     return fetch(`${remoteURL}/${component}/${id}`, {
