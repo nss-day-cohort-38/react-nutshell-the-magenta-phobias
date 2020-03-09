@@ -110,7 +110,7 @@ button.login {
   left: 0;
 }
 
-.option {
+.option-checkbox {
   position: relative;
   display: block;
   float: right;
@@ -129,10 +129,6 @@ label .option {
   left: 3.3%;
 }
 
-input .option {
+input .option-checkbox{
   margin-right: 3.3%;
-}
-
-fieldset.form {
-  height: 398px;
 }
