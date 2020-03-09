@@ -4,6 +4,9 @@ import ApiManager from '../../modules/ApiManager';
 const MessageForm = props => {
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState({message: ""})
+  // FIXME: replace object with commented line following active storage working
+  const activeUser = {email: "keith@keith.com", password: "keith" , id: 4} // sessionStorage.getItem('credentials');
+  // const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
 
   const handleFieldChange = evt => {
     const stateToChange = {...message};
@@ -18,12 +21,14 @@ const MessageForm = props => {
       setIsLoading(true);
       const messageToSave = {
         //TODO: use active userId
-        userId: 4,
+        userId: activeUser.id,
         message: message.message,
         timestamp: new Date().toLocaleString()
       }
       // If this is an edit, we need the id
       // and the timestamp should be what it was.
+      // userId doesn't need to change because users
+      // will not have a button to edit other users' messages
       if (props.messageToEdit.id) {
         messageToSave.id = props.messageToEdit.id;
         messageToSave.timestamp = props.messageToEdit.timestamp;

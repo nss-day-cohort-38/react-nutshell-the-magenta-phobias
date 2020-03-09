@@ -91,3 +91,10 @@ input {
   border-radius: 5px;
   box-sizing: border-box;
 }
+
+/* Icon */
+
+.edit-outline-icon {
+  cursor: pointer;
+  display: inline-block;
+}

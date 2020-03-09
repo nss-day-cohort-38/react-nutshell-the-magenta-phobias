@@ -17,12 +17,6 @@ const MessageList = props => {
     getMessages();
   }, [])
 
-
-  /* 
-  TODO: Check active storage for user, 
-    if message matches active user, add edit/delete buttons
-  */
-
   return (
     <>
       <div className="wrapper">
