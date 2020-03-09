@@ -1,0 +1,217 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "Matt",
+      "email": "matt@matt.com",
+      "password": "matt",
+      "picUrl": "https://uinames.com/api/photos/male/3.jpg"
+    },
+    {
+      "id": 2,
+      "username": "Landon",
+      "email": "landon@landon.com",
+      "password": "landon",
+      "picUrl": "https://uinames.com/api/photos/male/16.jpg"
+    },
+    {
+      "id": 3,
+      "username": "kurt",
+      "email": "kurt@kurt.com",
+      "password": "kurt",
+      "picUrl": "https://uinames.com/api/photos/male/9.jpg"
+    },
+    {
+      "id": 4,
+      "username": "Keith",
+      "email": "keith@keith.com",
+      "password": "keith",
+      "picUrl": "https://uinames.com/api/photos/male/1.jpg"
+    }
+  ],
+  "followings": [
+    {
+      "userId": 3,
+      "followedId": 4,
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "followedId": 4,
+      "id": 3
+    },
+    {
+      "userId": 3,
+      "followedId": 2,
+      "id": 6
+    },
+    {
+      "userId": 4,
+      "followedId": 2,
+      "id": 7
+    },
+    {
+      "userId": 1,
+      "followedId": 3,
+      "id": 8
+    },
+    {
+      "userId": 4,
+      "followedId": 3,
+      "id": 9
+    },
+    {
+      "userId": 3,
+      "followedId": 1,
+      "id": 10
+    }
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Laundry",
+      "userId": 1,
+      "expectedCompletion": "2020-02-20",
+      "isComplete": false
+    },
+    {
+      "id": 2,
+      "name": "Get Dishes",
+      "userId": 2,
+      "expectedCompletion": "2020-02-21",
+      "isComplete": false
+    },
+    {
+      "id": 3,
+      "name": "Travel to Oregon",
+      "userId": 2,
+      "expectedCompletion": "2020-02-21",
+      "isComplete": false
+    },
+    {
+      "id": 4,
+      "name": "Taste the Spaghetti",
+      "userId": 2,
+      "expectedCompletion": "2020-02-21",
+      "isComplete": false
+    },
+    {
+      "id": 5,
+      "name": "Make the Noodles",
+      "userId": 3,
+      "expectedCompletion": "2020-02-21",
+      "isComplete": false
+    },
+    {
+      "id": 6,
+      "name": "Learn React",
+      "userId": 3,
+      "expectedCompletion": "2020-02-21",
+      "isComplete": false
+    },
+    {
+      "id": 7,
+      "name": "Research Black Holes",
+      "userId": 4,
+      "expectedCompletion": "2020-02-21",
+      "isComplete": false
+    },
+    {
+      "id": 8,
+      "name": "Stare into the Void",
+      "userId": 4,
+      "expectedCompletion": "2020-02-21",
+      "isComplete": false
+    }
+  ],
+  "messages": [
+    {
+      "id": 1,
+      "userId": 1,
+      "message": "Yo! Yo!",
+      "timestamp": "2/20/2020, 11:49:08 AM"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "message": "Hey, y'all!",
+      "timestamp": "2/20/2020, 11:49:31 AM"
+    },
+    {
+      "id": 3,
+      "userId": 3,
+      "message": "Whaddup!",
+      "timestamp": "2/20/2020, 11:49:55 AM"
+    },
+    {
+      "id": 4,
+      "userId": 4,
+      "message": "Hihihih!",
+      "timestamp": "2/20/2020, 2:06:18 PM"
+    }
+  ],
+  "events": [
+    {
+      "id": 4,
+      "userId": 2,
+      "name": "Clogging Tournament",
+      "description": "There's going to be a clogging tournament",
+      "date": "2020-03-20",
+      "location": "NSS",
+      "streetAddress": "123 North Street",
+      "city": "Nashville",
+      "state": "TN",
+      "zipcode": 37206
+    },
+    {
+      "id": 5,
+      "userId": 2,
+      "name": "Tournament of Jousting",
+      "description": "There's going to be a jousting tournament",
+      "date": "2020-03-20",
+      "location": "NSS",
+      "streetAddress": "123 North Street",
+      "city": "Nashville",
+      "state": "TN",
+      "zipcode": 37206
+    },
+    {
+      "id": 6,
+      "userId": 2,
+      "name": "Code-a-thon",
+      "description": "There's going to be a code-a-thon",
+      "date": "2020-03-20",
+      "location": "NSS",
+      "streetAddress": "123 North Street",
+      "city": "Nashville",
+      "state": "TN",
+      "zipcode": 37206
+    }
+  ],
+  "articles": [
+    {
+      "id": 1,
+      "userId": 5,
+      "url": "https://www.quantamagazine.org/newfound-wormhole-allows-information-to-escape-black-holes-20171023/",
+      "title": "NEW Wormholes Allow Information to Escape Black Holes",
+      "synopsis": "Check out this recent discovery about workholes",
+      "timestamp": "2/20/2020, 2:43:19 PM"
+    },
+    {
+      "id": 3,
+      "userId": 4,
+      "url": "https://www.sciencedaily.com/releases/2020/02/200214134657.htm",
+      "title": "Hydropower dams cool rivers in the Mekong River basin, satellites show",
+      "synopsis": "Using 30 years of satellite data, researchers discovered that within one year of the opening of a major dam in the Mekong River basin, downstream river temperatures during the dry season dropped by up to 3.6 degrees F (2 degrees C).",
+      "timestamp": "2/18/2020, 9:50:43 AM"
+    },
+    {
+      "id": 4,
+      "userId": 1,
+      "url": "https://www.sciencenews.org/article/new-cave-fossils-have-revived-debate-over-neandertal-burials",
+      "title": "New cave fossils have revived the debate over Neandertal burials",
+      "synopsis": "Part of an adult Neandertal’s skeleton was found in a manner that suggests intentional burial",
+      "timestamp": "2/18/2020, 2:52:31 PM"
+    }
+  ]
+}
