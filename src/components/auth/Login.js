@@ -27,13 +27,10 @@ const Login = props => {
     ApiManager.getLogin("users", credentials.email, credentials.password).then(
       response => {
         if (response.length > 0 && isChecked === true) {
-          localStorage.setItem("credentials", JSON.stringify(credentials));
-          sessionStorage.setItem("credentials", JSON.stringify(credentials));
           props.setUser(response[0], true);
           setCredentials(response[0]);
           props.history.push("/");
         } else if (response.length > 0 && isChecked === false) {
-          sessionStorage.setItem("credentials", JSON.stringify(credentials));
           props.setUser(response[0], false);
           setCredentials(response[0]);
           props.history.push("/");
