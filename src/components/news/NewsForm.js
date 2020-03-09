@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ApiManager from "../../modules/ApiManager";
 import "./News.css";
 
+const activeUser = JSON.parse(sessionStorage.getItem('credentials'));
+
 const NewsForm = (props) => {
     const [news, setNews] = useState({ title: "", synopsis: "", userId: "", url: "", timestamp: "" });
     const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +24,7 @@ const NewsForm = (props) => {
         const newNews = {
             title: news.title,
             synopsis: news.synopsis,
-            userId: 1,
+            userId: activeUser.id,
             url: news.url,
             timestamp: dateTime
         };
