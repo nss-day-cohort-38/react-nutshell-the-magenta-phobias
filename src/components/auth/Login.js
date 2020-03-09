@@ -26,29 +26,14 @@ const Login = props => {
     e.preventDefault();
     ApiManager.getLogin("users", credentials.email, credentials.password).then(
       response => {
-        props.setUser(response);
-        setCredentials(response[0]);
-        if (response.length > 0) {
-          ApiManager.getAll("users").then(response => {
-            if (isChecked === true) {
-              localStorage.setItem("credentials", JSON.stringify(credentials));
-              sessionStorage.setItem(
-                "credentials",
-                JSON.stringify(credentials)
-              );
-              props.history.push("/");
-              props.setUser(response[0])
-
-            } else {
-              sessionStorage.setItem(
-                "credentials",
-                JSON.stringify(credentials)
-              );
-              props.history.push("/");
-              props.setUser(response[0])
-
-            }
-          });
+        if (response.length > 0 && isChecked === true) {
+          props.setUser(response[0], true);
+          setCredentials(response[0]);
+          props.history.push("/");
+        } else if (response.length > 0 && isChecked === false) {
+          props.setUser(response[0], false);
+          setCredentials(response[0]);
+          props.history.push("/");
         } else {
           console.log("Error logging in");
           alert("Please type in the correct email/password");
