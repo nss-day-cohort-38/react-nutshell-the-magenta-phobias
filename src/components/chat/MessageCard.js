@@ -23,7 +23,7 @@ const MessageCard = props => {
         { parseInt(activeUser.id) === userId 
           ? (
             <div className="edit-outline-icon">
-              <i class="edit outline icon"
+              <i className="edit outline icon"
                 onClick={() => props.setMessageToEdit(props.message)}
               >
               </i>

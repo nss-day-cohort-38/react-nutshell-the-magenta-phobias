@@ -92,7 +92,7 @@ const MessageForm = props => {
                 placeholder="Chat message"
               />
               <button className="send-button">
-                <i class="paper plane outline icon"
+                <i className="paper plane outline icon"
                   type="submit"
                   disabled={isLoading}
                 >
