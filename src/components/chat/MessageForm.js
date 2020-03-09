@@ -4,9 +4,7 @@ import ApiManager from '../../modules/ApiManager';
 const MessageForm = props => {
   const [isLoading, setIsLoading] = useState(false)
   const [message, setMessage] = useState({message: ""})
-  // FIXME: replace object with commented line following active storage working
-  const activeUser = {email: "keith@keith.com", password: "keith" , id: 4} // sessionStorage.getItem('credentials');
-  // const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
+  const activeUser = JSON.parse(sessionStorage.getItem('credentials'));
 
   const handleFieldChange = evt => {
     const stateToChange = {...message};
@@ -20,8 +18,7 @@ const MessageForm = props => {
     } else {
       setIsLoading(true);
       const messageToSave = {
-        //TODO: use active userId
-        userId: activeUser.id,
+        userId: parseInt(activeUser.id),
         message: message.message,
         timestamp: new Date().toLocaleString()
       }

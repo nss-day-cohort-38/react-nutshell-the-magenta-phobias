@@ -7,9 +7,7 @@ const MessageCard = props => {
   const text = props.message.message;
   const timestamp = props.message.timestamp;
   const picUrl = props.message.user.picUrl;
-  // FIXME: replace object with commented line following active storage working
-  const activeUser = {email: "keith@keith.com", password: "keith" , id: 4} // sessionStorage.getItem('credentials');
-  // const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
+  const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
 
   return (
     <div className="card">
@@ -18,12 +16,11 @@ const MessageCard = props => {
         <p>
           <strong>{username}</strong>: {text} 
         </p>
-        {/*FIXME: Only show this if it is the active user*/}
         {/* 
           If the active user id === the message's user id
           then output the edit button
         */}
-        { activeUser.id === userId 
+        { parseInt(activeUser.id) === userId 
           ? (
             <div className="edit-outline-icon">
               <i class="edit outline icon"
