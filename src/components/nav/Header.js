@@ -6,8 +6,8 @@ const Header = props => {
         return (
             <>
             <header>
+            <div className="userInfo"></div>
             <h1 className="title">{'{'}fōlô{'}'}</h1>
-            </header>
             <div className="userInfo">
                 <div className="deets">
                 <h4 className="userName">{user.username}</h4>
@@ -17,6 +17,8 @@ const Header = props => {
    
         </div>
             </div>
+            </header>
+          
             </>
         )
     }else {

@@ -17,6 +17,7 @@ header {
     height: 50px;
     display: flex;
     justify-content: flex-end;
+    margin: 10px;
    
 }
 .image-cropper{

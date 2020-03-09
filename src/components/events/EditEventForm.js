@@ -103,6 +103,23 @@ const EditEventForm = props => {
       ApiManager.updatePut("events", editedEventObj).then(() =>
         props.history.push("/events")
       );
+    } else if (editedEvent.eventImage===ogPost.eventImage){
+        const editedEventObj = {
+            id: props.eventId,
+            name: editedEvent.name,
+            userId: activeUser.id,
+            description: editedEvent.description,
+            date: editedEvent.date,
+            streetAddress: editedEvent.streetAddress,
+            city: editedEvent.city,
+            location: editedEvent.location,
+            state: editedEvent.state,
+            zipcode: editedEvent.zipcode,
+            eventImage: editedEvent.eventImage
+          };
+          ApiManager.updatePut("events", editedEventObj).then(() =>
+            props.history.push("/events")
+          );
     }
   };
   const uploadImage = async e => {
@@ -147,8 +164,9 @@ const EditEventForm = props => {
             onClick={handleDelete}
           ></i>
         </div>
+        <h1>Edit Event</h1>     
         <form className="bigger-form">         
-        <h1>Edit Event</h1> 
+        
           <fieldset className="event-form">
             <label htmlFor="name">Title (req): </label>
             <input
