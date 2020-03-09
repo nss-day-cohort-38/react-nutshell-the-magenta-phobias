@@ -90,11 +90,12 @@ const MessageForm = props => {
               id="message"
               placeholder="Chat message"
             />
-            <button
-              type="submit"
-              disabled={isLoading}
-            >
-              Send
+            <button className="send-button">
+              <i class="paper plane outline icon"
+                type="submit"
+                disabled={isLoading}
+              >
+              </i>
             </button>
           </fieldset>
         </form>
