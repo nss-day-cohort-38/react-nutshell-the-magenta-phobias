@@ -2,7 +2,7 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import Home from "./home/Home";
 import Login from "./auth/Login";
-import CreateAccount from "./auth/CreateAccount";
+import CreateAccount from "./auth/KK-CreateAccount";
 import NewsList from "./news/NewsList";
 import NewsDetail from "./news/NewsDetail";
 import NewsEditForm from "./news/NewsEditForm";
