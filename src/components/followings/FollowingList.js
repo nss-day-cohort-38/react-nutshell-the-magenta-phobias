@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ApiManager from '../../modules/ApiManager';
 import FollowCard from './FollowCard'
+import './Following.css'
 
 const FollowingList = props => {
   const [followingList, setFollowingList] = useState([]);
@@ -26,9 +27,9 @@ const FollowingList = props => {
 
   // Find to get a user from state that matches the followId
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
-  const matchUser = (activeUserId) => {
-    if (activeUserId && users.length > 0) {
-      return users.find( ({id}) => id === activeUserId)
+  const matchUser = (followedId) => {
+    if (users.length > 0) {
+      return users.find( ({id}) => id === followedId)
     } else {
       return {username: null}
     }
@@ -36,18 +37,20 @@ const FollowingList = props => {
 
   return (
     <>
-      <div className="wrapper">
-        <div id="headerContainer">
-          <h1>Following List</h1>
-        </div>
-        <div className="container-cards">
-          {followingList.map(follow => 
-            <FollowCard 
-              key={follow.id}
-              user={matchUser(activeUser.id)}
-              {...props}
-            />
-          )}
+      <div className="background">
+        <div className="wrapper">
+          <div id="headerContainer">
+            <h1>Following List</h1>
+          </div>
+          <div className="container-cards">
+            {followingList.map(follow => 
+              <FollowCard 
+                key={follow.id}
+                user={matchUser(follow.followedId)}
+                {...props}
+              />
+            )}
+          </div>
         </div>
       </div>
     </>
