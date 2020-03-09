@@ -43,6 +43,7 @@ const MessageList = props => {
                 <MessageForm
                   getMessages={getMessages}
                   messageToEdit={messageToEdit}
+                  setMessageToEdit={setMessageToEdit}
                   {...props}
                 />
             </div>

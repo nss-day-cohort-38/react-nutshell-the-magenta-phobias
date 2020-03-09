@@ -52,6 +52,9 @@ const MessageForm = props => {
     const constructedMessage = constructMessage(evt);
     // Clears the form upon submission
     evt.target.reset()
+    // Defaults the messageToEdit state 
+    // so it doesn't continue "editing" on subsequent sends
+    props.setMessageToEdit({text: "", userId: 0, timestamp: ""})
     saveMessage(constructedMessage)
       // Gets the messages again and re-renders
       .then(props.getMessages)
