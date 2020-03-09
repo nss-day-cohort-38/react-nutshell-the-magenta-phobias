@@ -12,6 +12,7 @@ import EventDetails from "./events/EventDetails";
 import NewEventForm from "./events/NewEventForm";
 import EditEventForm from "./events/EditEventForm";
 import MessageList from "./chat/Messages"
+import FollowingList from "./followings/FollowingList";
 
 const isAuthenticated = true;
 // () => sessionStorage.getItem("credentials") !== null;
@@ -135,6 +136,18 @@ const ApplicationViews = props => {
                 {...props}
             />
         )}
+      />
+      <Route
+        path="/friends"
+        render={props=> {
+          if (isAuthenticated) {
+            return <FollowingList
+              {...props}
+            />
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
       />
     </React.Fragment>
   );
