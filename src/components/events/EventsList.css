@@ -70,11 +70,16 @@ picture{
 .icon-container{
     display: flex;
     justify-content: flex-end;
+
 }
 #plusIcon{
     align-self: flex-end;
 }
 #plusIcon:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+#back-arrow-detail:hover {
     opacity: 0.8;
     cursor: pointer;
 }
