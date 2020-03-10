@@ -46,6 +46,9 @@ const FollowerForm = props => {
     // Check if they're already following them:
     } else if (alreadyFollowing(matchingUser)) {
       window.alert("You're already friends with that user")
+    // Check if they're you
+    } else if (matchingUser.id === activeUser.id) {
+      window.alert("Enter a user that isn't you!")
     } else {
       setIsLoading(true);
       const followToSave = {
