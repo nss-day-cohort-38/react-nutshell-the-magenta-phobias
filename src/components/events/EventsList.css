@@ -83,3 +83,14 @@ picture{
     opacity: 0.8;
     cursor: pointer;
 }
+
+@media only screen and (max-width: 800px) {
+    .card-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .event-card{
+        width: 90%;
+    }
+}

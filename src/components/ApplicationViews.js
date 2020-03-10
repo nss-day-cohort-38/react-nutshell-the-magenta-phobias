@@ -1,5 +1,5 @@
 import { Route, Redirect } from "react-router-dom";
-import React, { Component } from "react";
+import React from "react";
 import Home from "./home/Home";
 import Login from "./auth/Login";
 import CreateAccount from "./auth/KK-CreateAccount";
@@ -13,6 +13,8 @@ import NewEventForm from "./events/NewEventForm";
 import EditEventForm from "./events/EditEventForm";
 import MessageList from "./chat/Messages"
 import FollowingList from "./followings/FollowingList";
+import PasswordCheck from "../editProfile/PasswordCheck";
+import EditProfileForm from "../editProfile/EditProfileForm";
 
 const isAuthenticated = true;
 // () => sessionStorage.getItem("credentials") !== null;
@@ -162,6 +164,26 @@ const ApplicationViews = props => {
             return <Redirect to="/login" />;
           }
         }}
+      />
+      <Route 
+      path="/confirmAccount"
+      render={props=> {
+          if(hasUser){
+              return <PasswordCheck {...props} />
+          }else {
+              return <Redirect to="/login" />
+          }
+      }}
+      />
+      <Route
+      path="/editprofile"
+      render={props=> {
+          if(hasUser){
+              return <EditProfileForm setUser={setUser} {...props} />
+          }else {
+              return <Redirect to ="/login" />
+          }
+      }}
       />
     </React.Fragment>
   );

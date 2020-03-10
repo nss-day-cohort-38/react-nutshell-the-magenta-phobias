@@ -1,7 +1,5 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
-import { NavLink } from "react-router-dom";
-import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import "./NavBar.css";
 
@@ -32,7 +30,7 @@ const NavBar = props => {
         Friends
       </a>
       {props.hasUser ? (
-          <a className="menu-item" onClick={handleLogout}>
+          <a className="menu-item" onClick={handleLogout} href="/">
             {" "}
             Logout{" "}
           </a>

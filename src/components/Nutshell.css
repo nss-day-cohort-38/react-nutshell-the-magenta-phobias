@@ -2,10 +2,11 @@
 header {
   display: flex;
   justify-content: center;
+  
 }
 .title {
-  font-size: 50px;
-  margin: 3%;
+  font-size: 40px;
+  /* margin: 3%; */
 }
 .deets{
     display: flex;
@@ -17,6 +18,7 @@ header {
     height: 50px;
     display: flex;
     justify-content: flex-end;
+    margin: 10px;
    
 }
 .image-cropper{
@@ -40,4 +42,8 @@ header {
 
 .userName{
     align-self: flex-end;
+}
+.form-field{
+    display: flex;
+    justify-content: center;
 }

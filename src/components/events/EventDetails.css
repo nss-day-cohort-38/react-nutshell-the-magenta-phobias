@@ -2,6 +2,7 @@
 .details-container{
     display: flex;
     justify-content: center;
+    padding: 5%;
 }
 .event-details{
     width: 70%;
@@ -21,7 +22,7 @@ justify-content: space-between;
     cursor: pointer;
 }
 #detail-photo{
-    max-width: 500px;
+    max-width: 300px;
 }
 .delete-container{
     width: 100%;

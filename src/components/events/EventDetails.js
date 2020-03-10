@@ -3,22 +3,17 @@ import ApiManager from "../../modules/ApiManager";
 import "./EventDetails.css";
 
 const EventDetails = props => {
-    console.log(props)
+
     const [oneEvent, setOneEvent] = useState({})
     
-    const getOneEvent = () => {
-        
-        ApiManager.get('events', props.eventId).then(eventFromAPi=> {
-            console.log(eventFromAPi)
-            setOneEvent(eventFromAPi)
-        })
-    }
     const handleDelete= ()=> {
         ApiManager.delete('events', props.eventId).then(()=> props.history.push('/events'))
     }
 
     useEffect(()=> {
-        getOneEvent()
+        ApiManager.get('events', props.eventId).then(eventFromAPi=> {
+            setOneEvent(eventFromAPi)
+        })
     }, [props.eventId])
 
     return(
@@ -31,7 +26,7 @@ const EventDetails = props => {
             </div>
             <h1>{oneEvent.name}</h1>    
             <picture>
-                <img src={oneEvent.eventImage} alt="event-photo" id="detail-photo" />
+                <img src={oneEvent.eventImage} alt="event" id="detail-photo" />
             </picture>
             <h4>{oneEvent.description}</h4>
             <div className="detail-event-info">

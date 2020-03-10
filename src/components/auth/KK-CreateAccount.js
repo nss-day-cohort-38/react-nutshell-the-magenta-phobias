@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import "./kk-CreateAccount.css";
 import ApiManager from "../../modules/ApiManager";
-import {
-  Image,
-  Video,
-  Transformation,
-  CloudinaryContext
-} from "cloudinary-react";
 import keys from "../../keys/keys";
 const CreateAccount = props => {
   const [credentials, setCredentials] = useState({
@@ -104,90 +98,90 @@ const CreateAccount = props => {
   //   }
   // };
 
-  return (
-    <form className="main-form" onSubmit={handleCreateAccountLogin}>
-      <fieldset className="fs-form">
-        <h3 className="title">Create Your Account</h3>
-        <div className="create-form">
-          <label htmlFor="inputEmail">Email Address</label>
-          <input
-            className="input"
-            onChange={handleInputFieldChange}
-            type="email"
-            id="email"
-            placeholder="Enter Email Address"
-            required=""
-            autoFocus=""
-          />
-          <label htmlFor="inputUsername">Username</label>
-          <input
-            className="input"
-            onChange={handleInputFieldChange}
-            type="text"
-            id="username"
-            placeholder="Enter username"
-            required=""
-            autoFocus=""
-          />
-
-          <label htmlFor="inputPassword">Password</label>
-          <input
-            className="input"
-            onChange={handleInputFieldChange}
-            type="password"
-            id="password"
-            placeholder="Create Your Password"
-            required=""
-            autoFocus=""
-          />
-          <label htmlFor="confirm-password">Confirm Password</label>
-          <input
-            className="input"
-            onChange={handleInputFieldChange}
-            type="password"
-            id="confirmedPassword"
-            placeholder="Re-enter Password"
-            required=""
-            autoFocus=""
-          />
-          <label htmlFor="eventImage">Please upload a profile picture</label>
-          <input
-            name="file"
-            id="picUrl"
-            type="file"
-            className="file-upload"
-            placeholder="Upload an Image"
-            data-cloudinary-field="image_id"
-            onChange={uploadImage}
-            data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"
-          />
-        </div>
-        <div className="create-buttons">
-          <div>
-            <label className="check-box-name">Remember Me</label>
+    return (
+        <form className="main-form" onSubmit={handleCreateAccountLogin}>
+        <fieldset className="fs-form">
+            <h3 className="title">Create Your Account</h3>
+            <div className="create-form">
+            <label htmlFor="inputEmail">Email Address</label>
             <input
-              className="check-box"
-              type="checkbox"
-              onChange={handleSignInCheckBox}
-            ></input>
-          </div>
-          <div className="newPhoto">
-            {isLoading ?(
-                <h3> Loading...</h3>
-            ): (
-                <>
-                <img src={image.picUrl} style={{width: '300px'}} />
-                </>
-            )}
+                className="input"
+                onChange={handleInputFieldChange}
+                type="email"
+                id="email"
+                placeholder="Enter Email Address"
+                required=""
+                autoFocus=""
+            />
+            <label htmlFor="inputUsername">Username</label>
+            <input
+                className="input"
+                onChange={handleInputFieldChange}
+                type="text"
+                id="username"
+                placeholder="Enter username"
+                required=""
+                autoFocus=""
+            />
+
+            <label htmlFor="inputPassword">Password</label>
+            <input
+                className="input"
+                onChange={handleInputFieldChange}
+                type="password"
+                id="password"
+                placeholder="Create Your Password"
+                required=""
+                autoFocus=""
+            />
+            <label htmlFor="confirm-password">Confirm Password</label>
+            <input
+                className="input"
+                onChange={handleInputFieldChange}
+                type="password"
+                id="confirmedPassword"
+                placeholder="Re-enter Password"
+                required=""
+                autoFocus=""
+            />
+            <label htmlFor="eventImage">Please upload a profile picture</label>
+            <input
+                name="file"
+                id="picUrl"
+                type="file"
+                className="file-upload"
+                placeholder="Upload an Image"
+                data-cloudinary-field="image_id"
+                onChange={uploadImage}
+                data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"
+            />
             </div>
-          <button className="create-btn" type="submit">
-            Join
-          </button>
-       
-        </div>
-      </fieldset>
-    </form>
-  );
-};
+            <div className="create-buttons">
+            <div>
+                <label className="check-box-name">Remember Me</label>
+                <input
+                className="check-box"
+                type="checkbox"
+                onChange={handleSignInCheckBox}
+                ></input>
+            </div>
+            <div className="newPhoto">
+                {isLoading ?(
+                    <h3> Loading...</h3>
+                ): (
+                    <>
+                    <img src={image.picUrl} style={{width: '300px'}} alt="upload-photos"/>
+                    </>
+                )}
+                </div>
+            <button className="create-btn" type="submit">
+                Join
+            </button>
+        
+            </div>
+        </fieldset>
+        </form>
+    );
+    };
 
 export default CreateAccount;
