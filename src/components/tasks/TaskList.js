@@ -58,6 +58,7 @@ const TaskList = (props, { isComplete, setIsComplete }) => {
           Add New Task
         </button>
       </section>
+      
       <div className="task-container-cards">
         {tasks.map(task => (
           <TaskCard

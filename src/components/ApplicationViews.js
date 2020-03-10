@@ -137,6 +137,7 @@ const ApplicationViews = props => {
         path="/tasks"
         render={props =>
           hasUser ? (
+            
             <TaskList
               isComplete={isComplete}
               setIsComplete={setIsComplete}

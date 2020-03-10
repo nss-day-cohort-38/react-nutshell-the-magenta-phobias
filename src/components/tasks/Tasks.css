@@ -6,7 +6,7 @@
   background: aliceblue;
   margin-bottom: 2em;
   flex: 0 1 24%;
-  width: 430px;
+  width: 500px;
   display: flex;
   flex-direction: row;
 }
@@ -57,11 +57,40 @@ button.btn {
   border-radius: 5px;
   font-size: 12px;
 }
-/* .task-card-content {
+.task-card-content {
     justify-content: center;
     flex-direction: row;
-  } */
+  }
 .task-section-content {
   display: flex;
   justify-content: center;
+}
+
+button.mark-complete-save-btn {
+  width: 50px;
+  display: flex;
+  align-content: flex-start;
+  text-decoration: none;
+  color: black;
+  letter-spacing: 1px;
+  padding: 1px 1px 1px 1px;
+  background-color: whitesmoke;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+}
+input.task-checkbox {
+  width: 30px;
+  display: flex;
+
+
+}
+label.is-task-complete {
+  text-decoration: none;
+  color: black;
+  letter-spacing: 1px;
+  padding: 1px 1px 1px 1px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.2s;
+  width: 30px;
 }
