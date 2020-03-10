@@ -12,6 +12,7 @@ import EventDetails from "./events/EventDetails";
 import NewEventForm from "./events/NewEventForm";
 import EditEventForm from "./events/EditEventForm";
 import MessageList from "./chat/Messages"
+import FollowingList from "./followings/FollowingList";
 import PasswordCheck from "../editProfile/PasswordCheck";
 import EditProfileForm from "../editProfile/EditProfileForm";
 
@@ -151,6 +152,18 @@ const ApplicationViews = props => {
                 {...props}
             />
         )}
+      />
+      <Route
+        path="/friends"
+        render={props=> {
+          if (hasUser) {
+            return <FollowingList
+              {...props}
+            />
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
       />
       <Route 
       path="/confirmAccount"

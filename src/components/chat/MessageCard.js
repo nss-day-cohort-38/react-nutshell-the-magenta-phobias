@@ -1,6 +1,17 @@
 import React from "react";
 import "./Messages.css"
 
+
+/* TODO: Follow Button
+// Does not display for you or people you're already friends with
+<i class="user plus icon"></i>
+
+// Posts to the followings api
+// userId: activeUser.id
+// followedId: message.user.id
+*/
+
+
 const MessageCard = props => {
   const username = props.message.user.username;
   const userId = props.message.userId;
@@ -22,8 +33,8 @@ const MessageCard = props => {
         */}
         { parseInt(activeUser.id) === userId 
           ? (
-            <div className="edit-outline-icon">
-              <i class="edit outline icon"
+            <div className="chat-edit-outline-icon">
+              <i className="edit outline icon"
                 onClick={() => props.setMessageToEdit(props.message)}
               >
               </i>
@@ -31,7 +42,7 @@ const MessageCard = props => {
           )
           : ( null )
         }
-        <span className="time-right">{timestamp}</span>
+        <span className="message-time-right">{timestamp}</span>
       </div>
     </div>
   )
