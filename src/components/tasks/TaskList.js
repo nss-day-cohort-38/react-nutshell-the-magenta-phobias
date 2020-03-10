@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ApiManager from "../../modules/ApiManager";
 import TaskCard from "./TaskCard";
 
-const TaskList = props => {
+const TaskList = (props, { isComplete, setIsComplete }) => {
   const [tasks, setTasks] = useState([]);
 
   const getTasks = async () => {
@@ -14,7 +14,7 @@ const TaskList = props => {
     }
   };
 
-  const deleteTask = async (id) => {
+  const deleteTask = async id => {
     try {
       ApiManager.delete("tasks", id);
       const tasksFromAPI = await ApiManager.getAll("tasks");
@@ -23,6 +23,23 @@ const TaskList = props => {
       console.log(error);
     }
   };
+  // console.log(props);
+  const handleMarkComplete = async task => {
+    // setIsComplete(e.target.checked);
+    ApiManager.update("tasks", task.isComplete).then(() => {
+      if (isComplete === true) {
+        props.task.isComplete = true;
+        ApiManager.getTasks(tasks).then(tasks => {
+          // console.log({ tasks });
+          tasks.filter(task => {
+            const isNotComplete = task.isComplete === false;
+            setTasks(isNotComplete);
+          });
+        });
+      }
+    });
+  };
+
 
   useEffect(() => {
     getTasks();
@@ -45,8 +62,9 @@ const TaskList = props => {
         {tasks.map(task => (
           <TaskCard
             key={task.id}
-            task={task} // this is a prop ... in this case it is an object
+            task={task}
             deleteTask={deleteTask}
+            handleMarkComplete={handleMarkComplete}
             {...props}
           />
         ))}

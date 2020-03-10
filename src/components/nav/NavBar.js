@@ -15,7 +15,7 @@ const NavBar = props => {
       <a className="menu-item" href="/">
         {" "}
         Home{""}
-        </a>
+      </a>
       <a className="menu-item" href="/news">
         News
       </a>
@@ -24,12 +24,11 @@ const NavBar = props => {
       </a>
       {props.hasUser ? (
         <a className="menu-item" href="/tasks">
-          {" "}Tasks{" "}
+          {" "}
+          Tasks{" "}
         </a>
       ) : null}
-      <a className="menu-item" href="/tasks">
-        Tasks
-      </a>
+
       <a className="menu-item" href="/chat">
         Chat
       </a>
@@ -37,10 +36,10 @@ const NavBar = props => {
         Friends
       </a>
       {props.hasUser ? (
-          <span className="menu-item" onClick={handleLogout}>
-            {" "}
-            Logout{" "}
-          </span>
+        <span className="menu-item" onClick={handleLogout}>
+          {" "}
+          Logout{" "}
+        </span>
       ) : null}
     </Menu>
   );

@@ -1,5 +1,5 @@
 import { Route, Redirect } from "react-router-dom";
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Home from "./home/Home";
 import Login from "./auth/Login";
 import CreateAccount from "./auth/CreateAccount";
@@ -18,6 +18,8 @@ import TaskEditForm from "./tasks/TaskEditFrom";
 import AddNewTaskForm from "./tasks/AddNewTaskForm";
 
 const ApplicationViews = props => {
+  const [isComplete, setIsComplete] = useState(false);
+
   const hasUser = props.hasUser;
   const setUser = props.setUser;
 
@@ -135,9 +137,13 @@ const ApplicationViews = props => {
         path="/tasks"
         render={props =>
           hasUser ? (
-            <TaskList {...props} />
+            <TaskList
+              isComplete={isComplete}
+              setIsComplete={setIsComplete}
+              {...props}
+            />
           ) : (
-            <Redirect to="/login" component={Login} />
+            <Redirect to="/login" />
           )
         }
       />

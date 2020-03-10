@@ -1,20 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Tasks.css";
-import { Link } from "react-router-dom";
 
-const TaskCard = props => {
-    console.log(props);
-//     const [isComplete, setIsComplete] = useState(false);
+const TaskCard = (props, { isComplete, setIsComplete }) => {
+    console.log(props)
+    // const [isComplete, setIsComplete] = useState();
+  //   console.log(props.task);
 
-//   const handleIsComplete = e => {
-//     setIsComplete(e.target.checked);
-//   };
-
-//   const completedTask = () => {
-// if (isComplete === true) {
-
-// }
-//   };
+  const handleIsComplete = e => {
+    setIsComplete(e.target.checked);
+  };
 
   return (
     <div className="tasks-card">
@@ -28,18 +22,27 @@ const TaskCard = props => {
         >
           Delete this Task
         </button>
-          <button
+        <button
           onClick={() => props.history.push(`/tasks/${props.task.id}/edit`)}
-          >Edit This Task</button>
+        >
+          Edit This Task
+        </button>
         <label className="is-task-complete">Mark Complete</label>
         <input
           className="task-checkbox"
           type="checkbox"
-        //   onChange={handleIsComplete}
+          onChange={handleIsComplete}
+          checked={isComplete}
         ></input>
+        <button
+          className="mark-complete-save-btn"
+          type="button"
+          onClick={() => props.handleMarkComplete()}
+        >
+          Save
+        </button>
       </div>
     </div>
   );
 };
-
 export default TaskCard;

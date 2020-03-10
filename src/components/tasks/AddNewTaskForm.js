@@ -3,7 +3,11 @@ import ApiManager from "../../modules/ApiManager";
 import "./TaskForm.css";
 
 const AddNewTaskForm = props => {
-  const [task, setTask] = useState({ name: "", expectedCompletion: "" });
+  const [task, setTask] = useState({
+    name: "",
+    expectedCompletion: "",
+    isComplete: ""
+  });
   const [isLoading, setIsLoading] = useState(false);
 
   const handleFieldChange = evt => {
@@ -51,6 +55,15 @@ const AddNewTaskForm = props => {
               onClick={constructNewTask}
             >
               Submit
+            </button>
+          </div>
+          <div className="isComplete-selection">
+            <label>Select if this is complete</label>
+            <button className="true" type="button" disabled={isLoading}>
+              True
+            </button>
+            <button className="true" type="button" disabled={isLoading}>
+              False
             </button>
           </div>
         </fieldset>
