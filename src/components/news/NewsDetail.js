@@ -30,7 +30,7 @@ const NewsDetail = props => {
                 },
                 {
                     label: 'No',
-                    onClick: () => alert('Click No')
+                    onClick: () => ""
                 }
             ]
         });
@@ -53,6 +53,10 @@ const NewsDetail = props => {
     if (news.title !== undefined && news.synopsis !== undefined && news.url !== undefined) {
         return (
             <div className="card">
+                <div className="icon-container">
+                    <i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/news')}></i>
+                    <i className="big plus square outline icon" id="plusIcon" onClick={() => props.history.push('/news/new')}></i>
+                </div>
                 <div className="card-content">
                     <h3>
                         <span style={{ color: "darkslategrey" }}>{firstLetterCase(news.title)}</span>
@@ -60,15 +64,12 @@ const NewsDetail = props => {
                     <p>{news.timestamp}</p>
                     <p>{news.synopsis}</p>
                     <p><a href={news.url} target="_new">{news.url}</a></p>
-                    <button type="button"
-                        onClick={() => props.history.push(`/news/${news.id}/edit`)}>
-                        Edit
-                    </button>
-                    <button type="button" disabled={isLoading} onClick={handleDelete}>
-                        Delete News Article
-                    </button>
+                    <div align="right">
+                        <i className="big edit icon" id="newsDetailsEditIcon" onClick={() => props.history.push(`/news/${news.id}/edit`)}></i>
+                        <i id="newsDetailsTrashIcon" className="big trash alternate icon" onClick={() => handleDelete()}></i>
+                    </div>
                 </div>
-            </div>
+            </div >
         );
     } else {
         return (

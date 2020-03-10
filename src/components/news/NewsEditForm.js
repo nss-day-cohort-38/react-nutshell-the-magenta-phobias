@@ -20,7 +20,7 @@ const NewsEditForm = (props) => {
         setIsLoading(true);
 
         let dateTime = new Date().toLocaleString('en-GB', { timeZone: 'UTC' });
-        
+
         const editedNews = {
             id: props.match.params.newsId,
             title: news.title,
@@ -44,6 +44,9 @@ const NewsEditForm = (props) => {
 
     return (
         <>
+            <div className="icon-container">
+                <i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/news')}></i>
+            </div>
             <form>
                 <fieldset className="newsEditForm">
                     <div className="formgrid">

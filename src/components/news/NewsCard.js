@@ -27,12 +27,12 @@ const NewsCard = (props) => {
                     {
                         label: 'Yes',
                         onClick: () => ApiManager.delete("articles", props.news.id).then(() =>
-                            props.history.push("/news")
+                            props.getNews()
                         )
                     },
                     {
                         label: 'No',
-                        onClick: () => alert('Click No')
+                        onClick: () => ""
                     }
                 ]
             });

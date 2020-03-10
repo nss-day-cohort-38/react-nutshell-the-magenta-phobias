@@ -18,3 +18,28 @@
     margin: 30px 0 0 25px;
     border: 0;
 }
+
+#newsTrashIcon:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#newsDetailsTrashIcon:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#newsDetailsEditIcon:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#newsDetailIcon:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+#newsFileIcon:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
