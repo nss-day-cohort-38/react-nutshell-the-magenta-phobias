@@ -37,25 +37,21 @@ const FollowerForm = props => {
     }
   }
 
-  const constructFollow = () => {
-    // Search for a username that matches their input:
-    const matchingUser = findMatchingUsername(follow.follow);
+  const validFollow = (matchingUser) => {
     // Check if they've entered a valid user:
     if (follow === "" || matchingUser === undefined) {
       window.alert("Please input a valid username");
+      return false;
     // Check if they're already following them:
     } else if (alreadyFollowing(matchingUser)) {
       window.alert("You already follow that user")
+      return false;
     // Check if they're you
     } else if (matchingUser.id === activeUser.id) {
       window.alert("Enter a user that isn't you")
+      return false;
     } else {
-      setIsLoading(true);
-      const followToSave = {
-        userId: activeUser.id,
-        followedId: matchingUser.id
-      }
-      return followToSave;
+      return true;
     }
   }
 
@@ -67,11 +63,21 @@ const FollowerForm = props => {
     setIsLoading(true);
     evt.preventDefault();
     evt.stopPropagation();
-    const constructedFollow = constructFollow(evt);
-    // Clears form upon submit
-    evt.target.reset();
-    saveFollow(constructedFollow)
-      .then(props.getFollowings)
+    // Search for a username that matches their input:
+    const matchingUser = findMatchingUsername(follow.follow);
+    if (validFollow(matchingUser)) {
+      const constructedFollow = {
+        userId: activeUser.id,
+        followedId: matchingUser.id
+      };
+      // Clears form upon submit
+      evt.target.reset();
+      saveFollow(constructedFollow)
+        .then(props.getFollowings)
+    } else {
+      // Clears form on failed validation
+      evt.target.reset();
+    }
   }
 
   useEffect(() => {
