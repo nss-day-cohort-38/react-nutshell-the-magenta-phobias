@@ -20,8 +20,8 @@ const NewsList = (props) => {
         <div>
             <section className="section-content">
                 <div className="icon-container">
-                    <i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/')}></i>
-                    <i className="big plus square outline icon" id="plusIcon" onClick={() => props.history.push('/news/new')}></i>
+                    <span data-tooltip="BACK"><i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/')}></i></span>
+                    <span data-tooltip="ADD"><i className="big plus square outline icon" id="plusIcon" onClick={() => props.history.push('/news/new')}></i></span>
                 </div>
                 <div className="container-cards userNewsArticles">
                     <h1 className="newsSectionHeader">YOUR NEWS</h1>
@@ -36,8 +36,8 @@ const NewsList = (props) => {
                         />)}
                 </div>
                 <div className="container-cards followNewsArticles">
-                <h1 className="newsSectionHeader">NEWS FROM PEOPLE YOU FOLLOW</h1>
-                    <NewsFollowList/>
+                    <h1 className="newsSectionHeader">NEWS FROM PEOPLE YOU FOLLOW</h1>
+                    <NewsFollowList />
                 </div>
             </section>
 
