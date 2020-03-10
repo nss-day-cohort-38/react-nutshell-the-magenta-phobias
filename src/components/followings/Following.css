@@ -1,36 +1,46 @@
-/*            CHAT ITSELF            */
+/*            FOLLOWING ITSELF            */
 
-.chat-wrapper {
+.follow-background {
   display: flex;
   justify-content: center;
 }
 
-#chat-headerContainer {
+.follow-wrapper {
+  display: block;
+  width: 70%;
+}
+
+#follow-headerContainer {
   display:flex;
   justify-content: center;
   border: 2px solid #dedede;
   border-radius: 5px;
   padding: 10px;
   margin: 5px 0;
+  width: 100%;
 }
 
-.chat-fixed-height-container {
-  height: 100px;
-  width:350px; 
-  padding:3px; 
+.follow-container-cards {
+  display: flex; 
+  flex-direction:row;
+  flex-wrap: wrap;
+}
+
+.follow-card {
+  width: 20rem;
 }
 
 /* Borrowed a bit from this CSS chat tutorial */
 /* https://www.w3schools.com/howto/howto_css_chat.asp */ 
-.message-container {
+.follow-container {
   border: 2px solid #dedede;
   background-color: #f1f1f1;
   border-radius: 5px;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px 5px;
 }
 
-.message-container img {
+.follow-container img {
   float: left;
   max-width: 60px;
   width: 100%;
@@ -38,29 +48,15 @@
   border-radius: 50%;
 }
 
-.chat-fieldset {
+.follow-container form fieldset {
   background-color: none;
   border-width: 0;
 }
 
-.message-container::after {
+.follow-container::after {
   content: "";
   clear: both;
   display: table;
-}
-
-.message-time-right {
-  float: right;
-  color: #aaa;
-}
-
-/* Scrollbar always at the bottom trick: 
-https://stackoverflow.com/a/44051405 */ 
-.chat-ScrollToBottom {
-  height:224px;
-  overflow: auto;
-  display: flex;
-  flex-direction:column-reverse;
 }
 
 .darker {
@@ -68,9 +64,14 @@ https://stackoverflow.com/a/44051405 */
   background-color: #ddd;
 }
 
-/*           Chat Buttons           */
+/*           Buttons           */
 
-.chat-send-button {
+.trash {
+  float: right;
+  cursor: pointer;
+}
+
+.follow-input-inner-container button {
   display: inline-block;
   cursor: pointer;
   background-color: #ddd;
@@ -83,7 +84,7 @@ https://stackoverflow.com/a/44051405 */
   font-size: 16px;
 }
 
-.chat-input-inner-container {
+.follow-input-inner-container {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -91,21 +92,16 @@ https://stackoverflow.com/a/44051405 */
   justify-content: space-between;
 }
 
-.chat-edit-outline-icon {
-  cursor: pointer;
-  display: inline-block;
-}
 
+/*          FRIEND FORM INPUT       */
 
-/*          MESSAGE FORM INPUT       */
-
-.chat-form {
+.follow-container form {
   width: 100%;
   border-radius: 0;
   background-color: none;
 }
 
-.chat-input {
+.follow-container input {
   width: 75%;
   padding: 12px 20px;
   margin: 8px 0;
