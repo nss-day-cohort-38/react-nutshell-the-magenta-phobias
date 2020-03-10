@@ -87,10 +87,11 @@ const FollowerForm = props => {
         instead of just clicking the send button
       */}
       <div className="follow-container, darker, follow-input-container">
-        <form onSubmit={handleSubmit}>
-          <fieldset>
+        <form className="follow-container-form" onSubmit={handleSubmit}>
+          <fieldset className="follow-form-fieldset">
             <div className="follow-input-inner-container">
               <input
+                className="follow-container-input"
                 name="follow"
                 type="follow"
                 required
@@ -98,7 +99,7 @@ const FollowerForm = props => {
                 id="follow"
                 placeholder="Enter username to follow"
               />
-              <button className="send-button">
+              <button className="follow-send-button">
                 <i className="user plus icon"
                   type="submit"
                   disabled={isLoading}

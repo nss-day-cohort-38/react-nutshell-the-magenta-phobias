@@ -91,11 +91,7 @@ https://stackoverflow.com/a/44051405 */
   justify-content: space-between;
 }
 
-<<<<<<< HEAD
-.icon-container {
-=======
 .chat-edit-outline-icon {
->>>>>>> master
   cursor: pointer;
   display: inline-block;
 }

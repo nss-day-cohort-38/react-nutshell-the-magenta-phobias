@@ -48,7 +48,7 @@
   border-radius: 50%;
 }
 
-.follow-container form fieldset {
+.follow-form-fieldset {
   background-color: none;
   border-width: 0;
 }
@@ -71,7 +71,7 @@
   cursor: pointer;
 }
 
-.follow-input-inner-container button {
+.follow-send-button {
   display: inline-block;
   cursor: pointer;
   background-color: #ddd;
@@ -101,7 +101,7 @@
   background-color: none;
 }
 
-.follow-container input {
+.follow-container-input {
   width: 75%;
   padding: 12px 20px;
   margin: 8px 0;
