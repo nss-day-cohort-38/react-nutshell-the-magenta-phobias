@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import ApiManager from "../../modules/ApiManager";
 import "./News.css";
 
+const activeUser = JSON.parse(sessionStorage.getItem('credentials'));
+
 const NewsEditForm = (props) => {
     const [news, setNews] = useState({ title: "", synopsis: "", userId: "", url: "", timestamp: "" });
     const [isLoading, setIsLoading] = useState(false);
@@ -18,12 +20,12 @@ const NewsEditForm = (props) => {
         setIsLoading(true);
 
         let dateTime = new Date().toLocaleString('en-GB', { timeZone: 'UTC' });
-        
+
         const editedNews = {
             id: props.match.params.newsId,
             title: news.title,
             synopsis: news.synopsis,
-            userId: parseInt(news.userId),
+            userId: activeUser.id,
             url: news.url,
             timestamp: dateTime
         };
@@ -42,6 +44,9 @@ const NewsEditForm = (props) => {
 
     return (
         <>
+            <div className="icon-container">
+                <i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/news')}></i>
+            </div>
             <form>
                 <fieldset className="newsEditForm">
                     <div className="formgrid">

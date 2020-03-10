@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import ApplicationViews from "./ApplicationViews";
 import NavBar from "./nav/NavBar";
 import Header from "./nav/Header";
@@ -32,7 +32,7 @@ const Nutshell = () => {
 
   return (
     <>
-      <Header />
+      <Header  hasUser={userFromState}/>
       <NavBar hasUser={userFromState} clearUser={clearUser} setUser={setUser} />
       <ApplicationViews hasUser={userFromState} setUser={setUser} />
     </>

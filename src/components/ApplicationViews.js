@@ -2,7 +2,7 @@ import { Route, Redirect } from "react-router-dom";
 import React, { Component, useState } from "react";
 import Home from "./home/Home";
 import Login from "./auth/Login";
-import CreateAccount from "./auth/CreateAccount";
+import CreateAccount from "./auth/KK-CreateAccount";
 import NewsList from "./news/NewsList";
 import NewsDetail from "./news/NewsDetail";
 import NewsEditForm from "./news/NewsEditForm";
@@ -13,9 +13,12 @@ import NewEventForm from "./events/NewEventForm";
 import EditEventForm from "./events/EditEventForm";
 import MessageList from "./chat/Messages";
 import TaskList from "./tasks/TaskList";
-import TaskDetail from "./tasks/TaskDetail";
+// import TaskDetail from "./tasks/TaskDetail";
 import TaskEditForm from "./tasks/TaskEditFrom";
 import AddNewTaskForm from "./tasks/AddNewTaskForm";
+import FollowingList from "./followings/FollowingList";
+import PasswordCheck from "../editProfile/PasswordCheck";
+import EditProfileForm from "../editProfile/EditProfileForm";
 
 const ApplicationViews = props => {
   const [isComplete, setIsComplete] = useState(false);
@@ -29,7 +32,7 @@ const ApplicationViews = props => {
         exact
         path="/"
         render={props => {
-          return <Home {...props} />;
+          return <Home {...props} hasUser={hasUser} />;
         }}
       />
 
@@ -99,36 +102,52 @@ const ApplicationViews = props => {
         exact
         path="/events"
         render={props => {
-          return <EventsList {...props} />;
+          if (hasUser) {
+            return <EventsList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
         exact
         path="/events/:eventId(\d+)"
         render={props => {
-          return (
-            <EventDetails
-              eventId={parseInt(props.match.params.eventId)}
-              {...props}
-            />
-          );
+          if (hasUser) {
+            return (
+              <EventDetails
+                eventId={parseInt(props.match.params.eventId)}
+                {...props}
+              />
+            );
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
         path="/events/:eventId(\d+)/edit"
         render={props => {
-          return (
-            <EditEventForm
-              eventId={parseInt(props.match.params.eventId)}
-              {...props}
-            />
-          );
+          if (hasUser) {
+            return (
+              <EditEventForm
+                eventId={parseInt(props.match.params.eventId)}
+                {...props}
+              />
+            );
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route
         path="/events/new"
         render={props => {
-          return <NewEventForm {...props} />;
+          if (hasUser) {
+            return <NewEventForm {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
         }}
       />
       <Route path="/chat" render={props => <MessageList {...props} />} />
@@ -137,7 +156,6 @@ const ApplicationViews = props => {
         path="/tasks"
         render={props =>
           hasUser ? (
-            
             <TaskList
               isComplete={isComplete}
               setIsComplete={setIsComplete}
@@ -185,6 +203,36 @@ const ApplicationViews = props => {
         render={props =>
           hasUser ? <AddNewTaskForm {...props} /> : <Redirect to="/login" />
         }
+      />
+      <Route
+        path="/friends"
+        render={props => {
+          if (hasUser) {
+            return <FollowingList {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        path="/confirmAccount"
+        render={props => {
+          if (hasUser) {
+            return <PasswordCheck {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
+      <Route
+        path="/editprofile"
+        render={props => {
+          if (hasUser) {
+            return <EditProfileForm setUser={setUser} {...props} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
       />
     </React.Fragment>
   );

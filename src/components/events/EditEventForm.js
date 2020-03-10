@@ -17,8 +17,8 @@ const EditEventForm = props => {
   const [ogPost, setOgPost] = useState({})
   const [image, setImage] = useState({})
   const [isLoading, setIsLoading] = useState(false);
-    // const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
-    const activeUser = { id: 2 };
+    const activeUser = JSON.parse(sessionStorage.getItem('credentials'))
+    // const activeUser = { id: 2 };
 
   const handleFieldChange = e => {
     const stateToChange = { ...editedEvent };
@@ -26,22 +26,19 @@ const EditEventForm = props => {
     setEditedEvent(stateToChange);
   };
 
-  const getOneEvent = () => {
-    ApiManager.get("events", props.eventId).then(userEvent => {
-      setEditedEvent(userEvent);
-      setOgPost(userEvent);
-      setImage({eventImage: userEvent.eventImage})
-      
-    });
-  };
   const handleDelete = () => {
     ApiManager.delete("events", props.eventId).then(() =>
       props.history.push("/events")
     );
   };
   useEffect(() => {
-    getOneEvent();
-  }, []);
+    ApiManager.get("events", props.eventId).then(userEvent => {
+        setEditedEvent(userEvent);
+        setOgPost(userEvent);
+        setImage({eventImage: userEvent.eventImage})
+        
+      });
+  }, [props.eventId]);
   const postNewEvent = e => {
     e.preventDefault();
     if (
@@ -54,7 +51,25 @@ const EditEventForm = props => {
       editedEvent.location === ""
     ) {
       window.alert("please fill out all the required fields");
-    } else if (
+    } else if (editedEvent.image=== ogPost.eventImage && image.eventImage!==ogPost.eventImage){
+        setIsLoading(true);
+      const editedEventObj = {
+        id: props.eventId,
+        name: editedEvent.name,
+        userId: activeUser.id,
+        description: editedEvent.description,
+        date: editedEvent.date,
+        streetAddress: editedEvent.streetAddress,
+        city: editedEvent.city,
+        location: editedEvent.location,
+        state: editedEvent.state,
+        zipcode: editedEvent.zipcode,
+        eventImage: image.eventImage
+      };
+      ApiManager.updatePut("events", editedEventObj).then(() =>
+        props.history.push("/events")
+      );
+    }else if (
       editedEvent.eventImage !== ogPost.eventImage &&
       image.eventImage !==
         ogPost.eventImage
@@ -103,6 +118,23 @@ const EditEventForm = props => {
       ApiManager.updatePut("events", editedEventObj).then(() =>
         props.history.push("/events")
       );
+    } else if (editedEvent.eventImage===ogPost.eventImage){
+        const editedEventObj = {
+            id: props.eventId,
+            name: editedEvent.name,
+            userId: activeUser.id,
+            description: editedEvent.description,
+            date: editedEvent.date,
+            streetAddress: editedEvent.streetAddress,
+            city: editedEvent.city,
+            location: editedEvent.location,
+            state: editedEvent.state,
+            zipcode: editedEvent.zipcode,
+            eventImage: editedEvent.eventImage
+          };
+          ApiManager.updatePut("events", editedEventObj).then(() =>
+            props.history.push("/events")
+          );
     }
   };
   const uploadImage = async e => {
@@ -126,6 +158,7 @@ const EditEventForm = props => {
   return (
     <>
       <div className="form-container">
+
         <div className="details-icon-container">
           <i
             className="big arrow circle left icon"
@@ -146,7 +179,9 @@ const EditEventForm = props => {
             onClick={handleDelete}
           ></i>
         </div>
-        <form className="bigger-form">
+        <h1>Edit Event</h1>     
+        <form className="bigger-form">         
+        
           <fieldset className="event-form">
             <label htmlFor="name">Title (req): </label>
             <input
@@ -266,14 +301,13 @@ const EditEventForm = props => {
               onChange={handleFieldChange}
             />
           </fieldset>
-          <fieldset className="event-form">
+          <fieldset className="event-form cloudinary-img">
             <label htmlFor="eventImage">Please upload or find an image</label>
             <input
               name="file"
               id="eventImage"
               type="file"
-              class="file-upload"
-              placeholder="Upload an Image"
+              className="file-upload"
               data-cloudinary-field="image_id"
               onChange={uploadImage}
               data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"
@@ -282,7 +316,8 @@ const EditEventForm = props => {
             <input
               id="eventImage"
               type="text"
-              value={editedEvent.eventImage}
+            //   value={editedEvent.eventImage}
+            placeholder="url..."
               onChange={handleFieldChange}
             />
           </fieldset>
@@ -292,13 +327,13 @@ const EditEventForm = props => {
             <h3> Loading...</h3>
           ) : (
               editedEvent.eventImage!== ogPost.eventImage ? (
-                <img src={editedEvent.eventImage} style={{width: '300px'}} />
+                <img src={editedEvent.eventImage} style={{width: '300px'}} alt="upload-photos"/>
               ) :
               image.eventImage ?(
-                <img src={image.eventImage} style={{width: '300px'}} />
+                <img src={image.eventImage} style={{width: '300px'}}alt="upload-photos" />
               ) : (
             <>
-              <img src={editedEvent.eventImage} style={{width: '300px'}} />
+              <img src={editedEvent.eventImage} style={{width: '300px'}} alt="upload-photos"/>
                 
             </>)
           )}

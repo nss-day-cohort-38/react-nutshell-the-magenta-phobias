@@ -13,8 +13,16 @@ export default {
   getLogin(component, email, password) {
     return fetch(`${remoteURL}/${component}?email=${email}&password=${password}`).then(result => result.json());
   },
+  checkEmail(component, email){
+    return fetch(`${remoteURL}/${component}?email=${email}`).then(r=>r.json())
+  },
   getAllWithUserId(component, userId) {
     return fetch(`${remoteURL}/${component}?userId=${userId}`).then(result =>
+      result.json()
+    );
+  },
+  getAllWithUserIdExpand(component, userId, expandItem) {
+    return fetch(`${remoteURL}/${component}?userId=${userId}&_expand=${expandItem}`).then(result =>
       result.json()
     );
   },

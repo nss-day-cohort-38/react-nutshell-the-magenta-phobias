@@ -80,10 +80,11 @@ const MessageForm = props => {
       instead of just clicking the send button
       */}
       <div className="message-container, darker, chat-input-container">
-        <form onSubmit={handleSubmit}>
-          <fieldset>
-            <div className="input-inner-container">
+        <form className="chat-form" onSubmit={handleSubmit}>
+          <fieldset className="chat-fieldset">
+            <div className="chat-input-inner-container">
               <input
+                className="chat-input"
                 name="message"
                 type="message"
                 required
@@ -91,7 +92,7 @@ const MessageForm = props => {
                 id="message"
                 placeholder="Chat message"
               />
-              <button className="send-button">
+              <button className="chat-send-button" data-tooltip="Send message">
                 <i className="paper plane outline icon"
                   type="submit"
                   disabled={isLoading}

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import ApiManager from "../../modules/ApiManager";
 import "./News.css";
 
+const activeUser = JSON.parse(sessionStorage.getItem('credentials'));
+
 const NewsForm = (props) => {
     const [news, setNews] = useState({ title: "", synopsis: "", userId: "", url: "", timestamp: "" });
     const [isLoading, setIsLoading] = useState(false);
@@ -22,7 +24,7 @@ const NewsForm = (props) => {
         const newNews = {
             title: news.title,
             synopsis: news.synopsis,
-            userId: 1,
+            userId: activeUser.id,
             url: news.url,
             timestamp: dateTime
         };
@@ -38,52 +40,55 @@ const NewsForm = (props) => {
 
     return (
         <>
+            <div className="icon-container">
+                <i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/news')}></i>
+            </div>
             <form>
-            <fieldset className="newsEditForm">
+                <fieldset className="newsEditForm">
                     <div className="formgrid">
                         <div>
                             <label htmlFor="title">News Article Title: </label>
                             <p>
-                            <textarea
-                                type="text"
-                                rows="2"
-                                cols="40"
-                                required
-                                className="form-control"
-                                onChange={handleFieldChange}
-                                id="title"
-                                value={news.title}
-                            />
+                                <textarea
+                                    type="text"
+                                    rows="2"
+                                    cols="40"
+                                    required
+                                    className="form-control"
+                                    onChange={handleFieldChange}
+                                    id="title"
+                                    value={news.title}
+                                />
                             </p>
                         </div>
                         <div>
                             <label htmlFor="synopsis">Synopsis: </label>
                             <p>
-                            <textarea
-                                type="text"
-                                rows="6"
-                                cols="50"
-                                required
-                                className="form-control"
-                                onChange={handleFieldChange}
-                                id="synopsis"
-                                value={news.synopsis}
-                            />
+                                <textarea
+                                    type="text"
+                                    rows="6"
+                                    cols="50"
+                                    required
+                                    className="form-control"
+                                    onChange={handleFieldChange}
+                                    id="synopsis"
+                                    value={news.synopsis}
+                                />
                             </p>
                         </div>
                         <div>
                             <label htmlFor="url">URL: </label>
                             <p>
-                            <textarea
-                                type="text"
-                                rows="1"
-                                cols="60"
-                                required
-                                className="form-control"
-                                onChange={handleFieldChange}
-                                id="url"
-                                value={news.url}
-                            />
+                                <textarea
+                                    type="text"
+                                    rows="1"
+                                    cols="60"
+                                    required
+                                    className="form-control"
+                                    onChange={handleFieldChange}
+                                    id="url"
+                                    value={news.url}
+                                />
                             </p>
                         </div>
                     </div>
