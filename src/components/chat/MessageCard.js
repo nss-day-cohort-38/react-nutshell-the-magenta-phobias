@@ -1,5 +1,6 @@
 import React from "react";
 import "./Messages.css"
+import ApiManager from "../../modules/ApiManager";
 
 
 /* TODO: Follow Button
@@ -36,18 +37,19 @@ const MessageCard = props => {
             <div className="chat-edit-outline-icon">
               <i className="edit outline icon"
                 onClick={() => props.setMessageToEdit(props.message)}
-              >
-              </i>
+              />
             </div>
           )
           : ( null )
         }
         {
-          props.amFollowing 
-          ? (
-            <i class="user plus icon"/>
+          props.amFollowing || activeUser.id === userId
+          ? ""
+          : (
+            <i class="user plus icon"
+              onClick={() => props.handleFollow(userId)}
+            />
             ) 
-          : ""
         }
         <span className="message-time-right">{timestamp}</span>
       </div>

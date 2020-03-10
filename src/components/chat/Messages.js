@@ -36,6 +36,15 @@ const MessageList = props => {
     }
   }
 
+  const handleFollow = (userIdToFollow) => {
+    const followToSave = {
+      userId: activeUser.id,
+      followedId: userIdToFollow
+    }
+    ApiManager.post("followings", followToSave)
+      .then(getMessages);
+  }
+
   useEffect(() => {
     getMessages();
     getFollowingList();
@@ -59,6 +68,7 @@ const MessageList = props => {
                   key={message.id} 
                   message={message}
                   setMessageToEdit={setMessageToEdit}
+                  handleFollow={handleFollow}
                   amFollowing={amFollowing(message.user)}
                 />
               )}
