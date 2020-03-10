@@ -18,13 +18,14 @@ Steps to get started:
 
 ## Overview
 
-In this app, users can engage with several different components:
-* News (Landon): to add, edit, and delete news articles
+In this site, users can engage with several different apps:
+* Home (Kurt): displays the events and news of users you follow
+* News (Landon): to add, edit, and delete news articles; view news posted by users you have followed
 * Chat (Keith): to post and edit messages; follow users
 * Events (Kurt): to add, edit, and delete events
-* Followings (Keith): to add and delete users to follow
+* Followings (Keith): to follow and unfollow users
 * Tasks (Matt): to add, edit, delete and 'mark complete' user tasks
-* Create User (Kurt): to create a new account and login
+* Create User (Kurt): to create a new account
 * Login (Matt): to login to an existing account
 
 ## Technologies Used
