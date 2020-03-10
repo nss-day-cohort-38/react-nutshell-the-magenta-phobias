@@ -83,6 +83,10 @@ https://stackoverflow.com/a/44051405 */
   font-size: 16px;
 }
 
+.chat-send-button:hover {
+  opacity: 0.8;
+}
+
 .chat-input-inner-container {
   width: 100%;
   display: flex;
