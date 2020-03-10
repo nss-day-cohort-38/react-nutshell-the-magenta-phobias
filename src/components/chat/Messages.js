@@ -7,14 +7,40 @@ import './Messages.css'
 const MessageList = props => {
   const [messages, setMessages] = useState([]);
   const [messageToEdit, setMessageToEdit] = useState({text: "", userId: 0, timestamp: ""});
+  const [followingList, setFollowingList] = useState([]);
+  const activeUser = JSON.parse(sessionStorage.getItem('credentials'));
 
   const getMessages = () => {
     return ApiManager.getAllWithExpand("messages", "user")
       .then(setMessages);
   }
 
+  const getFollowingList = () => {
+    // Gets the activeUser's followings and puts them in state
+    ApiManager.getAllWithUserId("followings", parseInt(activeUser.id))
+      .then(setFollowingList)
+  }
+
+  const amFollowing = (user) => {
+    if (followingList.find(({followedId}) => followedId === user.id)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  const handleFollow = (userIdToFollow) => {
+    const followToSave = {
+      userId: activeUser.id,
+      followedId: userIdToFollow
+    }
+    ApiManager.post("followings", followToSave)
+      .then(getFollowingList);
+  }
+
   useEffect(() => {
     getMessages();
+    getFollowingList();
   }, [])
 
   return (
@@ -35,6 +61,8 @@ const MessageList = props => {
                   key={message.id} 
                   message={message}
                   setMessageToEdit={setMessageToEdit}
+                  handleFollow={handleFollow}
+                  amFollowing={amFollowing(message.user)}
                 />
               )}
             </div>

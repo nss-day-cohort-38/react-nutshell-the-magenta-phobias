@@ -92,7 +92,7 @@ const MessageForm = props => {
                 id="message"
                 placeholder="Chat message"
               />
-              <button className="chat-send-button">
+              <button className="chat-send-button" data-tooltip="Send message">
                 <i className="paper plane outline icon"
                   type="submit"
                   disabled={isLoading}
