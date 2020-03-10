@@ -43,3 +43,8 @@
     opacity: 0.8;
     cursor: pointer;
 }
+
+.newsSectionHeader {
+    margin-left: 50px;
+    margin-bottom: -20px;
+}

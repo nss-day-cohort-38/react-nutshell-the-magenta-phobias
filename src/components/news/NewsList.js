@@ -24,6 +24,7 @@ const NewsList = (props) => {
                     <i className="big plus square outline icon" id="plusIcon" onClick={() => props.history.push('/news/new')}></i>
                 </div>
                 <div className="container-cards userNewsArticles">
+                    <h1 className="newsSectionHeader">YOUR NEWS</h1>
                     {news.sort(function (a, b) {
                         return new Date(b.timestamp) - new Date(a.timestamp)
                     }).map(newsItem =>
@@ -35,6 +36,7 @@ const NewsList = (props) => {
                         />)}
                 </div>
                 <div className="container-cards followNewsArticles">
+                <h1 className="newsSectionHeader">NEWS FROM PEOPLE YOU FOLLOW</h1>
                     <NewsFollowList/>
                 </div>
             </section>
