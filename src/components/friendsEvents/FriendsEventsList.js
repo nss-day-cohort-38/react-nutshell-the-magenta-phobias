@@ -8,18 +8,18 @@ const FriendsEventsList = props => {
     // const [friends, setFriends] = useState([]);
     const user = JSON.parse(sessionStorage.getItem('credentials'))
 
-    const settingEvents =  () => {
-        const arr= []
-        return ApiManager.getAllWithUserId('followings', user.id).then(friends=> {
-            const friendArray = friends
-            friendArray.forEach(friend=> {
-                ApiManager.eventExpandUser('events', friend.followedId).then(events=> {
+    // const settingEvents =  () => {
+    //     const arr= []
+    //     return ApiManager.getAllWithUserId('followings', user.id).then(friends=> {
+    //         const friendArray = friends
+    //         friendArray.forEach(friend=> {
+    //             ApiManager.eventExpandUser('events', friend.followedId).then(events=> {
                     
-                    arr.push(events.flat())
-                    setFriendsEvents(arr.flat())
-                })
-            })
-        })
+    //                 arr.push(events.flat())
+    //                 setFriendsEvents(arr.flat())
+    //             })
+    //         })
+    //     })
 
         // const friendsRes = await fetch(`http://localhost:8200/followings?userId=${user.id}`)
         // const friends = await friendsRes.json();
@@ -40,12 +40,22 @@ const FriendsEventsList = props => {
         // })
 
   
-    }
+    // }
     useEffect( ()=> {
-            settingEvents()
+        const arr= []
+         ApiManager.getAllWithUserId('followings', user.id).then(friends=> {
+            const friendArray = friends
+            friendArray.forEach(friend=> {
+                ApiManager.eventExpandUser('events', friend.followedId).then(events=> {
+                    
+                    arr.push(events.flat())
+                    setFriendsEvents(arr.flat())
+                })
+            })
+        })
 
-    }, [])
-    console.log(friendsEvents)
+    }, [user.id])
+
     return (
         <>
         <div className="friends-event-cards">

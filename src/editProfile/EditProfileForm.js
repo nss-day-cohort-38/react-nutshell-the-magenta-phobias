@@ -53,7 +53,7 @@ const EditProfileForm = props => {
     useEffect(()=> {
         setImage({picUrl: user.picUrl}) 
         setEditedUser(user)
-    }, [])
+    }, [user])
 
     const uploadImage = async e => {
         const files = e.target.files;

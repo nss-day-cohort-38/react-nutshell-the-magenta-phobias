@@ -26,12 +26,16 @@
     transition: 0.4s ease;
 }
 .friend-event-card-content:hover{
-cursor: pointer;
+
 flex: 0 0 auto;
-border: 1px solid rgba(104, 103, 103, 0.26);
+border: 1px solid rgba(104, 103, 103, 0);
 margin: 2%;
 padding: 6%;  
 max-width: 240px;
 transition: 0.4s ease;
-background-color:rgb(150, 150, 150) ;
+background-color:rgba(150, 150, 150, 0.329) ;
+color: white ;
+}
+.friends-event-cards{
+    max-width: 700px;
 }
