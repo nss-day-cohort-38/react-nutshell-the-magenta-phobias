@@ -67,8 +67,11 @@
 /*           Buttons           */
 
 .trash {
-  float: right;
   cursor: pointer;
+}
+
+.trash-container {
+  float: right;
 }
 
 .follow-send-button {

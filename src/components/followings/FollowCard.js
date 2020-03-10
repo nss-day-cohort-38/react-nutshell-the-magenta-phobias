@@ -11,13 +11,15 @@ const FollowCard = props => {
     <div className="follow-card">
       <div className="follow-card-content, follow-container">
         <img src={picUrl} alt="Avatar" />
-        <p><i class="user outline icon"/> {username}</p>
-        <p><i class="envelope outline icon"/> {email}</p>
-        <i 
-          className="trash" 
-          class="trash alternate icon"
-          onClick={props.handleDelete} 
-        />
+        <p><i className="user outline icon"/> {username}</p>
+        <p><i className="envelope outline icon"/> {email}</p>
+        <div className="trash-container" data-tooltip="Unfollow user">
+          <i 
+            className="trash" 
+            class="trash alternate icon"
+            onClick={props.handleDelete} 
+          />
+        </div>
       </div>
     </div>
   )
