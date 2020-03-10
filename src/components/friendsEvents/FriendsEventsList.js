@@ -56,18 +56,24 @@ const FriendsEventsList = props => {
 
     }, [user.id])
 
+    if(friendsEvents.length>0){
     return (
         <>
         <div className="friends-event-cards">
-            <h1>Friends Events</h1>
+            <h1>Events From People You Follow</h1>
             <div className="friends-events-card-container">
-                {friendsEvents.map(friendEvent=> 
-                    <FriendsEventCard key={friendEvent.id} friendEvent={friendEvent}/>
-                )}
+                { friendsEvents.map(friendEvent=> 
+                    <FriendsEventCard key={friendEvent.id} friendEvent={friendEvent}/>)
+              
+            }
             </div>
         </div>
         </>
-    )
+    )} else {
+        return(
+            <div></div>
+        )
+    }
 }
 export default FriendsEventsList
 
