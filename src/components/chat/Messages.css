@@ -91,7 +91,7 @@ button {
   justify-content: space-between;
 }
 
-.edit-outline-icon {
+.icon-container {
   cursor: pointer;
   display: inline-block;
 }
