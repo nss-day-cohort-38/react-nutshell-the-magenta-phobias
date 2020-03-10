@@ -21,7 +21,7 @@ const FollowerForm = props => {
 
   // Find to get a user from state that matches the input username
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
-  const matchUser = (input) => {
+  const findMatchingUsername = (input) => {
     if (users.length > 0) {
       return users.find( ({username}) => username.toLowerCase() === input.toLowerCase())
     } else {
@@ -29,17 +29,28 @@ const FollowerForm = props => {
     }
   }
 
+  const alreadyFollowing = (user) => {
+    if (props.followingList.find(({followedId}) => followedId === user.id)) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   const constructFollow = () => {
     // Search for a username that matches their input:
-    const matchedUser = matchUser(follow.follow);
+    const matchingUser = findMatchingUsername(follow.follow);
     // Check if they've entered a valid user:
-    if (follow === "" || matchedUser === undefined) {
+    if (follow === "" || matchingUser === undefined) {
       window.alert("Please input a valid username");
+    // Check if they're already following them:
+    } else if (alreadyFollowing(matchingUser)) {
+      window.alert("You're already friends with that user")
     } else {
       setIsLoading(true);
       const followToSave = {
         userId: activeUser.id,
-        followedId: matchedUser.id
+        followedId: matchingUser.id
       }
       return followToSave;
     }

@@ -28,7 +28,7 @@ const FollowingList = props => {
 
   // Find to get a user from state that matches the followId
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
-  const matchUser = (followedId) => {
+  const findExistingFollowing = (followedId) => {
     if (users.length > 0) {
       return users.find( ({id}) => id === followedId)
     } else {
@@ -46,6 +46,7 @@ const FollowingList = props => {
           <div className="container-form">
             <FollowerForm
               getFollowings={getFollowings}
+              followingList={followingList}
               {...props}
             />
           </div>
@@ -53,12 +54,11 @@ const FollowingList = props => {
             {followingList.map(follow => 
               <FollowCard 
                 key={follow.id}
-                user={matchUser(follow.followedId)}
+                user={findExistingFollowing(follow.followedId)}
                 handleDelete={() => {
                   ApiManager.delete("followings", follow.id)
                     .then(getFollowings);
                 }}
-                getFollowings={getFollowings}
                 {...props}
               />
             )}
