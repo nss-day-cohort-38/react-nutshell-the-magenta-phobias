@@ -17,7 +17,7 @@ const MessageList = props => {
 
   const getFollowingList = () => {
     // Gets the activeUser's followings and puts them in state
-    return ApiManager.getAllWithUserId("followings", parseInt(activeUser.id))
+    ApiManager.getAllWithUserId("followings", parseInt(activeUser.id))
       .then(setFollowingList)
   }
 
