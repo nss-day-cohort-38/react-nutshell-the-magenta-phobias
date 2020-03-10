@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+import FriendsEventsList from "../friendsEvents/FriendsEventsList";
 
 const Home = props => {
     if(props.hasUser){
@@ -8,11 +9,9 @@ const Home = props => {
       <div className="home-container">
         <div className="home-picture">
           <picture>
-            <img
-              src="https://images.unsplash.com/34/BA1yLjNnQCI1yisIZGEi_2013-07-16_1922_IMG_9873.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-              alt="home"
-              className="home-photo"
-            />
+           {
+               <FriendsEventsList {...props} />
+           }
           </picture>
         </div>
       </div>
