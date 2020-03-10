@@ -1,17 +1,5 @@
 import React from "react";
 import "./Messages.css"
-import ApiManager from "../../modules/ApiManager";
-
-
-/* TODO: Follow Button
-// Does not display for you or people you're already friends with
-<i class="user plus icon"></i>
-
-// Posts to the followings api
-// userId: activeUser.id
-// followedId: message.user.id
-*/
-
 
 const MessageCard = props => {
   const username = props.message.user.username;
@@ -42,13 +30,22 @@ const MessageCard = props => {
           )
           : ( null )
         }
+        {/* 
+          If a user is already following,
+          or the user is the active user,
+          display nothing.
+
+          Otherwise, display the add friend button.
+        */}
         {
           props.amFollowing || activeUser.id === userId
           ? ""
           : (
-            <i class="user plus icon"
-              onClick={() => props.handleFollow(userId)}
-            />
+            <div className="chat-user-plus-icon">
+              <i className="user plus icon" 
+                onClick={() => props.handleFollow(userId)}
+              />
+            </div>
             ) 
         }
         <span className="message-time-right">{timestamp}</span>
