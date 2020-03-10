@@ -20,6 +20,7 @@ const NewsFollowCard = (props) => {
                 </span></h3>
                 <p>Created by: {props.news.user.username}</p>
                 <p>Synopsis: {props.news.synopsis}</p>
+                <p>URL: <a href={props.news.url}>{props.news.url}</a></p>
             </div>
         </div>
     );
