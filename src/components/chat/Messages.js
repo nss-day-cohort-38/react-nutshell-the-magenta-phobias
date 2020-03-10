@@ -19,13 +19,13 @@ const MessageList = props => {
 
   return (
     <>
-      <div className="wrapper">
-        <div className="FixedHeightContainer">
-          <div id="headerContainer">
+      <div className="chat-wrapper">
+        <div className="chat-fixed-height-container">
+          <div id="chat-headerContainer">
             <h1>Chat</h1>
           </div>
-          <div className="ScrollToBottom">
-            <div className="container-cards">
+          <div className="chat-ScrollToBottom">
+            <div className="message-container-cards">
               {/* Sorting by date via: 
               https://stackoverflow.com/questions/10123953/how-to-sort-an-array-by-a-date-property*/}
               {messages.sort(function(a,b){

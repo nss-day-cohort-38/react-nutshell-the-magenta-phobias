@@ -33,7 +33,7 @@ const MessageCard = props => {
         */}
         { parseInt(activeUser.id) === userId 
           ? (
-            <div className="edit-outline-icon">
+            <div className="chat-edit-outline-icon">
               <i className="edit outline icon"
                 onClick={() => props.setMessageToEdit(props.message)}
               >
@@ -42,7 +42,7 @@ const MessageCard = props => {
           )
           : ( null )
         }
-        <span className="time-right">{timestamp}</span>
+        <span className="message-time-right">{timestamp}</span>
       </div>
     </div>
   )

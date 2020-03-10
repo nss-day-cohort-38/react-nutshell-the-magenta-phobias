@@ -8,8 +8,8 @@ const FollowCard = props => {
   const picUrl = props.user.picUrl;
 
   return (
-    <div className="card">
-      <div className="card-content, follow-container">
+    <div className="follow-card">
+      <div className="follow-card-content, follow-container">
         <img src={picUrl} alt="Avatar" />
         <p><i class="user outline icon"/> {username}</p>
         <p><i class="envelope outline icon"/> {email}</p>

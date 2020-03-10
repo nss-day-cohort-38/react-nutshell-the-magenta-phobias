@@ -1,16 +1,16 @@
 /*            FOLLOWING ITSELF            */
 
-.background {
+.follow-background {
   display: flex;
   justify-content: center;
 }
 
-.wrapper {
+.follow-wrapper {
   display: block;
   width: 70%;
 }
 
-#headerContainer {
+#follow-headerContainer {
   display:flex;
   justify-content: center;
   border: 2px solid #dedede;
@@ -20,20 +20,14 @@
   width: 100%;
 }
 
-.container-cards {
+.follow-container-cards {
   display: flex; 
   flex-direction:row;
   flex-wrap: wrap;
 }
 
-.card {
+.follow-card {
   width: 20rem;
-}
-
-.FixedHeightContainer {
-  height: 100px;
-  width:350px; 
-  padding:3px; 
 }
 
 /* Borrowed a bit from this CSS chat tutorial */
@@ -54,7 +48,7 @@
   border-radius: 50%;
 }
 
-fieldset {
+.follow-container form fieldset {
   background-color: none;
   border-width: 0;
 }
@@ -77,7 +71,7 @@ fieldset {
   cursor: pointer;
 }
 
-button {
+.follow-input-inner-container button {
   display: inline-block;
   cursor: pointer;
   background-color: #ddd;
@@ -90,7 +84,7 @@ button {
   font-size: 16px;
 }
 
-.input-inner-container {
+.follow-input-inner-container {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -101,13 +95,13 @@ button {
 
 /*          FRIEND FORM INPUT       */
 
-form {
+.follow-container form {
   width: 100%;
   border-radius: 0;
   background-color: none;
 }
 
-input {
+.follow-container input {
   width: 75%;
   padding: 12px 20px;
   margin: 8px 0;
