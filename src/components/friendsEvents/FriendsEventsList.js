@@ -1,7 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import ApiManager from "../../modules/ApiManager";
 import FriendsEventCard from './FriendsEventCard';
-
+import "./FriendsEvents.css";
 
 const FriendsEventsList = props => {
     const [friendsEvents, setFriendsEvents] = useState([])
@@ -9,13 +9,14 @@ const FriendsEventsList = props => {
     const user = JSON.parse(sessionStorage.getItem('credentials'))
 
     const settingEvents =  () => {
+        const arr= []
         return ApiManager.getAllWithUserId('followings', user.id).then(friends=> {
             const friendArray = friends
-            const arr= []
             friendArray.forEach(friend=> {
                 ApiManager.eventExpandUser('events', friend.followedId).then(events=> {
-                    events.forEach(event=> arr.push(event))
-                    setFriendsEvents(arr)
+                    
+                    arr.push(events.flat())
+                    setFriendsEvents(arr.flat())
                 })
             })
         })
@@ -48,7 +49,7 @@ const FriendsEventsList = props => {
     return (
         <>
         <div className="friends-event-cards">
-            <h4>Friends Events</h4>
+            <h1>Friends Events</h1>
             <div className="friends-events-card-container">
                 {friendsEvents.map(friendEvent=> 
                     <FriendsEventCard key={friendEvent.id} friendEvent={friendEvent}/>
