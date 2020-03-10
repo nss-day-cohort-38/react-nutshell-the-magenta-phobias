@@ -14,7 +14,6 @@ const EditProfileForm = props => {
         
         const stateToChange = {...editedUser}
         stateToChange[e.target.id] = e.target.value
-        console.log(stateToChange)
         setEditedUser(stateToChange)
     }
 
