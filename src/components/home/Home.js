@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import "./Home.css";
 
 const Home = props => {
@@ -10,7 +10,7 @@ const Home = props => {
           <picture>
             <img
               src="https://images.unsplash.com/34/BA1yLjNnQCI1yisIZGEi_2013-07-16_1922_IMG_9873.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-              alt="home-photo"
+              alt="home"
               className="home-photo"
             />
           </picture>
@@ -26,7 +26,7 @@ const Home = props => {
           <picture>
             <img
               src="https://images.unsplash.com/34/BA1yLjNnQCI1yisIZGEi_2013-07-16_1922_IMG_9873.jpg?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80"
-              alt="home-photo"
+              alt="home"
               className="home-photo"
             />
           </picture>
