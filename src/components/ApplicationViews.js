@@ -19,6 +19,7 @@ import AddNewTaskForm from "./tasks/AddNewTaskForm";
 import FollowingList from "./followings/FollowingList";
 import PasswordCheck from "../editProfile/PasswordCheck";
 import EditProfileForm from "../editProfile/EditProfileForm";
+import FriendsEventDetails from "./friendsEvents/FriendsEventDetails";
 
 const ApplicationViews = props => {
   const [isComplete, setIsComplete] = useState(false);
@@ -151,6 +152,22 @@ const ApplicationViews = props => {
         }}
       />
       <Route path="/chat" render={props => <MessageList {...props} />} />
+      <Route
+        exact
+        path="/friendsevents/:eventId(\d+)"
+        render={props => {
+          if (hasUser) {
+            return (
+              <FriendsEventDetails
+                eventId={parseInt(props.match.params.eventId)}
+                {...props}
+              />
+            );
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
+      />
       <Route
         exact
         path="/tasks"

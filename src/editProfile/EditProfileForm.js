@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import ApiManager from "../modules/ApiManager"
 import keys from "../keys/keys";
+import "./EditProfile.css";
 
 const EditProfileForm = props => {
     const [editedUser, setEditedUser] = useState({})
@@ -11,10 +12,8 @@ const EditProfileForm = props => {
 
 
     const handleFieldChange = e => {
-        
         const stateToChange = {...editedUser}
         stateToChange[e.target.id] = e.target.value
-        console.log(stateToChange)
         setEditedUser(stateToChange)
     }
 
