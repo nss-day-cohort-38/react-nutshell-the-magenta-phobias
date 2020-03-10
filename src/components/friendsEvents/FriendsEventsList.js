@@ -9,7 +9,7 @@ const FriendsEventsList = props => {
     const user = JSON.parse(sessionStorage.getItem('credentials'))
 
     const settingEvents =  () => {
-        ApiManager.getAllWithUserId('followings', user.id).then(friends=> {
+        return ApiManager.getAllWithUserId('followings', user.id).then(friends=> {
             const friendArray = friends
             const arr= []
             friendArray.forEach(friend=> {
