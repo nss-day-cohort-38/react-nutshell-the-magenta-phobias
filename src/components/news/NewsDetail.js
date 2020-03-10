@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import APIManager from "../../modules/ApiManager";
+import ApiManager from "../../modules/ApiManager";
 import "./News.css";
+import { confirmAlert } from 'react-confirm-alert';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 const firstLetterCase = (str) => {
     let capsTitle = "";
@@ -8,7 +10,7 @@ const firstLetterCase = (str) => {
         capsTitle += str.split(" ")[i].charAt(0).toUpperCase() + str.split(" ")[i].slice(1) + " ";
     }
     return capsTitle;
- }
+}
 
 const NewsDetail = props => {
     const [news, setNews] = useState({ title: "", synopsis: "", userId: "", url: "", timestamp: "" });
@@ -16,13 +18,26 @@ const NewsDetail = props => {
 
     const handleDelete = () => {
         setIsLoading(true);
-        APIManager.delete("articles", props.newsId).then(() =>
-            props.history.push("/news")
-        );
+        confirmAlert({
+            title: 'Confirm to delete',
+            message: 'Are you sure you want to delete this?',
+            buttons: [
+                {
+                    label: 'Yes',
+                    onClick: () => ApiManager.delete("articles", props.newsId).then(() =>
+                        props.history.push("/news")
+                    )
+                },
+                {
+                    label: 'No',
+                    onClick: () => ""
+                }
+            ]
+        });
     };
 
     useEffect(() => {
-        APIManager.get("articles", props.newsId).then(news => {
+        ApiManager.get("articles", props.newsId).then(news => {
             setNews({
                 title: news.title,
                 synopsis: news.synopsis,
@@ -37,28 +52,29 @@ const NewsDetail = props => {
 
     if (news.title !== undefined && news.synopsis !== undefined && news.url !== undefined) {
         return (
-            <div className="card">
-                <div className="card-content">
+            <div className="newsCard">
+                <div className="icon-container">
+                    <i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/news')}></i>
+                    <i className="big plus square outline icon" id="plusIcon" onClick={() => props.history.push('/news/new')}></i>
+                </div>
+                <div className="newsCardContent">
                     <h3>
                         <span style={{ color: "darkslategrey" }}>{firstLetterCase(news.title)}</span>
                     </h3>
                     <p>{news.timestamp}</p>
                     <p>{news.synopsis}</p>
                     <p><a href={news.url} target="_new">{news.url}</a></p>
-                    <button type="button"
-                        onClick={() => props.history.push(`/news/${news.id}/edit`)}>
-                        Edit
-                    </button>
-                    <button type="button" disabled={isLoading} onClick={handleDelete}>
-                        Delete News Article
-                    </button>
+                    <div align="right">
+                        <i className="big edit icon" id="newsDetailsEditIcon" onClick={() => props.history.push(`/news/${news.id}/edit`)}></i>
+                        <i id="newsDetailsTrashIcon" className="big trash alternate icon" disabled={isLoading} onClick={() => handleDelete()}></i>
+                    </div>
                 </div>
-            </div>
+            </div >
         );
     } else {
         return (
-            <div className="card">
-                <div className="card-content">
+            <div className="newsCard">
+                <div className="newsCardContent">
                     <center><h3>NEWS ARTICLE NOT FOUND</h3></center>
                 </div>
             </div>
