@@ -4,13 +4,16 @@
     align-items: center;
 }
 .bigger-form{
-    margin-top: 10%;
+
     width:70%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .event-form input {
     margin: 5%;
+    width: 100%;
+    
 }
 .event-form{
     display: flex;
@@ -18,4 +21,13 @@
     align-items: center;
     padding: 5%;
     margin: 2%;
+    border: 1px solid rgba(146, 146, 146, 0.13) !important;
+    background-color: rgba(204, 204, 204, 0.144);
+}
+
+@media only screen and (max-width: 800px) {
+    .bigger-form{
+        display: flex;
+        flex-direction: column;
+    }
 }
