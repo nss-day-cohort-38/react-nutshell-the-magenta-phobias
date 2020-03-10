@@ -70,5 +70,8 @@ export default {
       },
       body: JSON.stringify(editedObject)
     }).then(data => data.json());
+  },
+  eventExpandUser(component, id){
+    return fetch(`${remoteURL}/${component}?userId=${id}&_expand=user`).then(r=>r.json())
   }
 };

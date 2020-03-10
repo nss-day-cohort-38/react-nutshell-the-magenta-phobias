@@ -5,31 +5,40 @@ import FriendsEventCard from "./FriendsEventCard";
 
 const FriendsEventsList = props => {
     const [friendsEvents, setFriendsEvents] = useState([])
-    const [friends, setFriends] = useState([]);
+    // const [friends, setFriends] = useState([]);
     const user = JSON.parse(sessionStorage.getItem('credentials'))
     const masterEvents =[]
 
-    const settingEvents = async () => {
-        ApiManager.getAllWithUserId('followings', user.id).then( async friends=> {
-            Promise.all(()=> {
-
-     
-   
-                friends.forEach(async friend=> {
-                    const events = await Promise.all(() => {
-                        const resEvent = fetch(`http://localhost:8200/events?userId=${friend.followedId}`)
-                        return resEvent.jsonI()
-                    }   
-                    ).then(()=> masterEvents.push(events))
+    const settingEvents =  () => {
+        ApiManager.getAllWithUserId('followings', user.id).then(friends=> {
+            const friendArray = friends
+            const arr= []
+            friendArray.forEach(friend=> {
+                ApiManager.eventExpandUser('events', friend.followedId).then(events=> {
+                    events.forEach(event=> arr.push(event))
+                    setFriendsEvents(arr)
                 })
-            }).then(setFriendsEvents(masterEvents))
-           
-        }
-            
-        )
-        
-   
- 
+            })
+        })
+
+        // const friendsRes = await fetch(`http://localhost:8200/followings?userId=${user.id}`)
+        // const friends = await friendsRes.json();
+        // const events = await friends.map(async friend=> {
+        //     const event = await fetch(`http://localhost:8200/events?userId=${friend.followedId}`)
+        //     const resEvent = event.json()
+        //     return resEvent;
+        // })
+        // Promise.all(events).then(function(values){
+
+        //     values.forEach(arr=> {
+        //         arr.forEach(event=> {
+        //             const newArr= friendsEvents;
+        //             newArr.push(event)
+        //             console.log(newArr)
+        //             setFriendsEvents(newArr)})
+        //     })
+        // })
+
   
     }
     useEffect( ()=> {
@@ -83,4 +92,9 @@ export default FriendsEventsList
 // const eventsTwo = await events.forEach(event=> event.json())
 // console.log(eventsTwo);
 // setFriendsEvents(eventsTwo)
+// }
+// {
+//     friendEventObj.[[PromiseValue]].map(friendEvent=> {
+
+// })
 // }

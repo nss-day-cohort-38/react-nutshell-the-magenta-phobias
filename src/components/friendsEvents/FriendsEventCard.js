@@ -1,6 +1,7 @@
 import React from "react"
 
 const FriendsEventCard = (friendEvent) => {
+    console.log(friendEvent)
     return (
         <div className="friend-card-content">
             <picture>
