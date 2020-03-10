@@ -15,6 +15,12 @@ const firstLetterCase = (str) => {
 
 const NewsCard = (props) => {
     if (props.news.userId === activeUser.id) {
+        const confirmDelete = () => {
+            const result = confirm("Are you sure to delete?");
+            if (result) {
+                ApiManager.delete("articles", props.news.id).then(props.getNews)
+            }
+        }
         return (
             <div className="card">
                 <div className="card-content">
@@ -22,14 +28,11 @@ const NewsCard = (props) => {
                         {firstLetterCase(props.news.title)}
                     </span></h3>
                     <p>Synopsis: {props.news.synopsis}</p>
-                    <Link to={`/news/${props.news.id}`}>
-                        <button>Details</button>
-                    </Link>
-                    <button type="button"
-                        onClick={() => props.history.push(`/news/${props.news.id}/edit`)}>
-                        Edit
-        </button>
-                    <button type="button" onClick={() => ApiManager.delete("articles", props.news.id).then(props.getNews)}>Delete Article</button>
+                    <div align="right">
+                        <i className="big file alternate icon" id="newsFileIcon" onClick={() => props.history.push(`/news/${props.news.id}`)}></i>
+                        <i className="big edit icon" id="newsDetailIcon" onClick={() => props.history.push(`/news/${props.news.id}/edit`)}></i>
+                        <i id="newsTrashIcon" className="big trash alternate icon" onClick={() => confirmDelete()}></i>
+                    </div>
                 </div>
             </div>
         );
