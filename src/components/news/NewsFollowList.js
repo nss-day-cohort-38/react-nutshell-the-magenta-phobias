@@ -1,37 +1,39 @@
 import React, { useState, useEffect } from 'react';
-import NewsCard from './NewsCard';
+import NewsFollowCard from './NewsFollowCard';
 import ApiManager from '../../modules/ApiManager';
 
 const activeUser = JSON.parse(sessionStorage.getItem('credentials'));
 
-const NewsFriendsList = (props) => {
+const NewsFollowList = (props) => {
     const [followNews, setFollowNews] = useState([]);
 
     const getFollows = () => {
+        let followedNews = [];
         return ApiManager.getAllWithUserId("followings", activeUser.id).then(follows => {
-            setFollowNews(follows)
+            for (let i = 0; i < follows.length; i++) {
+                ApiManager.getAllWithUserIdExpand("articles", follows[i].followedId, "user").then(fNews => {
+                    followedNews.push(fNews.flat());
+                    setFollowNews(followedNews.flat());
+                })
+            }
         });
     };
 
     useEffect(() => {
-        getNews();
+        getFollows();
     }, []);
 
     return (
         <div>
             <section className="section-content">
-                <div className="icon-container">
-                    <i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/')}></i>
-                    <i className="big plus square outline icon" id="plusIcon" onClick={() => props.history.push('/news/new')}></i>
-                </div>
                 <div className="container-cards">
                     {followNews.sort(function (a, b) {
                         return new Date(b.timestamp) - new Date(a.timestamp)
                     }).map(newsItem =>
-                        <NewsCard
+                        <NewsFollowCard
                             key={newsItem.id}
                             news={newsItem}
-                            getNews={getNews}
+                            getFollows={getFollows}
                             {...props}
                         />)}
                 </div>
@@ -40,4 +42,4 @@ const NewsFriendsList = (props) => {
         </div>
     );
 };
-export default NewsList
+export default NewsFollowList

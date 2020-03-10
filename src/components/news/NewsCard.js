@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./News.css";
-import { Link } from "react-router-dom";
 import ApiManager from "../../modules/ApiManager";
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -47,7 +46,7 @@ const NewsCard = (props) => {
                     <div align="right">
                         <i className="big file alternate icon" id="newsFileIcon" onClick={() => props.history.push(`/news/${props.news.id}`)}></i>
                         <i className="big edit icon" id="newsDetailIcon" onClick={() => props.history.push(`/news/${props.news.id}/edit`)}></i>
-                        <i id="newsTrashIcon" className="big trash alternate icon" onClick={() => handleDelete()}></i>
+                        <i id="newsTrashIcon" className="big trash alternate icon" disabled={isLoading} onClick={() => handleDelete()}></i>
                     </div>
                 </div>
             </div>

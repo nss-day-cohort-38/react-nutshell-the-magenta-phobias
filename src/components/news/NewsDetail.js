@@ -66,7 +66,7 @@ const NewsDetail = props => {
                     <p><a href={news.url} target="_new">{news.url}</a></p>
                     <div align="right">
                         <i className="big edit icon" id="newsDetailsEditIcon" onClick={() => props.history.push(`/news/${news.id}/edit`)}></i>
-                        <i id="newsDetailsTrashIcon" className="big trash alternate icon" onClick={() => handleDelete()}></i>
+                        <i id="newsDetailsTrashIcon" className="big trash alternate icon" disabled={isLoading} onClick={() => handleDelete()}></i>
                     </div>
                 </div>
             </div >
