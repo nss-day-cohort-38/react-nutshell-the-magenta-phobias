@@ -52,12 +52,12 @@ const NewsDetail = props => {
 
     if (news.title !== undefined && news.synopsis !== undefined && news.url !== undefined) {
         return (
-            <div className="card">
+            <div className="newsCard">
                 <div className="icon-container">
                     <i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/news')}></i>
                     <i className="big plus square outline icon" id="plusIcon" onClick={() => props.history.push('/news/new')}></i>
                 </div>
-                <div className="card-content">
+                <div className="newsCardContent">
                     <h3>
                         <span style={{ color: "darkslategrey" }}>{firstLetterCase(news.title)}</span>
                     </h3>
@@ -73,8 +73,8 @@ const NewsDetail = props => {
         );
     } else {
         return (
-            <div className="card">
-                <div className="card-content">
+            <div className="newsCard">
+                <div className="newsCardContent">
                     <center><h3>NEWS ARTICLE NOT FOUND</h3></center>
                 </div>
             </div>

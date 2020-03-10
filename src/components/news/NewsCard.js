@@ -38,9 +38,9 @@ const NewsCard = (props) => {
             });
         };
         return (
-            <div className="card">
-                <div className="card-content">
-                    <h3><span className="card-articleName">
+            <div className="newsCard">
+                <div className="newsCardContent">
+                    <h3><span className="newsCardArticleTitle">
                         {firstLetterCase(props.news.title)}
                     </span></h3>
                     <p>Synopsis: {props.news.synopsis}</p>
