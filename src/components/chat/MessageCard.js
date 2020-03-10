@@ -1,6 +1,17 @@
 import React from "react";
 import "./Messages.css"
 
+
+/* TODO: Follow Button
+// Does not display for you or people you're already friends with
+<i class="user plus icon"></i>
+
+// Posts to the followings api
+// userId: activeUser.id
+// followedId: message.user.id
+*/
+
+
 const MessageCard = props => {
   const username = props.message.user.username;
   const userId = props.message.userId;

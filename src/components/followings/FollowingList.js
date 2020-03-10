@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ApiManager from '../../modules/ApiManager';
 import FollowCard from './FollowCard'
+import FollowerForm from './FollowerForm'
 import './Following.css'
 
 const FollowingList = props => {
@@ -42,6 +43,12 @@ const FollowingList = props => {
           <div id="headerContainer">
             <h1>Following List</h1>
           </div>
+          <div className="container-form">
+            <FollowerForm
+              getFollowings={getFollowings}
+              {...props}
+            />
+          </div>
           <div className="container-cards">
             {followingList.map(follow => 
               <FollowCard 
@@ -51,6 +58,7 @@ const FollowingList = props => {
                   ApiManager.delete("followings", follow.id)
                     .then(getFollowings);
                 }}
+                getFollowings={getFollowings}
                 {...props}
               />
             )}

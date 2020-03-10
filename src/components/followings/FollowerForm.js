@@ -19,25 +19,84 @@ const FollowerForm = props => {
       .then(setUsers)
   }
 
+  // Find to get a user from state that matches the input username
+  // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
+  const matchUser = (input) => {
+    if (users.length > 0) {
+      return users.find( ({username}) => username.toLowerCase() === input.toLowerCase())
+    } else {
+      return null
+    }
+  }
+
   const constructFollow = () => {
-    if (follow === "") {
-      window.alert("Please input a follow");
+    // Search for a username that matches their input:
+    const matchedUser = matchUser(follow.follow);
+    // Check if they've entered a valid user:
+    if (follow === "" || matchedUser === undefined) {
+      window.alert("Please input a valid username");
     } else {
       setIsLoading(true);
       const followToSave = {
         userId: activeUser.id,
-        followedId: // TO GET FROM A MATCH WITH USERNAME
+        followedId: matchedUser.id
       }
+      return followToSave;
     }
+  }
+
+  const saveFollow = (follow) => {
+    return ApiManager.post("followings", follow)
+  }
+
+  const handleSubmit = (evt) => {
+    setIsLoading(true);
+    evt.preventDefault();
+    evt.stopPropagation();
+    const constructedFollow = constructFollow(evt);
+    // Clears form upon submit
+    evt.target.reset();
+    saveFollow(constructedFollow)
+      .then(props.getFollowings)
   }
 
   useEffect(() => {
     getUsers();
+    setIsLoading(false);
   }, [])
 
   return (
     <>
+      {/*
+        https://stackoverflow.com/a/33212911
+        Form Submit allows the Enter key to work 
+        instead of just clicking the send button
+      */}
+      <div className="follow-container, darker, chat-input-container">
+        <form onSubmit={handleSubmit}>
+          <fieldset>
+            <div className="input-inner-container">
+              <input
+                name="follow"
+                type="follow"
+                required
+                onChange={handleFieldChange}
+                id="follow"
+                placeholder="Enter username to follow"
+              />
+              <button className="send-button">
+                <i className="user plus icon"
+                  type="submit"
+                  disabled={isLoading}
+                >
+                </i>
+              </button>
+            </div>
+          </fieldset>
+        </form>
+      </div>
     </>
   )
-
 }
+
+export default FollowerForm
