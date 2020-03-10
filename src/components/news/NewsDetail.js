@@ -54,8 +54,8 @@ const NewsDetail = props => {
         return (
             <div className="newsCard">
                 <div className="icon-container">
-                    <i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/news')}></i>
-                    <i className="big plus square outline icon" id="plusIcon" onClick={() => props.history.push('/news/new')}></i>
+                    <span data-tooltip="BACK"><i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/news')}></i></span>
+                    <span data-tooltip="ADD"><i className="big plus square outline icon" id="plusIcon" onClick={() => props.history.push('/news/new')}></i></span>
                 </div>
                 <div className="newsCardContent">
                     <h3>
@@ -65,8 +65,8 @@ const NewsDetail = props => {
                     <p>{news.synopsis}</p>
                     <p><a href={news.url} target="_new">{news.url}</a></p>
                     <div align="right">
-                        <i className="big edit icon" id="newsDetailsEditIcon" onClick={() => props.history.push(`/news/${news.id}/edit`)}></i>
-                        <i id="newsDetailsTrashIcon" className="big trash alternate icon" disabled={isLoading} onClick={() => handleDelete()}></i>
+                        <span data-tooltip="EDIT"><i className="big edit icon" id="newsDetailsEditIcon" onClick={() => props.history.push(`/news/${news.id}/edit`)}></i></span>
+                        <span data-tooltip="DELETE"><i id="newsDetailsTrashIcon" className="big trash alternate icon" disabled={isLoading} onClick={() => handleDelete()}></i></span>
                     </div>
                 </div>
             </div >
