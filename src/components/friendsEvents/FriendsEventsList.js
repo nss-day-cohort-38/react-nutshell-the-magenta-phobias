@@ -1,13 +1,12 @@
 import React, { useState, useEffect} from 'react';
 import ApiManager from "../../modules/ApiManager";
-import FriendsEventCard from "./FriendsEventCard";
+import FriendsEventCard from './FriendsEventCard';
 
 
 const FriendsEventsList = props => {
     const [friendsEvents, setFriendsEvents] = useState([])
     // const [friends, setFriends] = useState([]);
     const user = JSON.parse(sessionStorage.getItem('credentials'))
-    const masterEvents =[]
 
     const settingEvents =  () => {
         ApiManager.getAllWithUserId('followings', user.id).then(friends=> {
