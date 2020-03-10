@@ -13,6 +13,7 @@ import NewEventForm from "./events/NewEventForm";
 import EditEventForm from "./events/EditEventForm";
 import MessageList from "./chat/Messages"
 import PasswordCheck from "../editProfile/PasswordCheck";
+import EditProfileForm from "../editProfile/EditProfileForm";
 
 const isAuthenticated = true;
 // () => sessionStorage.getItem("credentials") !== null;
@@ -158,6 +159,16 @@ const ApplicationViews = props => {
               return <PasswordCheck {...props} />
           }else {
               return <Redirect to="/login" />
+          }
+      }}
+      />
+      <Route
+      path="/editprofile"
+      render={props=> {
+          if(hasUser){
+              return <EditProfileForm setUser={setUser} {...props} />
+          }else {
+              return <Redirect to ="/login" />
           }
       }}
       />

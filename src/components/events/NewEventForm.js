@@ -130,7 +130,7 @@ const NewEventForm = props => {
             <label htmlFor="date">Date (req): </label>
             <input type="date" id="date" required onChange={handleFieldChange} />
             <label htmlFor="location">Location (req): </label>
-            <input type="text" id="location" required onChange={handleFieldChange}/>
+            <input type="text" id="location"  placeholder="Location..." required onChange={handleFieldChange}/>
             </fieldset>
 
             <fieldset className="event-form">
@@ -219,10 +219,13 @@ const NewEventForm = props => {
             {isLoading ?(
                 <h3> Loading...</h3>
             ): (
+                image.eventImage? (
+                    <img src={image.eventImage} style={{width: '300px'}} alt="upload-photos"/>
+                ) :(
                 <>
                 <img src={newEvent.eventImage} style={{width: '300px'}} alt="upload-photos" />
-                <img src={image.eventImage} style={{width: '300px'}} alt="upload-photos"/>
-                </>
+                
+                </>)
             )}
             </div>
             <button id="homeBtn" className="ui blue basic button " onClick={postNewEvent}>Submit</button>

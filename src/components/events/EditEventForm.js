@@ -51,7 +51,25 @@ const EditEventForm = props => {
       editedEvent.location === ""
     ) {
       window.alert("please fill out all the required fields");
-    } else if (
+    } else if (editedEvent.image=== ogPost.eventImage && image.eventImage!==ogPost.eventImage){
+        setIsLoading(true);
+      const editedEventObj = {
+        id: props.eventId,
+        name: editedEvent.name,
+        userId: activeUser.id,
+        description: editedEvent.description,
+        date: editedEvent.date,
+        streetAddress: editedEvent.streetAddress,
+        city: editedEvent.city,
+        location: editedEvent.location,
+        state: editedEvent.state,
+        zipcode: editedEvent.zipcode,
+        eventImage: image.eventImage
+      };
+      ApiManager.updatePut("events", editedEventObj).then(() =>
+        props.history.push("/events")
+      );
+    }else if (
       editedEvent.eventImage !== ogPost.eventImage &&
       image.eventImage !==
         ogPost.eventImage
@@ -283,14 +301,13 @@ const EditEventForm = props => {
               onChange={handleFieldChange}
             />
           </fieldset>
-          <fieldset className="event-form">
+          <fieldset className="event-form cloudinary-img">
             <label htmlFor="eventImage">Please upload or find an image</label>
             <input
               name="file"
               id="eventImage"
               type="file"
-              class="file-upload"
-              placeholder="Upload an Image"
+              className="file-upload"
               data-cloudinary-field="image_id"
               onChange={uploadImage}
               data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"
@@ -299,7 +316,8 @@ const EditEventForm = props => {
             <input
               id="eventImage"
               type="text"
-              value={editedEvent.eventImage}
+            //   value={editedEvent.eventImage}
+            placeholder="url..."
               onChange={handleFieldChange}
             />
           </fieldset>

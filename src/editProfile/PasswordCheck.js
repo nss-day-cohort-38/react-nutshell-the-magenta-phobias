@@ -15,7 +15,7 @@ const PasswordCheck = props => {
         if(password.password!== user.password){
             window.alert('Please enter in the correct password')
         } else{
-            props.history.push('/EditProfile')
+            props.history.push('/editprofile')
         }
     }
 
