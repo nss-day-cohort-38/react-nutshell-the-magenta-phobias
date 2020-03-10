@@ -156,7 +156,7 @@ const ApplicationViews = props => {
       <Route
         path="/friends"
         render={props=> {
-          if (isAuthenticated) {
+          if (hasUser) {
             return <FollowingList
               {...props}
             />
