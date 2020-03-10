@@ -22,6 +22,11 @@ export default {
       result.json()
     );
   },
+  getAllWithUserIdExpand(component, userId, expandItem) {
+    return fetch(`${remoteURL}/${component}?userId=${userId}&_expand=${expandItem}`).then(result =>
+      result.json()
+    );
+  },
   getWithEmbed(component, id, embedItem) {
     return fetch(
       `${remoteURL}/${component}/${id}?_embed=${embedItem}`

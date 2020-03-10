@@ -22,19 +22,42 @@ const MessageCard = props => {
         */}
         { parseInt(activeUser.id) === userId 
           ? (
-            <div className="edit-outline-icon">
-              <i class="edit outline icon"
+            <div className="chat-edit-outline-icon" data-tooltip="Edit message">
+              <i className="edit outline icon"
                 onClick={() => props.setMessageToEdit(props.message)}
-              >
-              </i>
+              />
             </div>
           )
           : ( null )
         }
-        <span className="time-right">{timestamp}</span>
+        {/* 
+          If a user is already following,
+          or the user is the active user,
+          display nothing.
+
+          Otherwise, display the add friend button.
+        */}
+        {
+          props.amFollowing || activeUser.id === userId
+          ? ""
+          : (
+            <div className="chat-user-plus-icon" data-tooltip="Follow user">
+              <i className="user plus icon" 
+                onClick={() => props.handleFollow(userId)}
+              />
+            </div>
+            ) 
+        }
+        <span className="message-time-right">{timestamp}</span>
       </div>
     </div>
   )
 }
+
+/*
+<div class="ui icon button" data-content="Add users to your feed">
+  <i class="add icon"></i>
+</div>
+*/
 
 export default MessageCard

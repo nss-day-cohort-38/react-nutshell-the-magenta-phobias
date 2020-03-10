@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-//import the components we will need
 import NewsCard from './NewsCard';
+import NewsFollowList from './NewsFollowList';
 import ApiManager from '../../modules/ApiManager';
 
 const NewsList = (props) => {
@@ -19,10 +19,15 @@ const NewsList = (props) => {
     return (
         <div>
             <section className="section-content">
-                <div className="container-cards">
-                    {news.sort(function(a,b){
+                <div className="icon-container">
+                    <i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/')}></i>
+                    <i className="big plus square outline icon" id="plusIcon" onClick={() => props.history.push('/news/new')}></i>
+                </div>
+                <div className="container-cards userNewsArticles">
+                    <h1 className="newsSectionHeader">YOUR NEWS</h1>
+                    {news.sort(function (a, b) {
                         return new Date(b.timestamp) - new Date(a.timestamp)
-                     }).map(newsItem =>
+                    }).map(newsItem =>
                         <NewsCard
                             key={newsItem.id}
                             news={newsItem}
@@ -30,11 +35,10 @@ const NewsList = (props) => {
                             {...props}
                         />)}
                 </div>
-                <button type="button"
-                    className="btn addNewsBtn"
-                    onClick={() => { props.history.push("/news/new") }}>
-                    + Add News Article
-            </button>
+                <div className="container-cards followNewsArticles">
+                <h1 className="newsSectionHeader">NEWS FROM PEOPLE YOU FOLLOW</h1>
+                    <NewsFollowList/>
+                </div>
             </section>
 
         </div>
