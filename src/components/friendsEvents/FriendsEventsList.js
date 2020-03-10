@@ -1,28 +1,36 @@
 import React, { useState, useEffect} from 'react';
 import ApiManager from "../../modules/ApiManager";
 import FriendsEventCard from "./FriendsEventCard";
-import { promised } from 'q';
-import EventsCards from '../events/EventsCard';
+
 
 const FriendsEventsList = props => {
     const [friendsEvents, setFriendsEvents] = useState([])
     const [friends, setFriends] = useState([]);
     const user = JSON.parse(sessionStorage.getItem('credentials'))
+    const masterEvents =[]
+
     const settingEvents = async () => {
-        const resFriends = await fetch(`http://localhost:8200/followings?userId=${user.id}`)
-        console.log(resFriends)
-        const friends= await resFriends.json();
-        const events = await friends.map(async friend=> {
-            const resEvent = await fetch(`http://localhost:8200/events?userId=${friend.followedId}`)
-            const event = await resEvent.json()
-            event.forEach(e=> friendsEvents.push(e))
-           console.log(friendsEvents)
-            
-        })
+        ApiManager.getAllWithUserId('followings', user.id).then( async friends=> {
+            Promise.all(()=> {
+
      
+   
+                friends.forEach(async friend=> {
+                    const events = await Promise.all(() => {
+                        const resEvent = fetch(`http://localhost:8200/events?userId=${friend.followedId}`)
+                        return resEvent.jsonI()
+                    }   
+                    ).then(()=> masterEvents.push(events))
+                })
+            }).then(setFriendsEvents(masterEvents))
+           
+        }
+            
+        )
         
-        
-      
+   
+ 
+  
     }
     useEffect( ()=> {
             settingEvents()
