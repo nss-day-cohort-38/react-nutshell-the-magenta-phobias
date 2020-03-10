@@ -45,10 +45,10 @@ const FollowerForm = props => {
       window.alert("Please input a valid username");
     // Check if they're already following them:
     } else if (alreadyFollowing(matchingUser)) {
-      window.alert("You're already friends with that user")
+      window.alert("You already follow that user")
     // Check if they're you
     } else if (matchingUser.id === activeUser.id) {
-      window.alert("Enter a user that isn't you!")
+      window.alert("Enter a user that isn't you")
     } else {
       setIsLoading(true);
       const followToSave = {
@@ -86,10 +86,10 @@ const FollowerForm = props => {
         Form Submit allows the Enter key to work 
         instead of just clicking the send button
       */}
-      <div className="follow-container, darker, chat-input-container">
+      <div className="follow-container, darker, follow-input-container">
         <form onSubmit={handleSubmit}>
           <fieldset>
-            <div className="input-inner-container">
+            <div className="follow-input-inner-container">
               <input
                 name="follow"
                 type="follow"

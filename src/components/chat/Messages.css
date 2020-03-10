@@ -1,11 +1,11 @@
 /*            CHAT ITSELF            */
 
-.wrapper {
+.chat-wrapper {
   display: flex;
   justify-content: center;
 }
 
-#headerContainer {
+#chat-headerContainer {
   display:flex;
   justify-content: center;
   border: 2px solid #dedede;
@@ -14,7 +14,7 @@
   margin: 5px 0;
 }
 
-.FixedHeightContainer {
+.chat-fixed-height-container {
   height: 100px;
   width:350px; 
   padding:3px; 
@@ -38,7 +38,7 @@
   border-radius: 50%;
 }
 
-fieldset {
+.chat-fieldset {
   background-color: none;
   border-width: 0;
 }
@@ -49,14 +49,14 @@ fieldset {
   display: table;
 }
 
-.time-right {
+.message-time-right {
   float: right;
   color: #aaa;
 }
 
 /* Scrollbar always at the bottom trick: 
 https://stackoverflow.com/a/44051405 */ 
-.ScrollToBottom {
+.chat-ScrollToBottom {
   height:224px;
   overflow: auto;
   display: flex;
@@ -70,7 +70,7 @@ https://stackoverflow.com/a/44051405 */
 
 /*           Chat Buttons           */
 
-button {
+.chat-send-button {
   display: inline-block;
   cursor: pointer;
   background-color: #ddd;
@@ -83,7 +83,7 @@ button {
   font-size: 16px;
 }
 
-.input-inner-container {
+.chat-input-inner-container {
   width: 100%;
   display: flex;
   justify-content: flex-end;
@@ -91,7 +91,11 @@ button {
   justify-content: space-between;
 }
 
+<<<<<<< HEAD
 .icon-container {
+=======
+.chat-edit-outline-icon {
+>>>>>>> master
   cursor: pointer;
   display: inline-block;
 }
@@ -99,13 +103,13 @@ button {
 
 /*          MESSAGE FORM INPUT       */
 
-form {
+.chat-form {
   width: 100%;
   border-radius: 0;
   background-color: none;
 }
 
-input {
+.chat-input {
   width: 75%;
   padding: 12px 20px;
   margin: 8px 0;

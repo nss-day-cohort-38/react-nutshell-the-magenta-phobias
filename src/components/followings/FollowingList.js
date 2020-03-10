@@ -38,19 +38,19 @@ const FollowingList = props => {
 
   return (
     <>
-      <div className="background">
-        <div className="wrapper">
-          <div id="headerContainer">
+      <div className="follow-background">
+        <div className="follow-wrapper">
+          <div id="follow-headerContainer">
             <h1>Following List</h1>
           </div>
-          <div className="container-form">
+          <div className="follow-container-form">
             <FollowerForm
               getFollowings={getFollowings}
               followingList={followingList}
               {...props}
             />
           </div>
-          <div className="container-cards">
+          <div className="follow-container-cards">
             {followingList.map(follow => 
               <FollowCard 
                 key={follow.id}
