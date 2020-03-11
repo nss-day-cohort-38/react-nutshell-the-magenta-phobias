@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Tasks.css";
-
 const TaskCard = props => {
   return (
     <div className="tasks-card">
@@ -8,22 +7,25 @@ const TaskCard = props => {
         <h3 className="card-taskname">Task: {props.task.name}</h3>
         <p>Expected Completion Date: {props.task.expectedCompletion}</p>
         <button
-          className="task-delete-button"
+          id="eventBtn"
+          className="ui blue basic button"
           type="button"
           onClick={() => props.deleteTask(props.task.id)}
         >
           Delete this Task
         </button>
         <button
+          id="eventBtn"
+          className="ui blue basic button"
           onClick={() => props.history.push(`/tasks/${props.task.id}/edit`)}
         >
           Edit This Task
         </button>
         <button
-          className="is-task-complete"
+          id="eventBtn"
+          className="ui blue basic button"
           type="button"
           value={props.task.isComplete}
-          onChange={props.handleIsComplete}
           onClick={() => props.updateTask(props.task)}
         >
           Mark Complete

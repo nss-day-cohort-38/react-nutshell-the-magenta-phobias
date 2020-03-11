@@ -9,6 +9,7 @@
   width: 500px;
   display: flex;
   flex-direction: row;
+  margin-left: 60px;
 }
 
 .task-card-content {
