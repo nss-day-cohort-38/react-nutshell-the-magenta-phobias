@@ -23,7 +23,7 @@ import FriendsEventDetails from "./friendsEvents/FriendsEventDetails";
 import CompletedTasks from "./tasks/CompletedTasks";
 
 const ApplicationViews = props => {
-  const [isComplete, setIsComplete] = useState(false);
+  // const [isComplete, setIsComplete] = useState(false);
 
   const hasUser = props.hasUser;
   const setUser = props.setUser;
@@ -175,8 +175,8 @@ const ApplicationViews = props => {
         render={props =>
           hasUser ? (
             <TaskList
-              isComplete={isComplete}
-              setIsComplete={setIsComplete}
+              // isComplete={isComplete}
+              // setIsComplete={setIsComplete}
               {...props}
             />
           ) : (
@@ -227,7 +227,12 @@ const ApplicationViews = props => {
         path="/tasks/completed"
         render={props => {
           if (hasUser) {
-            return <CompletedTasks {...props} />;
+            return (
+              <CompletedTasks
+                taskId={parseInt(props.match.params.taskId)}
+                {...props}
+              />
+            );
           } else {
             return <Redirect to="/login" />;
           }

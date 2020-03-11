@@ -10,15 +10,22 @@ const TaskEditForm = props => {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  // const handleFieldChange = event => {
-  //   const stateToChange = { ...task };
-  //   stateToChange[event.target.id] = event.target.value;
-  //   setTask(stateToChange);
+  const handleInputChange = event => {
+    const stateToChange = { ...task };
+    stateToChange[event.target.id] = event.target.value;
+    setTask(stateToChange);
+  };
+
+  // const handleInputChange = e => {
+  //   setTask(e.target.value);
   // };
 
-  const handleFieldChange = e => {
-    setTask(e.target.value);
-  };
+  // const handleInputChange = e =>
+  //   setTask({
+  //     ...task,
+  //     [e.target.name]: e.target.value
+  //   });
+
   const updateExistingTask = event => {
     event.preventDefault();
     setIsLoading(true);
@@ -50,8 +57,8 @@ const TaskEditForm = props => {
               type="text"
               required
               className="form-control"
-              onChange={handleFieldChange}
-              id="task-name-edit"
+              onChange={handleInputChange}
+              id="name"
               value={task.name}
             />
             <label htmlFor="task-name">Task</label>
@@ -60,15 +67,15 @@ const TaskEditForm = props => {
               type="date"
               required
               className="form-control"
-              onChange={handleFieldChange}
-              id="completion-date"
-              value={task.role}
+              onChange={handleInputChange}
+              id="expectedCompletion"
+              value={task.expectedCompletion}
             />
             <label htmlFor="expectedCompletion">Expected Completion Date</label>
             <input
               type="checkbox"
               className="is-checked-edit-form"
-              onChange={handleFieldChange}
+              onChange={handleInputChange}
               id="is-complete-box"
               value={task.isComplete}
             />
@@ -77,7 +84,7 @@ const TaskEditForm = props => {
           <div className="alignRight">
             <button
               type="button"
-              disabled={isLoading} // disabled will always take boolean value, isLoading infers that it is a boolean.
+              disabled={isLoading}
               onClick={updateExistingTask}
               className="submit-edit-button"
             >

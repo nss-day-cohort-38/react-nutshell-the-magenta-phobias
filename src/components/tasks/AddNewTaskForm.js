@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import ApiManager from "../../modules/ApiManager";
 import "./TaskForm.css";
 
+const activeUser = JSON.parse(sessionStorage.getItem('credentials'));
+
 const AddNewTaskForm = props => {
   const [task, setTask] = useState({
     name: "",
-    expectedCompletion: ""
+    expectedCompletion: "",
+    userId: "",
+    isComplete: false,
+
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,11 +22,18 @@ const AddNewTaskForm = props => {
 
   const constructNewTask = evt => {
     evt.preventDefault();
+    const newTask = {
+      name: task.name,
+      expectedCompletion: task.expectedCompletion,
+      userId: activeUser.id,
+      isComplete: task.isComplete
+    };
+
     if (task.name === "" || task.expectedCompletion === "") {
       window.alert("Please fill out all fields");
     } else {
       setIsLoading(true);
-      ApiManager.post("tasks", task).then(() => props.history.push("/tasks"));
+      ApiManager.post("tasks", newTask).then(() => props.history.push("/tasks"));
     }
   };
 
