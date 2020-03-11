@@ -13,7 +13,6 @@ import NewEventForm from "./events/NewEventForm";
 import EditEventForm from "./events/EditEventForm";
 import MessageList from "./chat/Messages";
 import TaskList from "./tasks/TaskList";
-// import TaskDetail from "./tasks/TaskDetail";
 import TaskEditForm from "./tasks/TaskEditForm";
 import AddNewTaskForm from "./tasks/AddNewTaskForm";
 import FollowingList from "./followings/FollowingList";
@@ -23,8 +22,6 @@ import FriendsEventDetails from "./friendsEvents/FriendsEventDetails";
 import CompletedTasks from "./tasks/CompletedTasks";
 
 const ApplicationViews = props => {
-  // const [isComplete, setIsComplete] = useState(false);
-
   const hasUser = props.hasUser;
   const setUser = props.setUser;
 
@@ -173,33 +170,9 @@ const ApplicationViews = props => {
         exact
         path="/tasks"
         render={props =>
-          hasUser ? (
-            <TaskList
-              // isComplete={isComplete}
-              // setIsComplete={setIsComplete}
-              {...props}
-            />
-          ) : (
-            <Redirect to="/login" />
-          )
+          hasUser ? <TaskList {...props} /> : <Redirect to="/login" />
         }
       />
-      {/* <Route
-        exact
-        path="/tasks/:userId(\d+)" 
-        render={props => {
-          if (hasUser) {
-            return (
-              <TaskDetail
-                taskId={parseInt(props.match.params.userId)}
-                {...props}
-              />
-            );
-          } else {
-            return <Redirect to="/login" component={Login} />;
-          }
-        }}
-      /> */}
       <Route
         exact
         path="/tasks/:taskId(\d+)/edit"

@@ -16,16 +16,6 @@ const TaskEditForm = props => {
     setTask(stateToChange);
   };
 
-  // const handleInputChange = e => {
-  //   setTask(e.target.value);
-  // };
-
-  // const handleInputChange = e =>
-  //   setTask({
-  //     ...task,
-  //     [e.target.name]: e.target.value
-  //   });
-
   const updateExistingTask = event => {
     event.preventDefault();
     setIsLoading(true);

@@ -1,24 +1,7 @@
 import React from "react";
 import "./Tasks.css";
-// import ApiManager from "../../modules/ApiManager";
 
-const TaskCard = (props) => {
-  // console.log(props.task);
-  // const [isComplete, setIsComplete] = useState(false);
-  //   console.log(props.task);
-
-  // const handleIsComplete = e => {
-  //   const stateToChange = { ...props };
-  //   stateToChange[e.target.id] = e.target.value;
-  //   setIsComplete(stateToChange);
-  // };
-  // const handleIsCompleteChange = async () => {
-  //   await ApiManager.patch("tasks", props.task, { isComplete: true });
-  //   const tasksFromAPI = await ApiManager.getAll("tasks");
-  //   console.log(tasksFromAPI);
-  //   // const completedTasks = tasksFromAPI.filter(task => !task.isComplete);
-  // };
-
+const TaskCard = props => {
   return (
     <div className="tasks-card">
       <div className="task-card-content">
@@ -45,16 +28,6 @@ const TaskCard = (props) => {
         >
           Mark Complete
         </button>
-
-        {/* <button
-          className="mark-complete-save-btn"
-          type="button"
-          // onChange={handleIsComplete}
-          // checked={isComplete}
-          onClick={handleIsComplete}
-        >
-          Save
-        </button> */}
       </div>
     </div>
   );

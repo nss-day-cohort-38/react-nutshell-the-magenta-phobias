@@ -23,7 +23,6 @@ const CompletedTasks = props => {
             <button
               className="is-task-complete"
               type="button"
-              //   value={tasks.isComplete}
               onClick={() => props.history.push(`/tasks`)}
             >
               Back To Tasks
