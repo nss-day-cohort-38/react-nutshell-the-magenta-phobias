@@ -39,14 +39,14 @@ const EventDetails = props => {
       <div className="details-container">
         <div className="event-details">
           <div className="details-icon-container">
-            <div data-tooltip="Back">
+            <div data-tooltip="BACK">
               <i
                 className="big arrow circle left icon"
                 id="detailIcon"
                 onClick={() => props.history.push("/events")}
               ></i>
             </div>
-            <div data-tooltip="Edit Event">
+            <div data-tooltip="EDIT">
               <i
                 className="big edit icon"
                 id="detailIcon"
@@ -70,10 +70,10 @@ const EventDetails = props => {
             </h6>
           </div>
           <div className="delete-container">
-            <div data-tooltip="Delete Event">
+            <div data-tooltip="DELETE">
               <i
                 id="trashIcon"
-                className="trash alternate icon"
+                className=" big trash alternate icon"
                 onClick={handleDelete}
                 disabled={isLoading}
               ></i>
