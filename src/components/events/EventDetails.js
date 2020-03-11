@@ -60,14 +60,16 @@ const EventDetails = props => {
           <picture>
             <img src={oneEvent.eventImage} alt="event" id="detail-photo" />
           </picture>
+          <div className="kk-details-specific">
           <h4>{oneEvent.description}</h4>
           <div className="detail-event-info">
-            <h6>{oneEvent.date}</h6>
-            <h6>{oneEvent.location}</h6>
-            <h6>{oneEvent.streetAddress}</h6>
-            <h6>
-              {oneEvent.city}, {oneEvent.state}, {oneEvent.zipcode}
-            </h6>
+            <h4>Date: {oneEvent.date}</h4>
+            <h4>Venue: {oneEvent.location}</h4> 
+            <h4>Address: {oneEvent.streetAddress}</h4>
+            <h4>
+              Location: {oneEvent.city}, {oneEvent.state}, {oneEvent.zipcode}
+            </h4>
+          </div>
           </div>
           <div className="delete-container">
             <div data-tooltip="DELETE">
