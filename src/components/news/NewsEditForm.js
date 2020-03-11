@@ -45,7 +45,7 @@ const NewsEditForm = (props) => {
     return (
         <>
             <div className="icon-container">
-                <i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/news')}></i>
+            <span data-tooltip="BACK"><i className="big arrow circle left icon" id="back-arrow-detail" onClick={() => props.history.push('/news')}></i></span>
             </div>
             <form>
                 <fieldset className="newsEditForm">
@@ -100,7 +100,8 @@ const NewsEditForm = (props) => {
                         <button
                             type="button" disabled={isLoading}
                             onClick={updateExistingNews}
-                            className="btn btn-primary newsEditFormBtn"
+                            id="newsEditFormBtn"
+                            className="ui blue basic button"
                         >Submit</button>
                     </div>
                 </fieldset>

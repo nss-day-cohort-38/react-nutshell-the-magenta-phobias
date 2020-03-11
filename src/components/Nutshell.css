@@ -47,3 +47,12 @@ header {
     display: flex;
     justify-content: center;
 }
+.home-dash{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media only screen and (max-width: 800px) {
+    
+}

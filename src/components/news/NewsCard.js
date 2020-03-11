@@ -44,9 +44,9 @@ const NewsCard = (props) => {
                     </span></h3>
                     <p>Synopsis: {props.news.synopsis}</p>
                     <div align="right">
-                        <i className="big file alternate icon" id="newsFileIcon" onClick={() => props.history.push(`/news/${props.news.id}`)}></i>
-                        <i className="big edit icon" id="newsDetailIcon" onClick={() => props.history.push(`/news/${props.news.id}/edit`)}></i>
-                        <i id="newsTrashIcon" className="big trash alternate icon" disabled={isLoading} onClick={() => handleDelete()}></i>
+                        <span data-tooltip="DETAILS"><i className="big file alternate icon" id="newsFileIcon" onClick={() => props.history.push(`/news/${props.news.id}`)}></i></span>
+                        <span data-tooltip="EDIT"><i className="big edit icon" id="newsDetailIcon" onClick={() => props.history.push(`/news/${props.news.id}/edit`)}></i></span>
+                        <span data-tooltip="DELETE"><i id="newsTrashIcon" className="big trash alternate icon" disabled={isLoading} onClick={() => handleDelete()}></i></span>
                     </div>
                 </div>
             </div>

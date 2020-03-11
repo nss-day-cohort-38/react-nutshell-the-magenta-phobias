@@ -15,6 +15,7 @@ import MessageList from "./chat/Messages"
 import FollowingList from "./followings/FollowingList";
 import PasswordCheck from "../editProfile/PasswordCheck";
 import EditProfileForm from "../editProfile/EditProfileForm";
+import FriendsEventDetails from "./friendsEvents/FriendsEventDetails";
 
 const isAuthenticated = true;
 // () => sessionStorage.getItem("credentials") !== null;
@@ -141,6 +142,21 @@ const ApplicationViews = props => {
         render={props => {
             if(hasUser){
           return <NewEventForm {...props} />; } else{
+            return <Redirect to="/login" />
+          }
+        }}
+      />
+    <Route
+        exact
+        path="/friendsevents/:eventId(\d+)"
+        render={props => {
+            if(hasUser) {
+          return (
+            <FriendsEventDetails
+              eventId={parseInt(props.match.params.eventId)}
+              {...props}
+            />
+          );} else {
             return <Redirect to="/login" />
           }
         }}
