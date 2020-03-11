@@ -100,7 +100,8 @@ const NewsEditForm = (props) => {
                         <button
                             type="button" disabled={isLoading}
                             onClick={updateExistingNews}
-                            className="btn btn-primary newsEditFormBtn"
+                            id="newsEditFormBtn"
+                            className="ui blue basic button"
                         >Submit</button>
                     </div>
                 </fieldset>
