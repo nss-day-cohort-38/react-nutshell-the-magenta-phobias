@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { confirmAlert } from 'react-confirm-alert';
 import ApiManager from '../../modules/ApiManager';
 import FollowCard from './FollowCard'
 import FollowerForm from './FollowerForm'
@@ -21,11 +22,6 @@ const FollowingList = props => {
       .then(setUsers)
   }
 
-  useEffect(() => {
-    getFollowings();
-    getUsers();
-  }, [])
-
   // Find to get a user from state that matches the followId
   // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/find
   const findExistingFollowing = (followedId) => {
@@ -36,12 +32,36 @@ const FollowingList = props => {
     }
   }
 
+  const handleDelete = (follow) => {
+    confirmAlert({
+      title: 'Confirm Unfollow',
+      message: "Are you sure you want to unfollow this user?",
+      buttons: [
+        {
+          label: 'Yes',
+          onClick: () => ApiManager.delete("followings", follow.id)
+            .then(getFollowings)
+        },
+        {
+          label: 'No',
+          onClick: () => ""
+        }
+      ]
+    })
+
+  }
+
+  useEffect(() => {
+    getFollowings();
+    getUsers();
+  }, [])
+  
   return (
     <>
       <div className="follow-background">
         <div className="follow-wrapper">
           <div id="follow-headerContainer">
-            <h1>Following List</h1>
+            <h1>FOLLOWING ḸIST</h1>
           </div>
           <div className="follow-container-form">
             <FollowerForm
@@ -55,10 +75,7 @@ const FollowingList = props => {
               <FollowCard 
                 key={follow.id}
                 user={findExistingFollowing(follow.followedId)}
-                handleDelete={() => {
-                  ApiManager.delete("followings", follow.id)
-                    .then(getFollowings);
-                }}
+                handleDelete={() => handleDelete(follow)}
                 {...props}
               />
             )}

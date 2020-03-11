@@ -35,7 +35,6 @@ const Login = props => {
           setCredentials(response[0]);
           props.history.push("/");
         } else {
-          console.log("Error logging in");
           alert("Please type in the correct email/password");
         }
       }

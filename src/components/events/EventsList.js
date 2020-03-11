@@ -35,7 +35,6 @@ const EventsList = (props) => {
         })
 
     },[user.id])
-    console.log(events)
     let counter=0;
     return(
         <>
