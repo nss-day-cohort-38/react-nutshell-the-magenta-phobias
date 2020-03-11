@@ -3,6 +3,8 @@ import ApiManager from "../../modules/ApiManager";
 import TaskCard from "./TaskCard";
 
 const TaskList = (props, { setIsComplete }) => {
+  const user = JSON.parse(sessionStorage.getItem('credentials'))
+
   const [tasks, setTasks] = useState([]);
 
   const getUncompleted = async () => {
@@ -14,7 +16,7 @@ const TaskList = (props, { setIsComplete }) => {
     }
   };
 
-  const updateTask = async task => {
+  const updateTask = async (task) => {
     try {
       await ApiManager.patch("tasks", task, { isComplete: true });
       const tasksFromAPI = await ApiManager.getUncompleted("tasks");
