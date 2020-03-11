@@ -89,7 +89,6 @@ export default {
     ).then(r => r.json());
   },
   async patch(component, editedObject, newProperty) {
-    console.log(component, editedObject, newProperty)
     const data = await fetch(`${remoteURL}/${component}/${editedObject.id}`, {
       method: "PATCH",
       headers: {

@@ -10,12 +10,15 @@ const TaskEditForm = props => {
   });
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleFieldChange = event => {
-    const stateToChange = { ...task };
-    stateToChange[event.target.id] = event.target.value;
-    setTask(stateToChange);
-  };
+  // const handleFieldChange = event => {
+  //   const stateToChange = { ...task };
+  //   stateToChange[event.target.id] = event.target.value;
+  //   setTask(stateToChange);
+  // };
 
+  const handleFieldChange = e => {
+    setTask(e.target.value);
+  };
   const updateExistingTask = event => {
     event.preventDefault();
     setIsLoading(true);
@@ -26,7 +29,9 @@ const TaskEditForm = props => {
       expectedCompletion: task.expectedCompletion,
       isComplete: task.isComplete
     };
-    ApiManager.update("tasks", editedTask).then(() => props.history.push("/tasks"));
+    ApiManager.update("tasks", editedTask).then(() =>
+      props.history.push("/tasks")
+    );
   };
 
   useEffect(() => {
@@ -49,7 +54,7 @@ const TaskEditForm = props => {
               id="task-name-edit"
               value={task.name}
             />
-            <label htmlFor="name">Task</label>
+            <label htmlFor="task-name">Task</label>
 
             <input
               type="date"
@@ -59,7 +64,7 @@ const TaskEditForm = props => {
               id="completion-date"
               value={task.role}
             />
-            <label htmlFor="role">Expected Completion Date</label>
+            <label htmlFor="expectedCompletion">Expected Completion Date</label>
             <input
               type="checkbox"
               className="is-checked-edit-form"

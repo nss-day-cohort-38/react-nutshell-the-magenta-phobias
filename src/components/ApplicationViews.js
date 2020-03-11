@@ -14,7 +14,7 @@ import EditEventForm from "./events/EditEventForm";
 import MessageList from "./chat/Messages";
 import TaskList from "./tasks/TaskList";
 // import TaskDetail from "./tasks/TaskDetail";
-import TaskEditForm from "./tasks/TaskEditFrom";
+import TaskEditForm from "./tasks/TaskEditForm";
 import AddNewTaskForm from "./tasks/AddNewTaskForm";
 import FollowingList from "./followings/FollowingList";
 import PasswordCheck from "../editProfile/PasswordCheck";
@@ -227,7 +227,7 @@ const ApplicationViews = props => {
         path="/tasks/completed"
         render={props => {
           if (hasUser) {
-            return <CompletedTasks component={CompletedTasks} />;
+            return <CompletedTasks {...props} />;
           } else {
             return <Redirect to="/login" />;
           }

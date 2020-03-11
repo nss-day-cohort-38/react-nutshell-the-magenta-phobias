@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ApiManager from "../../modules/ApiManager";
 import TaskCard from "./TaskCard";
 
-const TaskList = (props) => {
+const TaskList = (props, { setIsComplete }) => {
   const [tasks, setTasks] = useState([]);
 
   const getUncompleted = async () => {
@@ -14,8 +14,7 @@ const TaskList = (props) => {
     }
   };
 
-  const updateTask = async (task) => {
-    console.log("updateTask: ", task);
+  const updateTask = async task => {
     try {
       await ApiManager.patch("tasks", task, { isComplete: true });
       const tasksFromAPI = await ApiManager.getUncompleted("tasks");
@@ -34,22 +33,11 @@ const TaskList = (props) => {
       console.log(error);
     }
   };
-  // console.log(props);
-  // const handleMarkComplete = async task => {
-  //   // setIsComplete(e.target.checked);
-  //   ApiManager.update("tasks", task.isComplete).then(() => {
-  //     if (isComplete === true) {
-  //       props.task.isComplete = true;
-  //       ApiManager.getTasks(tasks).then(tasks => {
-  //         // console.log({ tasks });
-  //         tasks.filter(task => {
-  //           const isNotComplete = task.isComplete === false;
-  //           setTasks(isNotComplete);
-  //         });
-  //       });
-  //     }
-  //   });
-  // };
+  const handleIsComplete = e => {
+    const stateToChange = { ...tasks };
+    stateToChange[e.target.id] = e.target.value;
+    setIsComplete(stateToChange);
+  };
 
   useEffect(() => {
     getUncompleted();
@@ -85,7 +73,7 @@ const TaskList = (props) => {
             task={task}
             deleteTask={deleteTask}
             updateTask={updateTask}
-            // handleMarkComplete={handleMarkComplete}
+            handleIsComplete={handleIsComplete}
             {...props}
           />
         ))}

@@ -1,23 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Tasks.css";
-import ApiManager from "../../modules/ApiManager";
+// import ApiManager from "../../modules/ApiManager";
 
-const TaskCard = (props, { isComplete, setIsComplete }) => {
+const TaskCard = (props) => {
   // console.log(props.task);
-  // const [isComplete, setIsComplete] = useState();
+  // const [isComplete, setIsComplete] = useState(false);
   //   console.log(props.task);
 
-  const handleIsComplete = e => {
-    const stateToChange = { ...props };
-    stateToChange[e.target.id] = e.target.value;
-    setIsComplete(stateToChange);
-  };
-  const handleIsCompleteChange = async () => {
-    await ApiManager.patch("tasks", props.task, { isComplete: true });
-    const tasksFromAPI = await ApiManager.getAll("tasks");
-    console.log(tasksFromAPI);
-    // const completedTasks = tasksFromAPI.filter(task => !task.isComplete);
-  };
+  // const handleIsComplete = e => {
+  //   const stateToChange = { ...props };
+  //   stateToChange[e.target.id] = e.target.value;
+  //   setIsComplete(stateToChange);
+  // };
+  // const handleIsCompleteChange = async () => {
+  //   await ApiManager.patch("tasks", props.task, { isComplete: true });
+  //   const tasksFromAPI = await ApiManager.getAll("tasks");
+  //   console.log(tasksFromAPI);
+  //   // const completedTasks = tasksFromAPI.filter(task => !task.isComplete);
+  // };
 
   return (
     <div className="tasks-card">
@@ -40,7 +40,7 @@ const TaskCard = (props, { isComplete, setIsComplete }) => {
           className="is-task-complete"
           type="button"
           value={props.task.isComplete}
-          onChange={isComplete}
+          onChange={props.handleIsComplete}
           onClick={() => props.updateTask(props.task)}
         >
           Mark Complete
