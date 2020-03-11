@@ -18,6 +18,15 @@ const FriendsEventDetails = props => {
         <div className="details-container">
         <div className="event-details">
             <div className="details-icon-container">
+            <div className="details-icon-container">
+            <div data-tooltip="BACK">
+              <i
+                className="big arrow circle left icon"
+                id="detailIcon"
+                onClick={() => props.history.push("/")}
+              ></i>
+            </div>
+            </div>
             </div>
             <h1>{oneEvent.name}</h1>    
             <picture>
