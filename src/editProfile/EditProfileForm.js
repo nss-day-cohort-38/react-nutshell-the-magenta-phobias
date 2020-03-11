@@ -140,8 +140,11 @@ const EditProfileForm = props => {
                     </>
                 )}
                 </div>
-            <button className="create-btn" type="submit">
-                Submit
+            <button 
+                id="eventBtn"
+                className="ui blue basic button" 
+                type="submit">
+                    Submit
             </button>
         
             </div>
