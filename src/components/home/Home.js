@@ -38,7 +38,7 @@ const Home = props => {
         <div className="button-container">
           {!props.hasUser ? (
             <button
-              id="homeBtn-login"
+              id="eventBtn"
               className="ui blue basic button"
               onClick={() => {
                 props.history.push("/login");
@@ -49,7 +49,7 @@ const Home = props => {
           ) : null}
           {!props.hasUser ? (
             <button
-              id="homeBtn-createaccount"
+              id="eventBtn"
               className="ui blue basic button"
               onClick={() => props.history.push("/createaccount")}
             >

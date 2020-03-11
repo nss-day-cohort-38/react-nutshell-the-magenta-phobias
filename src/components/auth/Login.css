@@ -4,7 +4,7 @@
 }
 ::-moz-selection {
   background: rgba(0, 0, 0, 0.5);
-  color: red;
+  color: rgba(41, 41, 143, 0.712);
 }
 
 .login-form {
@@ -16,7 +16,7 @@
   right: 0;
   width: 300px;
   height: 400px;
-  background: rgba(3, 3, 3, 0.7);
+  background: white;
   overflow: hidden;
 }
 
@@ -26,7 +26,7 @@
   padding: 0;
   width: 100%;
   height: auto;
-  background: rgba(3, 3, 3, 0.1);
+  background: rgba(41, 41, 143, 0.712);
 }
 
 h3.header {
@@ -35,7 +35,7 @@ h3.header {
   text-align: center;
   font-weight: 300;
   font-size: 21px;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.911);
 }
 
 label.option {
@@ -54,7 +54,7 @@ label.option {
   -webkit-box-sizing: border-box;
   border-radius: 4px;
   text-align: center;
-  background: rgb(225, 40, 54);
+  background:rgba(110, 110, 110, 0.486);
   color: #fff;
 }
 
@@ -62,8 +62,8 @@ input.login-input {
   border: none;
   border-left: 5px solid;
   background: none;
-  border-color: rgb(225, 40, 54);
-  color: #fff;
+  border-color: rgba(41, 41, 143, 0.712);
+  /* color: #fff; */
   font-weight: 300;
   font-size: 18px;
   -webkit-transition: all 0.2s ease-in-out;
@@ -74,9 +74,10 @@ input.login-input {
 
 .login-input:focus {
   outline: 0;
-  background: rgba(225, 40, 54, 0.2);
+  background: rgba(40, 83, 225, 0.2);
   border-radius: 20px;
-  border-color: transparent;
+  /* border-color: transparent; */
+  border-color: black;
 }
 
 button.login {
@@ -86,7 +87,7 @@ button.login {
 .login {
   border-radius: 4px;
   text-align: center;
-  background: rgb(225, 40, 54);
+  background: rgba(41, 41, 143, 0.712);
   color: #fff;
 }
 
@@ -122,13 +123,18 @@ button.login {
   background: rgba(0, 0, 0, 0.2);
   border-bottom: 2px solid rgb(225, 40, 54);
   cursor: pointer;
+ 
 }
 
 label .option {
   float: left;
   left: 3.3%;
+  color: black !important;
 }
 
 input .option-checkbox{
   margin-right: 3.3%;
+}
+label.option {
+  color: black !important;
 }
