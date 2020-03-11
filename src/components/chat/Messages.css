@@ -16,8 +16,8 @@
 
 .chat-fixed-height-container {
   height: 100px;
-  width:350px; 
-  padding:3px; 
+  width: 450px; 
+  padding: 3px; 
 }
 
 /* Borrowed a bit from this CSS chat tutorial */
@@ -27,7 +27,7 @@
   background-color: #f1f1f1;
   border-radius: 5px;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px 5px;
 }
 
 .message-container img {
@@ -57,7 +57,7 @@
 /* Scrollbar always at the bottom trick: 
 https://stackoverflow.com/a/44051405 */ 
 .chat-ScrollToBottom {
-  height:224px;
+  height:600px;
   overflow: auto;
   display: flex;
   flex-direction:column-reverse;
@@ -81,6 +81,10 @@ https://stackoverflow.com/a/44051405 */
   text-align: center;
   text-decoration: none;
   font-size: 16px;
+}
+
+.chat-send-button:hover {
+  opacity: 0.8;
 }
 
 .chat-input-inner-container {

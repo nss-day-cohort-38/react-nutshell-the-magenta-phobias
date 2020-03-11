@@ -13,7 +13,7 @@ const FollowCard = props => {
         <img src={picUrl} alt="Avatar" />
         <p><i className="user outline icon"/> {username}</p>
         <p><i className="envelope outline icon"/> {email}</p>
-        <div className="trash-container" data-tooltip="Unfollow user">
+        <div className="trash-container" data-tooltip="UNFOLLOW">
           <i 
             className="trash" 
             class="trash alternate icon"

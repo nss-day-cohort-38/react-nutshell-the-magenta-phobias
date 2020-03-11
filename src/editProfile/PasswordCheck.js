@@ -27,7 +27,13 @@ const PasswordCheck = props => {
             <div className='password-field'>
                 <input type="password" id="password" onChange={handleFieldChange}/>
             </div>
-            <button type="button" className="ui blue basic button" onClick={handleSubmit}>Submit</button>
+            <button 
+                id="eventBtn"
+                type="button" 
+                className="ui blue basic button" 
+                onClick={handleSubmit}>
+                    Submit
+            </button>
         </div>
         </div>
         </>

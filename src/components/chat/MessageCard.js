@@ -22,7 +22,7 @@ const MessageCard = props => {
         */}
         { parseInt(activeUser.id) === userId 
           ? (
-            <div className="chat-edit-outline-icon" data-tooltip="Edit message">
+            <div className="chat-edit-outline-icon" data-tooltip="EDIT">
               <i className="edit outline icon"
                 onClick={() => props.setMessageToEdit(props.message)}
               />
@@ -41,7 +41,7 @@ const MessageCard = props => {
           props.amFollowing || activeUser.id === userId
           ? ""
           : (
-            <div className="chat-user-plus-icon" data-tooltip="Follow user">
+            <div className="chat-user-plus-icon" data-tooltip="FOLLOW">
               <i className="user plus icon" 
                 onClick={() => props.handleFollow(userId)}
               />

@@ -48,7 +48,7 @@ const MessageList = props => {
       <div className="chat-wrapper">
         <div className="chat-fixed-height-container">
           <div id="chat-headerContainer">
-            <h1>Chat</h1>
+            <h1>CḦÂṪ</h1>
           </div>
           <div className="chat-ScrollToBottom">
             <div className="message-container-cards">
