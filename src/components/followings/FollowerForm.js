@@ -105,7 +105,7 @@ const FollowerForm = props => {
                 id="follow"
                 placeholder="Enter username to follow"
               />
-              <button className="follow-send-button" data-tooltip="Follow user">
+              <button className="follow-send-button" data-tooltip="FOLLOW">
                 <i className="user plus icon"
                   type="submit"
                   disabled={isLoading}

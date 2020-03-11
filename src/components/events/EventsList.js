@@ -32,20 +32,19 @@ const EventsList = props => {
       setEvents(eventsFromApi);
     });
   }, [user.id]);
-  console.log(events);
   let counter = 0;
   return (
     <>
       <div className="events-container">
         <div className="icon-container">
-          <div data-tooltip="Back">
+          <div data-tooltip="BACK">
             <i
               className="big arrow circle left icon"
               id="back-arrow-detail"
               onClick={() => props.history.push("/")}
             ></i>
           </div>
-          <div data-tooltip="New Event">
+          <div data-tooltip="ADD">
             <i
               className="big plus square outline icon"
               id="plusIcon"
