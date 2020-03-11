@@ -160,6 +160,7 @@ const EditEventForm = props => {
       <div className="form-container">
 
         <div className="details-icon-container">
+        <div data-tooltip="BACK">
           <i
             className="big arrow circle left icon"
             id="detailIcon"
@@ -173,11 +174,14 @@ const EditEventForm = props => {
               }
             }}
           ></i>
+          </div>
+          <div data-tooltip="DELETE">
           <i
             id="trashIcon"
-            className="trash alternate icon"
+            className="big trash alternate icon"
             onClick={handleDelete}
           ></i>
+          </div>
         </div>
         <h1>Edit Event</h1>     
         <form className="bigger-form">         

@@ -38,7 +38,7 @@ const EventsCards = props => {
             </div>
             <div className="event-button-container">
             <button id="eventBtn" className="ui blue basic button " onClick={()=> props.history.push(`/events/${props.userEvent.id}`)}>More</button>
-            <i id="trashIcon" className="trash alternate icon" onClick={()=> props.handleDelete('events', props.userEvent.id)}></i>
+            <i id="trashIcon" className="big trash alternate icon" onClick={()=> props.handleDelete('events', props.userEvent.id)}></i>
             </div>
         </div>
         </>

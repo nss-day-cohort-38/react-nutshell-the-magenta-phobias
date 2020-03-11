@@ -25,6 +25,7 @@ justify-content: space-between;
     max-width: 300px;
 }
 .delete-container{
+    margin-right: 18%;
     width: 100%;
     display: flex;
     justify-content: flex-end;
