@@ -41,7 +41,7 @@ const TaskEditForm = props => {
   return (
     <>
       <form>
-        <fieldset>
+        <fieldset className="task-form-fieldset">
           <div className="formgrid">
             <input
               type="text"
