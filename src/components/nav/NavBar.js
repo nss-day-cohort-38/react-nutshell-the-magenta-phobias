@@ -31,7 +31,7 @@ const NavBar = props => {
         Chat
       </a>
       <a className="menu-item" href="/friends">
-        Friends
+        Following List
       </a>
       {props.hasUser ? (
           <a className="menu-item" onClick={handleLogout} href="/">

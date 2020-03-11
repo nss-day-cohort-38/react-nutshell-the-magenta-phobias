@@ -39,3 +39,21 @@ color: white ;
 .friends-event-cards{
     max-width: 700px;
 }
+@media only screen and (max-width: 800px) {
+    .friends-events-card-container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        overflow-y: auto;
+        border: 2px solid rgba(105, 105, 105, 0.685);
+        padding: 5%;
+    }
+    .friend-event-card-content{
+        flex: 0 0 auto;
+        border: 1px solid rgba(104, 103, 103, 0.521);
+        margin: 2%;
+        padding: 5%;  
+        max-width: 400px;
+        transition: 0.4s ease;
+    }
+}
