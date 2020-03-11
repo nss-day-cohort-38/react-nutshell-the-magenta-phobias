@@ -3,12 +3,20 @@ import "./Tasks.css";
 import ApiManager from "../../modules/ApiManager";
 
 const TaskCard = (props, { isComplete, setIsComplete }) => {
-    console.log(props)
-    // const [isComplete, setIsComplete] = useState();
+  // console.log(props.task);
+  // const [isComplete, setIsComplete] = useState();
   //   console.log(props.task);
 
   const handleIsComplete = e => {
-    setIsComplete(e.target.checked);
+    const stateToChange = { ...props };
+    stateToChange[e.target.id] = e.target.value;
+    setIsComplete(stateToChange);
+  };
+  const handleIsCompleteChange = async () => {
+    await ApiManager.patch("tasks", props.task, { isComplete: true });
+    const tasksFromAPI = await ApiManager.getAll("tasks");
+    console.log(tasksFromAPI);
+    // const completedTasks = tasksFromAPI.filter(task => !task.isComplete);
   };
 
   return (
@@ -28,20 +36,25 @@ const TaskCard = (props, { isComplete, setIsComplete }) => {
         >
           Edit This Task
         </button>
-        <label className="is-task-complete">Mark Complete</label>
-        <input
-          className="task-checkbox"
-          type="checkbox"
-          onChange={handleIsComplete}
-          checked={isComplete}
-        ></input>
         <button
+          className="is-task-complete"
+          type="button"
+          value={props.task.isComplete}
+          onChange={isComplete}
+          onClick={() => props.updateTask(props.task)}
+        >
+          Mark Complete
+        </button>
+
+        {/* <button
           className="mark-complete-save-btn"
           type="button"
-          onClick={() => props.handleMarkComplete()}
+          // onChange={handleIsComplete}
+          // checked={isComplete}
+          onClick={handleIsComplete}
         >
           Save
-        </button>
+        </button> */}
       </div>
     </div>
   );

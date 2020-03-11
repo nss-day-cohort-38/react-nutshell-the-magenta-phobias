@@ -5,8 +5,7 @@ import "./TaskForm.css";
 const AddNewTaskForm = props => {
   const [task, setTask] = useState({
     name: "",
-    expectedCompletion: "",
-    isComplete: ""
+    expectedCompletion: ""
   });
   const [isLoading, setIsLoading] = useState(false);
 
@@ -55,15 +54,6 @@ const AddNewTaskForm = props => {
               onClick={constructNewTask}
             >
               Submit
-            </button>
-          </div>
-          <div className="isComplete-selection">
-            <label>Select if this is complete</label>
-            <button className="true" type="button" disabled={isLoading}>
-              True
-            </button>
-            <button className="true" type="button" disabled={isLoading}>
-              False
             </button>
           </div>
         </fieldset>

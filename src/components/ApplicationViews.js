@@ -20,6 +20,7 @@ import FollowingList from "./followings/FollowingList";
 import PasswordCheck from "../editProfile/PasswordCheck";
 import EditProfileForm from "../editProfile/EditProfileForm";
 import FriendsEventDetails from "./friendsEvents/FriendsEventDetails";
+import CompletedTasks from "./tasks/CompletedTasks";
 
 const ApplicationViews = props => {
   const [isComplete, setIsComplete] = useState(false);
@@ -220,6 +221,17 @@ const ApplicationViews = props => {
         render={props =>
           hasUser ? <AddNewTaskForm {...props} /> : <Redirect to="/login" />
         }
+      />
+      <Route
+        exact
+        path="/tasks/completed"
+        render={props => {
+          if (hasUser) {
+            return <CompletedTasks component={CompletedTasks} />;
+          } else {
+            return <Redirect to="/login" />;
+          }
+        }}
       />
       <Route
         path="/friends"
