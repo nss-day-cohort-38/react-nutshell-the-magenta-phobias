@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ApiManager from "../../modules/ApiManager";
-import "./Tasks.css";
+import "./CompletedTasks.css"
 
 const CompletedTasks = props => {
   const [tasks, setTasks] = useState([]);
