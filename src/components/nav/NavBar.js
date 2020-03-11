@@ -10,30 +10,49 @@ const NavBar = props => {
   };
   return (
     <Menu>
-      <a className="menu-item" href="/">
-        {" "}
-        Home{""}
-        </a>
-      <a className="menu-item" href="/news">
-        News
-      </a>
-      <a className="menu-item" href="/events">
-        Events
-      </a>
-      <a className="menu-item" href="/tasks">
-        Tasks
-      </a>
-      <a className="menu-item" href="/chat">
-        Chat
-      </a>
-      <a className="menu-item" href="/friends">
-        Following List
-      </a>
       {props.hasUser ? (
-          <a className="menu-item" onClick={handleLogout} href="/">
-            {" "}
-            Logout{" "}
-          </a>
+        <a className="menu-item" href="/">
+          {" "}
+          Home{""}
+        </a>
+      ) : null}
+
+      {props.hasUser ? (
+        <a className="menu-item" href="/news">
+          News
+        </a>
+      ) : null}
+
+      {props.hasUser ? (
+        <a className="menu-item" href="/events">
+          Events
+        </a>
+      ) : null}
+
+      {props.hasUser ? (
+        <a className="menu-item" href="/tasks">
+          {" "}
+          Tasks{" "}
+        </a>
+      ) : null}
+
+      {props.hasUser ? (
+        <a className="menu-item" href="/chat">
+          Chat
+        </a>
+      ) : null}
+      
+      {props.hasUser ? (
+        <a className="menu-item" href="/friends">
+          Following List
+        </a>
+      ) : null}
+
+      {props.hasUser ? (
+        <a className="menu-item" onClick={handleLogout} href="/">
+          {" "}
+          Logout{" "}
+        </a>
       ) : null}
     </Menu>
   );
